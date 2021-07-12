@@ -1,0 +1,41 @@
+<html
+    window-state="shown"
+>
+<head>
+<script type="module">
+
+// show modal window
+document.on("click", "button#normal", function(event, item) {
+    new Window({
+        parent: Window.this,
+        //url   : __DIR__ + "settings.htm",
+        state : Window.WINDOW_SHOWN,
+        caption : "normal window",
+        alignment: 5,
+        screen: 0,
+        width: 400,
+        height: 200,
+    });
+});
+
+// show modal window
+document.on("click", "button#modal", function(event, item) {
+    Window.this.modal({
+        parent: Window.this,
+        //url   : __DIR__ + "settings.htm",
+        state : Window.WINDOW_SHOWN,
+        caption : "modal window",
+        alignment: 5,
+        screen: 0,
+        width: 400,
+        height: 200,
+    });
+});
+
+</script>
+</head>
+<body>
+    <button #normal>normal</button>
+    <button #modal>modal</button>
+</body>
+</html>
