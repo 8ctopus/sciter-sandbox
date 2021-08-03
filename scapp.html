@@ -1,42 +1,48 @@
 <html
-    window-state="shown"
+    window-width="800dip"
+    window-height="400dip"
 >
 <head>
-<script src="js/utils.js" />
+<style>
+
+@import url(vendor/8ctopus/sciter-logger/src/logger.css);
+
+</style>
 <script type="module">
 
-// show modal window
-document.on("click", "button#normal", function(event, item) {
-    new Window({
-        parent: Window.this,
-        //url   : __DIR__ + "settings.htm",
-        state : Window.WINDOW_SHOWN,
-        caption : "normal window",
-        alignment: 5,
-        screen: 0,
-        width: 400,
-        height: 200,
-    });
-});
+import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
+import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
-// show modal window
-document.on("click", "button#modal", function(event, item) {
-    Window.this.modal({
-        parent: Window.this,
-        //url   : __DIR__ + "settings.htm",
-        state : Window.WINDOW_SHOWN,
-        caption : "modal window",
-        alignment: 5,
-        screen: 0,
-        width: 400,
-        height: 200,
+document.on("ready", function() {
+    // initialize logger
+    logger.init("", true);
+
+    // subscribe to logger messages
+    logger.subscribe(function(level, message) {
+        const log = document.$("plaintext#logger");
+
+        log.append(JSX(level, {}, [message]));
+
+        // scroll to last item
+        log.lastElementChild.scrollIntoView({behavior: "smooth"});
     });
+
+    // attach logger to console
+    logger.attach();
+
+    // capture unhandled exceptions
+    logger.capture();
+
+    // add support for F5 reload
+    utils.addReloadWindow();
+
+    // center window on screen
+    utils.centerWindow();
 });
 
 </script>
 </head>
 <body>
-    <button #normal>normal</button>
-    <button #modal>modal</button>
+    <plaintext #logger readonly />
 </body>
 </html>
