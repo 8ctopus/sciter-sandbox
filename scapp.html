@@ -33,11 +33,14 @@ document.on("ready", function() {
     // capture unhandled exceptions
     logger.capture();
 
+    // center window on screen
+    utils.centerWindow("screen");
+
     // add support for F5 reload
     utils.addReloadWindow();
 
-    // center window on screen
-    utils.centerWindow();
+    // close window on escape key press
+    utils.closeWindowOnEscape();
 });
 
 </script>
