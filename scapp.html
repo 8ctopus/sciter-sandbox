@@ -23,7 +23,6 @@ logger.attach();
 logger.capture();
 
 document.on("ready", function() {
-    try {
     // subscribe to logger messages
     logger.subscribe(function(level, message) {
         const log = document.$("plaintext#logger");
@@ -48,6 +47,9 @@ document.on("ready", function() {
 
     // focus window
     utils.focusWindow();
+
+    // log sciter version
+    console.debug(utils.sciterInfo());
 });
 
 </script>
