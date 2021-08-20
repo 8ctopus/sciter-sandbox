@@ -14,7 +14,7 @@ import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
 import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
 // initialize logger
-logger.init("", true);
+logger.init();
 
 // attach logger to console
 logger.attach();
@@ -24,23 +24,16 @@ logger.capture();
 
 document.on("ready", function() {
     // subscribe to logger messages
-    logger.subscribe(function(level, message) {
-        const log = document.$("plaintext#logger");
-
-        log.append(JSX(level, {}, [message]));
-
-        // scroll to last item
-        log.lastElementChild.scrollIntoView({behavior: "smooth"});
-    });
-
-    // center window on screen
-    utils.centerWindow("screen");
+    logger.plaintext(document.$("plaintext#logger"));
 
     // add support for F5 reload
     utils.addReloadWindow();
 
-    // close window on escape key press
+    // close window on escape
     utils.closeWindowOnEscape();
+
+    // center window on screen
+    utils.centerWindow("screen");
 
     // bring window to front
     utils.windowToFront();
