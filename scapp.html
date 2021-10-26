@@ -36,11 +36,9 @@ document.ready = function() {
     // center window on screen
     utils.centerWindow(Window.this, "screen");
 
-    // bring window to front
-    utils.windowToFront(Window.this);
-
-    // focus window
-    utils.focusWindow(Window.this);
+    // bring window to front and focus it
+    if (!Window.this.activate(true))
+        console.error("Activate window - FAILED");
 
     // log sciter version
     console.debug(utils.sciterInfo());
