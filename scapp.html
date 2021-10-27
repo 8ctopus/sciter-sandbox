@@ -14,17 +14,17 @@
 import {logger} from "vendor/8ctopus/sciter-logger/src/logger.js";
 import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
+// capture unhandled exceptions
+logger.capture(unhandledExceptionHandler);
+
 // initialize logger
 logger.init();
 
 // attach logger to console
 logger.attach();
 
-// capture unhandled exceptions
-logger.capture();
-
 document.ready = function() {
-    // subscribe to logger messages
+    // redirect logger output to plaintext
     logger.plaintext(document.$("plaintext#logger"));
 
     // add support for F5 reload
@@ -44,6 +44,17 @@ document.ready = function() {
 
     // log sciter version
     console.debug(utils.sciterInfo());
+}
+
+/**
+ * Unhandled exception handler
+ * @param  Error|String e
+ * @return void
+ */
+function unhandledExceptionHandler(e)
+{
+    // log exception using exception if it exists, error otherwise
+    typeof console.exception === "function" ? console.exception(e) : console.error(e);
 }
 
 </script>
