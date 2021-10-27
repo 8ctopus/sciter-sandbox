@@ -30,14 +30,16 @@ document.ready = function() {
     // add support for F5 reload
     utils.addReloadWindow();
 
-    // close window on escape
+    // close window on escape key press
     utils.closeWindowOnEscape(Window.this);
 
     // center window on screen
     utils.centerWindow(Window.this, "screen");
 
-    // bring window to front and focus it
-    if (!Window.this.activate(true))
+    // bring window to front and set input focus
+    if (Window.this.activate(true))
+        console.log("Activate window - OK");
+    else
         console.error("Activate window - FAILED");
 
     // log sciter version
