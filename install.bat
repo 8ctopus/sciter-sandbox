@@ -1,7 +1,7 @@
 @echo OFF
 
-REM sciter 4.4.8.19
-SET sciterSDK="439804af72371a3997685884463cd344c69cad9d"
+REM sciter 4.4.8.20
+SET sciterSDK="103bcc180d1551e393efaede39987bf9e7a292fc"
 
 IF NOT EXIST bin\win-x32 mkdir bin\win-x32
 
