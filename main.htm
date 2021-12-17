@@ -23,7 +23,7 @@ logger.init();
 // attach logger to console
 logger.attach();
 
-document.ready = function() {
+document.on("ready", function() {
     // redirect logger output to plaintext
     logger.plaintext(document.$("plaintext#logger"));
 
@@ -44,7 +44,7 @@ document.ready = function() {
 
     // log sciter version
     console.debug(utils.sciterInfo());
-}
+});
 
 /**
  * Unhandled exception handler
