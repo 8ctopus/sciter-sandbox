@@ -11,30 +11,30 @@
 </style>
 <script type="module">
 
-import logger from "vendor/8ctopus/sciter-logger/src/logger.js";
-import * as utils from "vendor/8ctopus/sciter-utils/src/utils.js";
+import Logger from "vendor/8ctopus/sciter-logger/src/logger.js";
+import * as Utils from "vendor/8ctopus/sciter-utils/src/utils.js";
 
 // capture unhandled exceptions
-logger.capture(unhandledExceptionHandler);
+Logger.capture(unhandledExceptionHandler);
 
 // initialize logger
-logger.init();
+Logger.init();
 
 // attach logger to console
-logger.attach();
+Logger.attach();
 
 document.on("ready", function() {
     // redirect logger output to plaintext
-    logger.plaintext(document.$("plaintext#logger"));
+    Logger.plaintext(document.$("plaintext#logger"));
 
     // add support for F5 reload
-    utils.addReloadWindow();
+    Utils.addReloadWindow();
 
     // close window on escape key press
-    utils.closeWindowOnEscape(Window.this);
+    Utils.closeWindowOnEscape(Window.this);
 
     // center window on screen
-    utils.centerWindow(Window.this, "screen");
+    Utils.centerWindow(Window.this, "screen");
 
     // bring window to front and set input focus
     if (Window.this.activate(true))
@@ -43,7 +43,7 @@ document.on("ready", function() {
         console.error("Activate window - FAILED");
 
     // log sciter version
-    console.debug(utils.sciterInfo());
+    console.debug(Utils.sciterInfo());
 });
 
 /**
