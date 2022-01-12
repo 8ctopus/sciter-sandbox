@@ -46,15 +46,14 @@ document.on("ready", function() {
     console.debug(Utils.sciterInfo());
 });
 
+
 /**
  * Unhandled exception handler
- * @param  Error|String e
- * @return void
+ * @param {Error|string} exception
  */
-function unhandledExceptionHandler(e)
-{
+function unhandledExceptionHandler(exception) {
     // log exception using exception if it exists, error otherwise
-    typeof console.exception === "function" ? console.exception(e) : console.error(e);
+    typeof console.exception === "function" ? console.exception(exception) : console.error(exception);
 }
 
 </script>
