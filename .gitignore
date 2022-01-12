@@ -1,6 +1,5 @@
 /bin/
 /node_modules/
-/vendor/
 
 /*.sublime-workspace
 

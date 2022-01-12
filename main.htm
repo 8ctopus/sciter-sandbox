@@ -6,13 +6,13 @@
 <title>test project</title>
 <style>
 
-@import url(vendor/8ctopus/sciter-logger/src/logger.css);
+@import url(./node_modules/sciter-logger/src/logger.css);
 
 </style>
 <script type="module">
 
-import Logger from "vendor/8ctopus/sciter-logger/src/logger.js";
-import * as Utils from "vendor/8ctopus/sciter-utils/src/utils.js";
+import Logger from "./node_modules/sciter-logger/src/logger.js";
+import * as Utils from "./node_modules/sciter-utils/src/utils.js";
 
 // capture unhandled exceptions
 Logger.capture(unhandledExceptionHandler);

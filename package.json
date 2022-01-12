@@ -1,0 +1,28 @@
+{
+  "name": "sciter-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "sciter-logger": "github:8ctopus/sciter-logger#1.1.0",
+    "sciter-utils": "github:8ctopus/sciter-utils#0.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-jsdoc": "^37.4.0",
+    "eslint-plugin-unicorn": "^39.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "8ctopus",
+    "email": "hello@octopuslabs.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/8ctopus/sciter-sandbox/issues"
+  },
+  "homepage": "https://github.com/8ctopus/sciter-sandbox#readme"
+}
