@@ -30,7 +30,9 @@ npx eslint (--fix) main.htm
 
 - not tested on mac and linux
 
-## potential improvements
+## todo
 
+- improve install script (check if dir exists)
+- test on mac and linux
 - `npm run eslint`
 - `npm run usciter`
