@@ -4,11 +4,12 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## features
 
--
+- TODO
 
 ## requirements
 
-- Node.js installed
+- Node.js
+- curl in path
 
 ## start sandbox
 
