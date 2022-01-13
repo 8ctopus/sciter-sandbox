@@ -1,6 +1,8 @@
 import os from "os";
 import {spawn} from "child_process";
 import process from "process";
+import fkill from "fkill";
+import {basename} from "path";
 
 // scapp commands for all platforms
 const scapp = {
@@ -19,10 +21,22 @@ const inspector = {
 // get operating system
 const platform = os.platform();
 
+// close existing process
+try {
+    await fkill(basename(inspector[platform]));
+}
+catch (e) {}
+
 // start inspector detached process
 const process1 = spawn(inspector[platform], ["", ""], {
     detached: true,
 });
+
+// close existing process
+try {
+    await fkill(basename(scapp[platform]));
+}
+catch (e) {}
 
 // start scapp detached process
 const process2 = spawn(scapp[platform], [
