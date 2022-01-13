@@ -30,10 +30,10 @@ const commands = {
     "linux": [
         "mkdir -p bin/linux",
         "cd bin/linux",
-        `curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/scapp`,
-        `curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/inspector`,
-        `curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/libsciter-gtk.so`,
-        "chmod +x scapp inspector libsciter-gtk.so",
+        `cd bin/linux; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/scapp`,
+        `cd bin/linux; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/inspector`,
+        `cd bin/linux; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/libsciter-gtk.so`,
+        "cd bin/linux; chmod +x scapp inspector libsciter-gtk.so",
     ],
     "darwin": [
         // download the whole archive because of inspector.app which is a directory
@@ -51,8 +51,7 @@ const commands = {
         // delete zip
         `rm ${sciterSDK}.zip`,
 
-        "cd bin/macosx",
-        "chmod +x scapp inspector.app libsciter.dylib",
+        "cd bin/macosx; chmod +x scapp inspector.app libsciter.dylib",
     ]
 };
 
