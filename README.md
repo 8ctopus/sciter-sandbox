@@ -4,7 +4,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## features
 
-- TODO
+- ADD FEATURES
 
 ## requirements
 
@@ -15,26 +15,20 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 - git clone the repository
 - install packages `npm install`
-- install sciter sdk `npm run install-sdk`
+- install latest sciter sdk `npm run install-sdk`
 - start sandbox `npm run scapp`
 
 ## code linting
 
-Javascript code linting uses [eslint](https://github.com/eslint/eslint). HTML code linting uses [HTMLLint](https://htmlhint.com/).
+Javascript code linting uses [eslint](https://github.com/eslint/eslint).
 
 ```sh
-npm install
-
-# lint javascript
-npx eslint main.htm src/*.js
-
-# lint html
-npx htmlhint main.htm
+npx eslint (--fix) main.htm
 ```
 
 ## known issues
 
-- sdk installation on windows doesn't work yet
+- not tested on mac and linux
 
 ## potential improvements
 
