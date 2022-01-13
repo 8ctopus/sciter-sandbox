@@ -16,7 +16,7 @@
   },
   "scripts": {
     "scapp": "node ./scripts/scapp.mjs",
-    "install2": "sh ./scripts/install.sh",
+    "install-sdk": "node ./scripts/install.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {

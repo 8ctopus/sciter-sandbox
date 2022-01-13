@@ -7,15 +7,15 @@ import {basename} from "path";
 // scapp commands for all platforms
 const scapp = {
     win32: "./bin/win-x32/scapp.exe",
-    darwin: "./bin/linux/scapp",
     linux: "./bin/linux/scapp",
+    darwin: "./bin/linux/scapp",
 };
 
 // inspector commands for all platforms
 const inspector = {
     win32: "./bin/win-x32/inspector.exe",
-    darwin: "./bin/linux/inspector",
     linux: "./bin/linux/inspector",
+    darwin: "./bin/linux/inspector",
 };
 
 // get operating system
