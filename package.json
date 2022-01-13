@@ -1,7 +1,7 @@
 {
   "name": "sciter-sandbox",
   "version": "1.0.0",
-  "description": "",
+  "description": "sciter.js sandbox",
   "dependencies": {
     "sciter-logger": "github:8ctopus/sciter-logger#1.1.0",
     "sciter-utils": "github:8ctopus/sciter-utils#0.7.0"
@@ -11,9 +11,12 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-jsdoc": "^37.4.0",
-    "eslint-plugin-unicorn": "^39.0.0"
+    "eslint-plugin-unicorn": "^39.0.0",
+    "fkill": "^8.0.0"
   },
   "scripts": {
+    "scapp": "node ./scripts/scapp.js",
+    "install2": "sh ./scripts/install.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {

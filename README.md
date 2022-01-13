@@ -12,7 +12,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 - on Linux/Mac `chmod +x install.sh start.sh`
 - run `install.bat` (Win) or `./install.sh` (Linux/Mac) to download the latest sciter binaries and the sciter package manager
 - install packages `npm install`
-- run `start.bat` (Win) or `./start.sh` (Linux/Mac)
+- run `npm run scapp`
 
 ## code linting
 
