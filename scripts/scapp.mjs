@@ -1,3 +1,7 @@
+import os from "os";
+import {spawn} from "child_process";
+import process from "process";
+
 // scapp commands for all platforms
 const scapp = {
     win32: "./bin/win-x32/scapp.exe",
@@ -13,18 +17,15 @@ const inspector = {
 };
 
 // get operating system
-const os = require('os');
 const platform = os.platform();
 
-const exec = require('child_process').spawn;
-
 // start inspector detached process
-exec(inspector[platform], [], {
+const process1 = spawn(inspector[platform], ["", ""], {
     detached: true,
 });
 
 // start scapp detached process
-exec(scapp[platform], [
+const process2 = spawn(scapp[platform], [
     "main.htm",
     "--debug",
 ], {
@@ -32,5 +33,4 @@ exec(scapp[platform], [
 });
 
 // exit
-const process = require('process');
 process.exit(0);

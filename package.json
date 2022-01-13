@@ -15,7 +15,7 @@
     "fkill": "^8.0.0"
   },
   "scripts": {
-    "scapp": "node ./scripts/scapp.js",
+    "scapp": "node ./scripts/scapp.mjs",
     "install2": "sh ./scripts/install.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
