@@ -28,7 +28,9 @@ try {
 catch (e) {}
 
 // start inspector detached process
-const process1 = spawn(inspector[platform], ["", ""], {
+console.log("start inspector...");
+
+const process1 = spawn(inspector[platform], [], {
     detached: true,
 });
 
@@ -39,6 +41,8 @@ try {
 catch (e) {}
 
 // start scapp detached process
+console.log("start scapp...");
+
 const process2 = spawn(scapp[platform], [
     "main.htm",
     "--debug",
