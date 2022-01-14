@@ -37,9 +37,7 @@ document.on("ready", function() {
     Utils.centerWindow(Window.this, "screen");
 
     // bring window to front and set input focus
-    if (Window.this.activate(true))
-        console.log("Activate window - OK");
-    else
+    if (!Window.this.activate(true))
         console.error("Activate window - FAILED");
 
     // log sciter version
