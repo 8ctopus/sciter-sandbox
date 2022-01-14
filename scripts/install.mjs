@@ -21,19 +21,17 @@ function download(url, path) {
 
 const commands = {
     "win32": [
-        "mkdir bin\\win-x32",
-        "cd bin\\win-x32",
-        `cd bin\\win-x32 & curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/windows/x32/scapp.exe`,
-        `cd bin\\win-x32 & curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/windows/x32/inspector.exe`,
-        `cd bin\\win-x32 & curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/windows/x32/sciter.dll`,
+        "mkdir bin\\windows\\x32",
+        `cd bin\\windows\\x32 & curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/windows/x32/scapp.exe`,
+        `cd bin\\windows\\x32 & curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/windows/x32/inspector.exe`,
+        `cd bin\\windows\\x32 & curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/windows/x32/sciter.dll`,
     ],
     "linux": [
-        "mkdir -p bin/linux",
-        "cd bin/linux",
-        `cd bin/linux; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/scapp`,
-        `cd bin/linux; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/inspector`,
-        `cd bin/linux; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/libsciter-gtk.so`,
-        "cd bin/linux; chmod +x scapp inspector libsciter-gtk.so",
+        "mkdir -p bin/linux/x64",
+        `cd bin/linux/x64; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/scapp`,
+        `cd bin/linux/x64; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/inspector`,
+        `cd bin/linux/x64; curl -LO https://github.com/c-smile/sciter-js-sdk/raw/${sciterSDK}/bin/linux/x64/libsciter-gtk.so`,
+        "cd bin/linux/x64; chmod +x scapp inspector libsciter-gtk.so",
     ],
     "darwin": [
         // download the whole archive because of inspector.app which is a directory
@@ -58,7 +56,7 @@ const commands = {
 // get operating system
 const platform = os.platform();
 
-console.log(`Install sciter.js SDK ${sciterSDK} on ${platform}`);
+console.log(`Install sciter.js SDK ${sciterSDK} on ${platform}...`);
 
 for (const command of commands[platform]) {
     exec(command, (error, stdout, stderr) => {
@@ -74,4 +72,3 @@ for (const command of commands[platform]) {
             console.error(stderr);
     });
 }
-

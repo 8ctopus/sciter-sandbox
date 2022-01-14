@@ -6,27 +6,27 @@ import fkill from "fkill";
 
 // scapp commands for all platforms
 const scapp = {
-    win32: "./bin/win-x32/scapp.exe",
-    linux: "./bin/linux/scapp",
-    darwin: "./bin/linux/scapp",
+    win32: "./bin/windows/x32/scapp.exe",
+    linux: "./bin/linux/x64/scapp",
+    darwin: "./bin/macosx/scapp",
 };
 
 // inspector commands for all platforms
 const inspector = {
-    win32: "./bin/win-x32/inspector.exe",
-    linux: "./bin/linux/inspector",
-    darwin: "./bin/linux/inspector",
+    win32: "./bin/windows/x32/inspector.exe",
+    linux: "./bin/linux/x64/inspector",
+    darwin: "./bin/macosx/inspector.app",
 };
 
 // get operating system
 const platform = os.platform();
 
-// close existing process
+// close existing inspector
 try {
     await fkill(basename(inspector[platform]));
 }
 catch (error) {
-    console.error(error);
+    //console.error(error);
 }
 
 // start inspector detached process
@@ -36,12 +36,12 @@ spawn(inspector[platform], [], {
     detached: true,
 });
 
-// close existing process
+// close existing scapp
 try {
     await fkill(basename(scapp[platform]));
 }
 catch (error) {
-    console.error(error);
+    //console.error(error);
 }
 
 // start scapp detached process
