@@ -1,16 +1,16 @@
-import https from "https";
-import fs from "fs";
-import {exec} from "child_process";
-import os from "os";
+import https from "node:https";
+import fs from "node:fs";
+import {exec} from "node:child_process";
+import os from "node:os";
 
 // sciter 4.4.8.22-bis
-const sciterSDK = "6cedc57ff09404ad17e1899abc06f843a4677b69"
+const sciterSDK = "6cedc57ff09404ad17e1899abc06f843a4677b69";
 
 function download(url, path) {
-    https.get(url, (res) => {
+    https.get(url, (response) => {
         const writeStream = fs.createWriteStream(path);
 
-        res.pipe(writeStream);
+        response.pipe(writeStream);
 
         writeStream.on("finish", () => {
             writeStream.close();
@@ -52,7 +52,7 @@ const commands = {
         `rm ${sciterSDK}.zip`,
 
         "cd bin/macosx; chmod +x scapp inspector.app libsciter.dylib",
-    ]
+    ],
 };
 
 // get operating system

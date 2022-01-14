@@ -1,8 +1,8 @@
-import os from "os";
-import {spawn} from "child_process";
-import process from "process";
+import os from "node:os";
+import {spawn} from "node:child_process";
+import process from "node:process";
+import {basename} from "node:path";
 import fkill from "fkill";
-import {basename} from "path";
 
 // scapp commands for all platforms
 const scapp = {
@@ -25,12 +25,14 @@ const platform = os.platform();
 try {
     await fkill(basename(inspector[platform]));
 }
-catch (e) {}
+catch (error) {
+    console.error(error);
+}
 
 // start inspector detached process
 console.log("start inspector...");
 
-const process1 = spawn(inspector[platform], [], {
+spawn(inspector[platform], [], {
     detached: true,
 });
 
@@ -38,12 +40,14 @@ const process1 = spawn(inspector[platform], [], {
 try {
     await fkill(basename(scapp[platform]));
 }
-catch (e) {}
+catch (error) {
+    console.error(error);
+}
 
 // start scapp detached process
 console.log("start scapp...");
 
-const process2 = spawn(scapp[platform], [
+spawn(scapp[platform], [
     "main.htm",
     "--debug",
 ], {
