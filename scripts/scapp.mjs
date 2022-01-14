@@ -15,7 +15,7 @@ const scapp = {
 const inspector = {
     win32: "./bin/windows/x32/inspector.exe",
     linux: "./bin/linux/x64/inspector",
-    darwin: "./bin/macosx/inspector.app",
+    darwin: "./bin/macosx/inspector.app/Contents/MacOS/inspector",
 };
 
 // get operating system
