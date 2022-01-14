@@ -14,7 +14,6 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 ## requirements
 
 - Node.js
-- curl in path
 
 ## start sandbox
 
@@ -37,7 +36,7 @@ npx eslint (--fix) main.htm
 
 ## todo
 
-- improve install script (check if dir exists)
 - test on mac and linux
+- improve install script (check if dir exists)
 - `npm run eslint`
 - `npm run usciter`
