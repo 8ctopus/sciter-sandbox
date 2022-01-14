@@ -13,7 +13,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## requirements
 
-- Node.js
+- Node.js `node` 16.x and its package manager `npm`
 
 ## start sandbox
 

@@ -15,7 +15,7 @@ const commands = {
         `mv sciter-js-sdk-${sciterSDK}/bin .`,
 
         // delete old dir
-        `rmdir sciter-js-sdk-${sciterSDK}`,
+        `rm -rf sciter-js-sdk-${sciterSDK}`,
 
         // delete zip
         `rm ${sciterSDK}.zip`,
