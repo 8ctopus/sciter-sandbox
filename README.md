@@ -4,7 +4,10 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## features
 
-- ADD FEATURES
+- start scapp and inspector
+- automatically install sciter sdk
+- F5 reload
+- logger
 
 ## requirements
 
@@ -15,7 +18,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 - git clone the repository
 - install packages `npm install`
-- install latest sciter sdk `npm run install-sdk`
+- install sciter sdk `npm run install-sdk`
 - start sandbox `npm run scapp`
 
 ## code linting
