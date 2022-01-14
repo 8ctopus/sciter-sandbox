@@ -29,12 +29,17 @@ catch (error) {
     //console.error(error);
 }
 
-// start inspector detached process
-console.log("start inspector...");
+try {
+    // start inspector detached process
+    console.log("start inspector...");
 
-spawn(inspector[platform], [], {
-    detached: true,
-});
+    spawn(inspector[platform], [], {
+        detached: true,
+    });
+}
+catch (error) {
+    console.error(error);
+}
 
 // close existing scapp
 try {
