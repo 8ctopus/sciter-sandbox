@@ -2,6 +2,8 @@
 
 This is a [sciter.js](https://sciter.com/) development sandbox.
 
+![sciter sandbox screenshot](screenshot.png)
+
 ## features
 
 - start scapp and inspector
