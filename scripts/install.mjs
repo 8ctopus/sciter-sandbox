@@ -45,7 +45,7 @@ const commands = {
         `unzip ${zipFile}`,
 
         // move binaries
-        `mv ${tmpDir}sciter-js-sdk-${sdkCommitId}/bin .`,
+        `cp -r ${tmpDir}sciter-js-sdk-${sdkCommitId}/bin .`,
 
         // delete temp dir
         `rm -rf ${tmpDir}sciter-js-sdk-${sdkCommitId}`,
