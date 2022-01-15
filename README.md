@@ -16,14 +16,14 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 - Node.js `node` (16 LTS) and its package manager `npm`.
     - On Windows [download](https://nodejs.dev/download/) and run the installer
-    - On Linux check the [installation guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-2-%E2%80%94-installing-node-js-with-apt-using-a-nodesource-ppa).
+    - On Linux check the [installation guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-2-%E2%80%94-installing-node-js-with-apt-using-a-nodesource-ppa)
 
 ## start sandbox
 
-- git clone the repository and checkout the latest release tag `git checkout 1.1.1`
+- git clone the repository and checkout the latest release tag `git checkout 1.1.5`
 - install packages `npm install`
 - install latest sciter sdk `npm run install-sdk`
-- start sandbox `npm run scapp`
+- start the sandbox `npm run scapp`
 
 ## commands
 
