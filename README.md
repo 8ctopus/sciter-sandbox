@@ -27,20 +27,29 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## commands
 
+### install sciter js sdk
 ```sh
-# install sciter js sdk
 npm run install-sdk [version]
 
-# start scapp
-npm run [scapp|scapp64]
-
-# start usciter
-npm run [usciter|usciter64]
-
-npx eslint (--fix) main.htm
+# example
+npm run install-sdk 4.4.8.22-bis
 ```
 
+### start scapp / usciter
+
+```sh
+npm run [scapp|scapp64]
+
+npm run [usciter|usciter64]
+```
+
+### lint code
+
 Javascript code linting uses [eslint](https://github.com/eslint/eslint).
+
+```sh
+npx eslint (--fix) main.htm
+```
 
 ## known issues
 
