@@ -20,6 +20,7 @@
     "scapp64": "node ./scripts/start.mjs scapp64",
     "usciter": "node ./scripts/start.mjs usciter",
     "usciter64": "node ./scripts/start.mjs usciter64",
+    "stop": "node ./scripts/stop.mjs",
     "install-sdk": "node ./scripts/install.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

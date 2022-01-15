@@ -28,6 +28,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 ## commands
 
 ### install sciter js sdk
+
 ```sh
 npm run install-sdk [version]
 
@@ -41,6 +42,12 @@ npm run install-sdk 4.4.8.22-bis
 npm run [scapp|scapp64]
 
 npm run [usciter|usciter64]
+```
+
+### close scapp, usciter and inspector
+
+```sh
+npm run stop
 ```
 
 ### lint code
