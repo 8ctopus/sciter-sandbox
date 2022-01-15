@@ -7,10 +7,10 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 ## features
 
 - works on Windows, Mac and Linux
-- automatically install and configure sciter sdk
-- start scapp in debug mode with inspector
+- automatically install and configure sciter sdk (it's possible choose sdk version to install)
+- start scapp or usciter with inspector
 - easily test your changes with F5 reload
-- logger
+- javascript code linter
 
 ## requirements
 
