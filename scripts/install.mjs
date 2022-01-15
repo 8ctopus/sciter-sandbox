@@ -42,19 +42,23 @@ const commands = {
 
 console.log(`Download sciter.js SDK ${sciterSDK}...`);
 
+let downloaded = 0;
+
 fs.writeFileSync(`${sciterSDK}.zip`, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sciterSDK}.zip`)
     .on("response", res => {
-        //console.log(res.headers["content-length"]);
-        console.log(res.headers);
+        //console.log(res.headers);
+        // clear screen
+        //console.log("\x1b[2J");
     })
-/*
     .on("response", res => {
-        bar.total = res.headers["content-length"];
-        res.on("data", data => data.length);
-  })
-*/
-);
+        res.on("data", data => {
+            downloaded += data.length;
 
+            // show download progress
+            console.log(`\x1b[ADownload ${(downloaded / (1024 * 1024)).toFixed(0)} Mb...                                `);
+        });
+    })
+);
 
 console.log(`Install sciter.js SDK ${sciterSDK}...`);
 
@@ -62,7 +66,7 @@ const platform = (os.platform() === "win32") ? "win32" : "linux";
 
 //console.debug(platform);
 
-// execute commands
+// execute commands synchronously
 for (const command of commands[platform]) {
     console.log(command);
 
