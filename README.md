@@ -20,7 +20,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## start sandbox
 
-- git clone the repository and checkout the latest release tag `git checkout 1.1.5`
+- git clone the repository and checkout the latest release tag `git checkout 1.1.6`
 - install packages `npm install`
 - install latest sciter sdk `npm run install-sdk`
 - start the sandbox `npm run scapp`

@@ -1,19 +1,24 @@
 {
   "name": "sciter-sandbox",
-  "version": "1.1.5",
-  "description": "sciter.js sandbox",
+  "version": "1.1.6",
+  "description": "sciter.js development sandbox",
+  "keywords": [
+    "sciter.js",
+    "sandbox",
+    "development"
+  ],
   "dependencies": {
     "download": "^8.0.0",
     "fkill": "^8.0.0",
     "sciter-logger": "github:8ctopus/sciter-logger#1.1.0",
-    "sciter-utils": "github:8ctopus/sciter-utils#0.7.0"
-  },
-  "devDependencies": {
+    "sciter-utils": "github:8ctopus/sciter-utils#0.7.0",
     "eslint": "^8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-jsdoc": "^37.4.0",
     "eslint-plugin-unicorn": "^39.0.0"
+  },
+  "devDependencies": {
   },
   "scripts": {
     "scapp": "node ./scripts/start.mjs scapp",
