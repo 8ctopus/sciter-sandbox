@@ -55,13 +55,13 @@ catch (error) {
 }
 
 // scapp or usciter
-const ide = process.argv.slice(2);
+const ide = process.argv[2] ?? "";
 
 try {
     // start inspector as detached process
     console.log("start inspector...");
 
-    const inspector = ide.includes("64") ? "inspector64" : "inspector";
+    const inspector = ide.endsWith("64") ? "inspector64" : "inspector";
 
     spawn(commands[inspector][platform], [], {
         detached: true,
@@ -83,11 +83,12 @@ try {
     // start ide as detached process
     console.log(`start ${ide}...`);
 
-    const args = ide.includes("scapp") ? [
+    const args = ide.startsWith("scapp") ? [
             "main.htm",
             "--debug",
         ] : [
-            "-o main.htm",
+            "-o",
+            "main.htm",
     ];
 
     console.log(args);
