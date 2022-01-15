@@ -4,18 +4,25 @@ import process from "node:process";
 import {basename} from "node:path";
 import fkill from "fkill";
 
-// scapp commands for all platforms
-const scapp = {
-    win32: "./bin/windows/x32/scapp.exe",
-    linux: "./bin/linux/x64/scapp",
-    darwin: "./bin/macosx/scapp",
-};
+// commands for all platforms
+const commands = {
+    inspector: {
+        win32: "./bin/windows/x32/inspector.exe",
+        linux: "./bin/linux/x64/inspector",
+        darwin: "./bin/macosx/inspector.app/Contents/MacOS/inspector",
+    },
 
-// inspector commands for all platforms
-const inspector = {
-    win32: "./bin/windows/x32/inspector.exe",
-    linux: "./bin/linux/x64/inspector",
-    darwin: "./bin/macosx/inspector.app/Contents/MacOS/inspector",
+    scapp: {
+        win32: "./bin/windows/x32/scapp.exe",
+        linux: "./bin/linux/x64/scapp",
+        darwin: "./bin/macosx/scapp",
+    },
+
+    usciter: {
+        win32: "./bin/windows/x32/usciter.exe",
+        linux: "./bin/linux/x64/usciter",
+        darwin: "./bin/macosx/usciter.app/Contents/MacOS/usciter",
+    },
 };
 
 // get operating system
@@ -23,17 +30,17 @@ const platform = os.platform();
 
 // close existing inspector
 try {
-    await fkill(basename(inspector[platform]));
+    await fkill(basename(commands["inspector"][platform]));
 }
 catch (error) {
     //console.error(error);
 }
 
 try {
-    // start inspector detached process
+    // start inspector as detached process
     console.log("start inspector...");
 
-    spawn(inspector[platform], [], {
+    spawn(commands["inspector"][platform], [], {
         detached: true,
     });
 }
@@ -41,23 +48,31 @@ catch (error) {
     console.error(error);
 }
 
-// close existing scapp
+// scapp or usciter
+const ide = process.argv.slice(2);
+
+// close existing ide
 try {
-    await fkill(basename(scapp[platform]));
+    await fkill(basename(commands[ide][platform]));
 }
 catch (error) {
     //console.error(error);
 }
 
-// start scapp detached process
-console.log("start scapp...");
+try {
+    // start ide as detached process
+    console.log(`start ${ide}...`);
 
-spawn(scapp[platform], [
-    "main.htm",
-    "--debug",
-], {
-    detached: true,
-});
+    spawn(commands[ide][platform], [
+        "main.htm",
+        "--debug",
+    ], {
+        detached: true,
+    });
+}
+catch (error) {
+    console.error(error);
+}
 
 // exit
 process.exit(0);
