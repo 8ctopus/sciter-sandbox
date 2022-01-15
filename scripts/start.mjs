@@ -61,7 +61,7 @@ try {
     // start inspector as detached process
     console.log("start inspector...");
 
-    const inspector = ide.indexOf("64") ? "inspector64" : "inspector";
+    const inspector = ide.includes("64") ? "inspector64" : "inspector";
 
     spawn(commands[inspector][platform], [], {
         detached: true,
@@ -83,10 +83,16 @@ try {
     // start ide as detached process
     console.log(`start ${ide}...`);
 
-    spawn(commands[ide][platform], [
-        "main.htm",
-        "--debug",
-    ], {
+    const args = ide.includes("scapp") ? [
+            "main.htm",
+            "--debug",
+        ] : [
+            "-o main.htm",
+    ];
+
+    console.log(args);
+
+    spawn(commands[ide][platform], args, {
         detached: true,
     });
 }

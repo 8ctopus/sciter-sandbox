@@ -8,7 +8,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 - works on Windows, Mac and Linux
 - automatically install and configure sciter sdk
-- start scapp and inspector
+- start scapp in debug mode with inspector
 - easily test your changes (F5)
 - logger
 
@@ -22,8 +22,8 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 - git clone the repository
 - install packages `npm install`
-- install sciter sdk `npm run install-sdk`
-- start sandbox, choose your flavor: `npm run scapp` or `npm run usciter`
+- install latest sciter sdk `npm run install-sdk`
+- start sandbox `npm run scapp`
 
 ## commands
 
@@ -32,10 +32,10 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 npm run install-sdk [version]
 
 # start scapp
-npm run [scapp,scapp64]
+npm run [scapp|scapp64]
 
 # start usciter
-npm run [usciter,usciter64]
+npm run [usciter|usciter64]
 
 npx eslint (--fix) main.htm
 ```
