@@ -20,7 +20,7 @@ const commands = {
         // delete zip
         `rm ${sciterSDK}.zip`,
 
-        "cd bin/macosx; chmod +x scapp inspector.app/Contents/MacOS/inspector libsciter.dylib",
+        "cd bin/macosx; chmod +x scapp inspector.app/Contents/MacOS/inspector usciterjs.app/Contents/MacOS/usciterjs libsciter.dylib",
         "cd bin/linux/arm32; chmod +x scapp inspector usciter libsciter-gtk.so",
         "cd bin/linux/x64; chmod +x scapp inspector usciter libsciter-gtk.so",
         "cd bin/linux/x32; chmod +x scapp",
