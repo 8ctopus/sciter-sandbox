@@ -6,8 +6,10 @@ import process from "node:process";
 import download from "download";
 
 const sdkCommitIds = {
+    // Jan 1, 2022
     "4.4.8.23-bis": "e28811887e0d94a531b9eef2ac4e2b31768565d8",
     "4.4.8.23": "de0f6c2490275074742dfed7a1f80e85885fedc6",
+    // Dec 29, 2021
     "4.4.8.22-bis": "6cedc57ff09404ad17e1899abc06f843a4677b69",
     "4.4.8.22": "edaeb0146f0c910e0ff75bbb0fc85dfa108c4034",
     "4.4.8.21": "a52e657f93d2294a915dd6d911e3b6768be9387c",
@@ -19,7 +21,19 @@ const sdkCommitIds = {
     "4.4.8.16": "d5a13ff197fed3af46d4bc931c158828eb61e357",
     // Oct 30, 2021
     "4.4.8.15": "faeba319c38bac2e833cbf0fe5a6be60cf87a24e",
-
+    // Oct 10, 2021
+    "4.4.8.14": "b5c4d4efe4ed48fc96c7900c8e89e18c3c1c6397",
+    // Oct 3, 2021
+    "4.4.8.13": "f810da6a1887220e5d7e9d5a9ec6176508967f0d",
+    // Sep 28, 2021
+    "4.4.8.12": "b73c9cb6b6501908a1ed2f46e333b86a1cae9482",
+    // Sep 26, 2021
+    "4.4.8.11-bis": "f78a7294196ea386fce956976f11e268173b479b",
+    "4.4.8.11": "1513385803c0334df17114a07df7be4b4e6f3bb7",
+    // Sep 12, 2021
+    "4.4.8.10": "cb9daceb84f6e49e56dee816b4de7d5ddb2829e1",
+    // Sep 4, 2021
+    "4.4.8.9": "a973aafdf6ebe1704d7a9322184d6c9116423861",
 };
 
 //console.log(process.argv[2]);
