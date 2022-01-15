@@ -29,19 +29,13 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ```sh
 # install sciter js sdk
-npm run install-sdk
+npm run install-sdk [version]
 
 # start scapp
-npm run scapp
-
-# start scapp x64
-npm run scapp64
+npm run [scapp,scapp64]
 
 # start usciter
-npm run usciter
-
-# start usciter x64
-npm run usciter64
+npm run [usciter,usciter64]
 
 npx eslint (--fix) main.htm
 ```

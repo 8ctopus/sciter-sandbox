@@ -1,15 +1,43 @@
 import fs from "node:fs";
 import {exec} from "node:child_process";
 import os from "node:os";
+import {sep as separator} from "node:path";
+import process from "node:process";
 import download from "download";
-import {sep as separator} from "path";
 
-// sciter 4.4.8.22-bis
-const sciterSDK = "6cedc57ff09404ad17e1899abc06f843a4677b69";
+const sdkCommitIds = {
+    "4.4.8.23-bis": "e28811887e0d94a531b9eef2ac4e2b31768565d8",
+    "4.4.8.23": "de0f6c2490275074742dfed7a1f80e85885fedc6",
+    "4.4.8.22-bis": "6cedc57ff09404ad17e1899abc06f843a4677b69",
+    "4.4.8.22": "edaeb0146f0c910e0ff75bbb0fc85dfa108c4034",
+    "4.4.8.21": "a52e657f93d2294a915dd6d911e3b6768be9387c",
+    "4.4.8.20": "103bcc180d1551e393efaede39987bf9e7a292fc",
+    "4.4.8.19": "439804af72371a3997685884463cd344c69cad9d",
+    "4.4.8.18": "da424552e56c0779515c8cdef25dc40d08b35ae4",
+    "4.4.8.17-bis": "be2be52df10ebe501f75901df8ef2467ed710d00",
+    "4.4.8.17": "7fe8ef76de2a1aca48de4f312b0ff2c707ca56b5",
+    "4.4.8.16": "d5a13ff197fed3af46d4bc931c158828eb61e357",
+    // Oct 30, 2021
+    "4.4.8.15": "faeba319c38bac2e833cbf0fe5a6be60cf87a24e",
+
+};
+
+//console.log(process.argv[2]);
+
+// get sdk version
+const sdkVersion = process.argv[2] ?? "4.4.8.22-bis";
+
+// get sdk commit id
+const sdkCommitId = sdkCommitIds[sdkVersion];
+
+if (sdkCommitId === undefined) {
+    console.error(`\x1b[31mUnknown sciter.js sdk version`);
+    process.exit(1);
+}
 
 // get tmp dir and zip file
 const tmpDir = os.tmpdir() + separator;
-const zipFile = tmpDir + `${sciterSDK}.zip`;
+const zipFile = tmpDir + `${sdkCommitId}.zip`;
 
 const commands = {
     "linux": [
@@ -17,10 +45,10 @@ const commands = {
         `unzip ${zipFile}`,
 
         // move binaries
-        `mv ${tmpDir}sciter-js-sdk-${sciterSDK}/bin .`,
+        `mv ${tmpDir}sciter-js-sdk-${sdkCommitId}/bin .`,
 
         // delete temp dir
-        `rm -rf ${tmpDir}sciter-js-sdk-${sciterSDK}`,
+        `rm -rf ${tmpDir}sciter-js-sdk-${sdkCommitId}`,
 
         // delete zip
         `rm ${zipFile}`,
@@ -35,21 +63,21 @@ const commands = {
         `unzip ${zipFile} -d ${tmpDir}`,
 
         // move binaries
-        `cp -r ${tmpDir}sciter-js-sdk-${sciterSDK}\\bin .`,
+        `cp -r ${tmpDir}sciter-js-sdk-${sdkCommitId}\\bin .`,
 
         // delete old dir
-        `rmdir /s /q ${tmpDir}sciter-js-sdk-${sciterSDK}`,
+        `rmdir /s /q ${tmpDir}sciter-js-sdk-${sdkCommitId}`,
 
         // delete zip
         `del ${zipFile}`,
     ],
 };
 
-console.log(`Download sciter.js SDK ${sciterSDK}...\n`);
+console.log(`\x1b[32mDownload sciter.js SDK ${sdkVersion}...\n`);
 
 let downloaded = 0;
 
-fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sciterSDK}.zip`)
+fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`)
     .on("response", res => {
         //console.log(res.headers);
         // clear screen
@@ -65,7 +93,7 @@ fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-s
     })
 );
 
-console.log(`Install sciter.js SDK ${sciterSDK}...`);
+console.log(`\x1b[32mInstall sciter.js SDK ${sdkVersion}...`);
 
 const platform = (os.platform() === "win32") ? "win32" : "linux";
 
