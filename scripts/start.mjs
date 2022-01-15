@@ -17,7 +17,9 @@ catch (error) {
 }
 
 // scapp or usciter
-const ide = process.argv[2] ?? "";
+const ide = process.argv[2] ?? "scapp64";
+
+console.log("arg:", ide);
 
 try {
     // start inspector as detached process
