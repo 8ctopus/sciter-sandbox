@@ -2,23 +2,28 @@ import fs from "node:fs";
 import {exec} from "node:child_process";
 import os from "node:os";
 import download from "download";
+import {sep as separator} from "path";
 
 // sciter 4.4.8.22-bis
 const sciterSDK = "6cedc57ff09404ad17e1899abc06f843a4677b69";
 
+// get tmp dir and zip file
+const tmpDir = os.tmpdir() + separator;
+const zipFile = tmpDir + `${sciterSDK}.zip`;
+
 const commands = {
     "linux": [
-        // unzip binaries
-        `unzip ${sciterSDK}.zip`,
+        // unzip archive
+        `unzip ${zipFile}`,
 
         // move binaries
-        `mv sciter-js-sdk-${sciterSDK}/bin .`,
+        `mv ${tmpDir}sciter-js-sdk-${sciterSDK}/bin .`,
 
-        // delete old dir
-        `rm -rf sciter-js-sdk-${sciterSDK}`,
+        // delete temp dir
+        `rm -rf ${tmpDir}sciter-js-sdk-${sciterSDK}`,
 
         // delete zip
-        `rm ${sciterSDK}.zip`,
+        `rm ${zipFile}`,
 
         "cd bin/macosx; chmod +x scapp inspector.app/Contents/MacOS/inspector usciterjs.app/Contents/MacOS/usciterjs libsciter.dylib",
         "cd bin/linux/arm32; chmod +x scapp inspector usciter libsciter-gtk.so",
@@ -26,25 +31,25 @@ const commands = {
         "cd bin/linux/x32; chmod +x scapp",
     ],
     "win32": [
-        // unzip binaries
-        `unzip ${sciterSDK}.zip`,
+        // unzip archive
+        `unzip ${zipFile} -d ${tmpDir}`,
 
         // move binaries
-        `move sciter-js-sdk-${sciterSDK}\\bin .`,
+        `cp -r ${tmpDir}sciter-js-sdk-${sciterSDK}\\bin .`,
 
         // delete old dir
-        `rmdir /s /q sciter-js-sdk-${sciterSDK}`,
+        `rmdir /s /q ${tmpDir}sciter-js-sdk-${sciterSDK}`,
 
         // delete zip
-        `del ${sciterSDK}.zip`,
+        `del ${zipFile}`,
     ],
 };
 
-console.log(`Download sciter.js SDK ${sciterSDK}...`);
+console.log(`Download sciter.js SDK ${sciterSDK}...\n`);
 
 let downloaded = 0;
 
-fs.writeFileSync(`${sciterSDK}.zip`, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sciterSDK}.zip`)
+fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sciterSDK}.zip`)
     .on("response", res => {
         //console.log(res.headers);
         // clear screen
@@ -55,7 +60,7 @@ fs.writeFileSync(`${sciterSDK}.zip`, await download(`https://github.com/c-smile/
             downloaded += data.length;
 
             // show download progress
-            console.log(`\x1b[ADownload ${(downloaded / (1024 * 1024)).toFixed(0)} Mb...                                `);
+            console.log(`\x1b[ADownload ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              `);
         });
     })
 );
