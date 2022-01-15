@@ -6,14 +6,17 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## features
 
+- works on Windows, Mac and Linux
+- automatically install and configure sciter sdk
 - start scapp and inspector
-- automatically install sciter sdk
-- F5 reload
+- easily test your changes (F5)
 - logger
 
 ## requirements
 
-- Node.js `node` 16.x and its package manager `npm`
+- Node.js `node` (16 LTS) and its package manager `npm`.
+    - On Windows [download](https://nodejs.dev/download/) and run the installer
+    - On Linux check the [installation guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-2-%E2%80%94-installing-node-js-with-apt-using-a-nodesource-ppa).
 
 ## start sandbox
 
@@ -32,11 +35,10 @@ npx eslint (--fix) main.htm
 
 ## known issues
 
-- not tested on mac and linux
+- none
 
 ## todo
 
-- test on mac and linux
 - improve install script (check if dir exists)
 - `npm run eslint`
 - `npm run usciter`
