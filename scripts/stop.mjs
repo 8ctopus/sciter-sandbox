@@ -7,6 +7,8 @@ import {commands} from "./commands.mjs";
 // get operating system
 const platform = os.platform();
 
+console.log(`\x1b[32mStop sciter.js sandbox...\x1b[0m\n`);
+
 // close existing inspector
 try {
     await fkill(basename(commands["inspector"][platform]));
