@@ -12,14 +12,32 @@ const commands = {
         darwin: "./bin/macosx/inspector.app/Contents/MacOS/inspector",
     },
 
+    inspector64: {
+        win32: "./bin/windows/x64/inspector.exe",
+        linux: "./bin/linux/x64/inspector",
+        darwin: "./bin/macosx/inspector.app/Contents/MacOS/inspector",
+    },
+
     scapp: {
         win32: "./bin/windows/x32/scapp.exe",
         linux: "./bin/linux/x64/scapp",
         darwin: "./bin/macosx/scapp",
     },
 
+    scapp64: {
+        win32: "./bin/windows/x64/scapp.exe",
+        linux: "./bin/linux/x64/scapp",
+        darwin: "./bin/macosx/scapp",
+    },
+
     usciter: {
         win32: "./bin/windows/x32/usciter.exe",
+        linux: "./bin/linux/x64/usciter",
+        darwin: "./bin/macosx/usciter.app/Contents/MacOS/usciter",
+    },
+
+    usciter64: {
+        win32: "./bin/windows/x64/usciter.exe",
         linux: "./bin/linux/x64/usciter",
         darwin: "./bin/macosx/usciter.app/Contents/MacOS/usciter",
     },
@@ -36,20 +54,22 @@ catch (error) {
     //console.error(error);
 }
 
+// scapp or usciter
+const ide = process.argv.slice(2);
+
 try {
     // start inspector as detached process
     console.log("start inspector...");
 
-    spawn(commands["inspector"][platform], [], {
+    const inspector = ide.indexOf("64") ? "inspector64" : "inspector";
+
+    spawn(commands[inspector][platform], [], {
         detached: true,
     });
 }
 catch (error) {
     console.error(error);
 }
-
-// scapp or usciter
-const ide = process.argv.slice(2);
 
 // close existing ide
 try {
