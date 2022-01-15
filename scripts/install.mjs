@@ -42,7 +42,7 @@ const zipFile = tmpDir + `${sdkCommitId}.zip`;
 const commands = {
     "linux": [
         // unzip archive
-        `unzip ${zipFile} -d -d ${tmpDir}`,
+        `unzip ${zipFile} -d ${tmpDir}`,
 
         // move binaries
         `cp -r ${tmpDir}sciter-js-sdk-${sdkCommitId}/bin .`,
