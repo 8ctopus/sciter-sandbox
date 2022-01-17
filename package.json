@@ -20,12 +20,12 @@
   },
   "devDependencies": {},
   "scripts": {
+    "install-sdk": "node ./scripts/install.mjs",
     "scapp": "node ./scripts/start.mjs scapp",
     "usciter": "node ./scripts/start.mjs usciter",
-    "scapp32": "node ./scripts/start.mjs scapp32",
-    "usciter32": "node ./scripts/start.mjs usciter32",
     "stop": "node ./scripts/stop.mjs",
-    "install-sdk": "node ./scripts/install.mjs"
+    "scapp32": "node ./scripts/start.mjs scapp32",
+    "usciter32": "node ./scripts/start.mjs usciter32"
   },
   "author": {
     "name": "8ctopus",

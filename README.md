@@ -36,9 +36,9 @@ You can also use the sandbox in your own projects:
     "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs",
     "scapp": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp",
     "usciter": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter",
+    "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs",
     "scapp32": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp32",
-    "usciter32": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter32",
-    "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs"
+    "usciter32": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter32"
   },
 ```
 
