@@ -45,7 +45,7 @@ const sdkVersion = process.argv[2] ?? "4.4.8.22-bis";
 const sdkCommitId = sdkCommitIds[sdkVersion];
 
 if (sdkCommitId === undefined) {
-    console.error(`\x1b[31mUnknown sciter.js sdk version`);
+    console.error("\u001B[31mUnknown sciter.js sdk version");
     process.exit(1);
 }
 
@@ -89,33 +89,33 @@ const commands = {
 
 try {
     // check if sdk was already downloaded
-    const stat = await fs.promises.stat(zipFile);
+    await fs.promises.stat(zipFile);
 
-    console.log(`\x1b[32mUse sciter.js SDK from cache ${sdkVersion}...\x1b[0m\n`);
+    console.log(`\u001B[32mUse sciter.js SDK from cache ${sdkVersion}...\u001B[0m\n`);
 }
-catch (error) {
-    console.log(`\x1b[32mDownload sciter.js SDK ${sdkVersion}...\x1b[0m\n`);
+catch {
+    console.log(`\u001B[32mDownload sciter.js SDK ${sdkVersion}...\u001B[0m\n`);
 
     let downloaded = 0;
 
     fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`)
-        .on("response", res => {
+        .on("response", (res) => {
             //console.log(res.headers);
             // clear screen
             //console.log("\x1b[2J");
         })
-        .on("response", res => {
-            res.on("data", data => {
+        .on("response", (res) => {
+            res.on("data", (data) => {
                 downloaded += data.length;
 
                 // show download progress
-                console.log(`\x1b[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              `);
+                console.log(`\u001B[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              `);
             });
-        })
+        }),
     );
 }
 
-console.log(`\x1b[32mInstall sciter.js SDK ${sdkVersion}...\x1b[0m`);
+console.log(`\u001B[32mInstall sciter.js SDK ${sdkVersion}...\u001B[0m`);
 
 const platform = (os.platform() === "win32") ? "win32" : "linux";
 

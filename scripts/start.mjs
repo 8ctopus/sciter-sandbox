@@ -12,7 +12,7 @@ const platform = os.platform();
 try {
     await fkill(basename(commands["inspector"][platform]));
 }
-catch (error) {
+catch {
     //console.error(error);
 }
 
@@ -39,7 +39,7 @@ catch (error) {
 try {
     await fkill(basename(commands[ide][platform]));
 }
-catch (error) {
+catch {
     //console.error(error);
 }
 
@@ -47,17 +47,17 @@ try {
     // start ide as detached process
     console.log(`start ${ide}...`);
 
-    const args = ide.startsWith("scapp") ? [
-            "main.htm",
-            "--debug",
-        ] : [
-            "-o",
-            "main.htm",
+    const arguments_ = ide.startsWith("scapp") ? [
+        "main.htm",
+        "--debug",
+    ] : [
+        "-o",
+        "main.htm",
     ];
 
-    console.log(args);
+    console.log(arguments_);
 
-    spawn(commands[ide][platform], args, {
+    spawn(commands[ide][platform], arguments_, {
         detached: true,
     });
 }
