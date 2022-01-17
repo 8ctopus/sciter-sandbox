@@ -35,11 +35,10 @@ You can also use the sandbox in your own projects:
   "scripts": {
     "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs",
     "scapp": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp",
-    "scapp64": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp64",
     "usciter": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter",
-    "usciter64": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter64",
-    "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "scapp32": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp32",
+    "usciter32": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter32",
+    "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs"
   },
 ```
 
@@ -57,9 +56,9 @@ npm run install-sdk 4.4.8.24
 ### start scapp / usciter
 
 ```sh
-npm run [scapp|scapp64]
+npm run [scapp|scapp32]
 
-npm run [usciter|usciter64]
+npm run [usciter|usciter32]
 ```
 
 ### close scapp, usciter and inspector

@@ -17,7 +17,7 @@ catch {
 }
 
 // scapp or usciter
-const ide = process.argv[2] ?? "scapp64";
+const ide = process.argv[2] ?? "scapp";
 
 console.log("arg:", ide);
 
@@ -25,7 +25,7 @@ try {
     // start inspector as detached process
     console.log("start inspector...");
 
-    const inspector = ide.endsWith("64") ? "inspector64" : "inspector";
+    const inspector = ide.endsWith("32") ? "inspector32" : "inspector";
 
     spawn(commands[inspector][platform], [], {
         detached: true,

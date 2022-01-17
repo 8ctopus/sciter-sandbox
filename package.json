@@ -21,12 +21,11 @@
   "devDependencies": {},
   "scripts": {
     "scapp": "node ./scripts/start.mjs scapp",
-    "scapp64": "node ./scripts/start.mjs scapp64",
     "usciter": "node ./scripts/start.mjs usciter",
-    "usciter64": "node ./scripts/start.mjs usciter64",
+    "scapp32": "node ./scripts/start.mjs scapp32",
+    "usciter32": "node ./scripts/start.mjs usciter32",
     "stop": "node ./scripts/stop.mjs",
-    "install-sdk": "node ./scripts/install.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-sdk": "node ./scripts/install.mjs"
   },
   "author": {
     "name": "8ctopus",
