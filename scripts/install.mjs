@@ -65,7 +65,7 @@ const commands = {
         `rm -rf ${tmpDir}sciter-js-sdk-${sdkCommitId}`,
 
         // delete zip
-        `rm ${zipFile}`,
+        //`rm ${zipFile}`,
 
         "cd bin/macosx; chmod +x scapp inspector.app/Contents/MacOS/inspector usciterjs.app/Contents/MacOS/usciterjs libsciter.dylib",
         "cd bin/linux/arm32; chmod +x scapp inspector usciter libsciter-gtk.so",
@@ -83,7 +83,7 @@ const commands = {
         `rmdir /s /q ${tmpDir}sciter-js-sdk-${sdkCommitId}`,
 
         // delete zip
-        `del ${zipFile}`,
+        //`del ${zipFile}`,
     ],
 };
 
