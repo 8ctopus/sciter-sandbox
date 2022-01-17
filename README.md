@@ -21,10 +21,27 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## start sandbox
 
-- git clone the repository and checkout the latest release tag `git checkout 1.1.8`
+- git clone the repository and checkout the latest release tag `git checkout 1.1.x`
 - install packages `npm install`
 - install latest sciter sdk `npm run install-sdk`
 - start the sandbox `npm run scapp`
+
+You can also use the sandbox in your own projects:
+
+- inside your project root dir `npm install --save-dev sciter-sandbox`
+- add the following scripts inside `package.json`
+
+```json
+  "scripts": {
+    "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs",
+    "scapp": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp",
+    "scapp64": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp64",
+    "usciter": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter",
+    "usciter64": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter64",
+    "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
 
 ## commands
 
@@ -34,7 +51,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 4.4.8.22-bis
+npm run install-sdk 4.4.8.24
 ```
 
 ### start scapp / usciter
