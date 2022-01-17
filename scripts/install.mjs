@@ -47,7 +47,7 @@ const sdkVersion = process.argv[2] ?? "4.4.8.24";
 const sdkCommitId = sdkCommitIds[sdkVersion];
 
 if (sdkCommitId === undefined) {
-    console.error("\u001B[31mUnknown sciter.js sdk version");
+    console.error("\u001B[31mUnknown sciter.js sdk version\u001B[0m`");
     process.exit(1);
 }
 
@@ -111,7 +111,7 @@ catch {
                 downloaded += data.length;
 
                 // show download progress
-                console.log(`\u001B[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              `);
+                console.log(`\u001B[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              \u001B[0m`);
             });
         }),
     );
