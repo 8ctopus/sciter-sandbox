@@ -77,8 +77,9 @@ npx eslint (--fix) main.htm
 
 ## known issues
 
+- Well tested on Windows, Linux and Mac require more testing
 - all OSes: usciter does not load file [usciter bug](https://sciter.com/forums/topic/usciter-4-4-8-23-bis-command-line-load-file-bug/)
-- Linux: inspector communication issue (probably on my side)
+- Linux: inspector has issues communicating (I don't know why)
 
 ## todo
 
