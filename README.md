@@ -26,22 +26,6 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 - install latest sciter sdk `npm run install-sdk`
 - start the sandbox `npm run scapp`
 
-You can also use the sandbox in your own projects:
-
-- inside your project root dir `npm install --save-dev sciter-sandbox`
-- add the following scripts inside `package.json`
-
-```json
-  "scripts": {
-    "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs",
-    "scapp": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp",
-    "usciter": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter",
-    "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs",
-    "scapp32": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp32",
-    "usciter32": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter32"
-  },
-```
-
 ## commands
 
 ### install sciter js sdk
@@ -73,6 +57,24 @@ Javascript code linting uses [eslint](https://github.com/eslint/eslint).
 
 ```sh
 npx eslint (--fix) main.htm
+```
+
+## add sandbox to your project
+
+You can also use the sandbox in your own projects:
+
+- inside your project root dir `npm install --save-dev sciter-sandbox`
+- add the following scripts inside `package.json`
+
+```json
+  "scripts": {
+    "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs",
+    "scapp": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp",
+    "usciter": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter",
+    "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs",
+    "scapp32": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp32",
+    "usciter32": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter32"
+  },
 ```
 
 ## known issues
