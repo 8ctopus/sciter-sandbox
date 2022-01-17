@@ -74,7 +74,7 @@ const commands = {
     ],
     "win32": [
         // unzip archive
-        `tar -xf ${zipFile} -C ${tmpDir}`,
+        `C:\\Windows\\System32\\tar.exe -xf ${zipFile} -C ${tmpDir}`,
 
         // move binaries
         `cp -r ${tmpDir}sciter-js-sdk-${sdkCommitId}\\bin .`,
