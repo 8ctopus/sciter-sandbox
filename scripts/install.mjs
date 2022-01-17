@@ -87,25 +87,33 @@ const commands = {
     ],
 };
 
-console.log(`\x1b[32mDownload sciter.js SDK ${sdkVersion}...\x1b[0m\n`);
+try {
+    // check if sdk was already downloaded
+    const stat = await fs.promises.stat(zipFile);
 
-let downloaded = 0;
+    console.log(`\x1b[32mUse sciter.js SDK from cache ${sdkVersion}...\x1b[0m\n`);
+}
+catch (error) {
+    console.log(`\x1b[32mDownload sciter.js SDK ${sdkVersion}...\x1b[0m\n`);
 
-fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`)
-    .on("response", res => {
-        //console.log(res.headers);
-        // clear screen
-        //console.log("\x1b[2J");
-    })
-    .on("response", res => {
-        res.on("data", data => {
-            downloaded += data.length;
+    let downloaded = 0;
 
-            // show download progress
-            console.log(`\x1b[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              `);
-        });
-    })
-);
+    fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`)
+        .on("response", res => {
+            //console.log(res.headers);
+            // clear screen
+            //console.log("\x1b[2J");
+        })
+        .on("response", res => {
+            res.on("data", data => {
+                downloaded += data.length;
+
+                // show download progress
+                console.log(`\x1b[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              `);
+            });
+        })
+    );
+}
 
 console.log(`\x1b[32mInstall sciter.js SDK ${sdkVersion}...\x1b[0m`);
 
