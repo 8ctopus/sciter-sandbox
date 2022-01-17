@@ -15,8 +15,8 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## requirements
 
-- A recent version of Node.js `node` (tested with 16 LTS) and its package manager `npm`.
-    - On Windows [download](https://nodejs.dev/download/) and run the installer
+- A recent version of Node.js `node` (tested with 16 LTS) and its package manager `npm`
+    - On Windows and Mac download and run [the installer](https://nodejs.dev/download/)
     - On Linux check the [installation guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-2-%E2%80%94-installing-node-js-with-apt-using-a-nodesource-ppa)
 
 ## start sandbox
