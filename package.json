@@ -11,7 +11,7 @@
     "download": "^8.0.0",
     "fkill": "^8.0.0",
     "sciter-logger": "github:8ctopus/sciter-logger#1.1.0",
-    "sciter-utils": "github:8ctopus/sciter-utils#0.7.0",
+    "sciter-utils": "^0.7.1",
     "eslint": "^8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-html": "^6.2.0",
