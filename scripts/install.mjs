@@ -38,16 +38,24 @@ const sdkCommitIds = {
     "4.4.8.9": "a973aafdf6ebe1704d7a9322184d6c9116423861",
 };
 
-//console.log(process.argv[2]);
+// get arguments
+const arguments_ = process.argv.slice(2, process.argv.length);
 
-// get sdk version
-const sdkVersion = process.argv[2] ?? "4.4.8.24";
+let cleanup = false;
+let sdkVersion = "4.4.8.24";
+
+for (let argument of arguments_) {
+    if (argument === "cleanup")
+        cleanup = true;
+    else
+        sdkVersion = argument;
+}
 
 // get sdk commit id
 const sdkCommitId = sdkCommitIds[sdkVersion];
 
 if (sdkCommitId === undefined) {
-    console.error("\u001B[31mUnknown sciter.js sdk version\u001B[0m`");
+    console.error("\u001B[31mUnknown sciter.js sdk version\u001B[0m");
     process.exit(1);
 }
 
@@ -119,7 +127,7 @@ catch {
 
 console.log(`\u001B[32mInstall sciter.js SDK ${sdkVersion}...\u001B[0m`);
 
-const platform = (os.platform() === "win32") ? "win32" : "linux";
+let platform = (os.platform() === "win32") ? "win32" : "linux";
 
 //console.debug(platform);
 
@@ -145,3 +153,30 @@ for (const command of commands[platform]) {
         });
     });
 }
+
+// cleanup not needed platforms?
+if (cleanup) {
+    console.log(`\u001B[32mCleanup platforms...\u001B[0m`);
+
+    let platforms = {
+        win32: "windows",
+        linux: "linux",
+        darwin: "macosx",
+        android: "android",
+    };
+
+    // list directories in bin
+    const dirs = await fs.promises.readdir("bin");
+
+    //console.log(dirs);
+
+    // delete all not required directories
+    for (let dir of dirs) {
+        if (dir !== platforms[os.platform()])
+            fs.promises.rm(`bin/${dir}`, {
+                recursive: true,
+            });
+    }
+}
+
+console.log(`\u001B[32mInstall complete.\u001B[0m`);

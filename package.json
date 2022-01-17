@@ -20,7 +20,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "install-sdk": "node ./scripts/install.mjs",
+    "install-sdk": "node ./scripts/install.mjs cleanup",
     "scapp": "node ./scripts/start.mjs scapp",
     "usciter": "node ./scripts/start.mjs usciter",
     "stop": "node ./scripts/stop.mjs",
