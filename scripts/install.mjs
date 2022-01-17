@@ -6,6 +6,8 @@ import process from "node:process";
 import download from "download";
 
 const sdkCommitIds = {
+    // Jan 17, 2022
+    "4.4.8.24": "865b2e909f014d6640241dc51afee3711896930f",
     // Jan 1, 2022
     "4.4.8.23-bis": "e28811887e0d94a531b9eef2ac4e2b31768565d8",
     "4.4.8.23": "de0f6c2490275074742dfed7a1f80e85885fedc6",
@@ -39,7 +41,7 @@ const sdkCommitIds = {
 //console.log(process.argv[2]);
 
 // get sdk version
-const sdkVersion = process.argv[2] ?? "4.4.8.22-bis";
+const sdkVersion = process.argv[2] ?? "4.4.8.24";
 
 // get sdk commit id
 const sdkCommitId = sdkCommitIds[sdkVersion];
