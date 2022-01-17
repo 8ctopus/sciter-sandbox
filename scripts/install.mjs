@@ -3,6 +3,7 @@ import {exec} from "node:child_process";
 import os from "node:os";
 import {sep as separator} from "node:path";
 import process from "node:process";
+import util from "node:util";
 import download from "download";
 
 const sdkCommitIds = {
@@ -129,29 +130,20 @@ console.log(`\u001B[32mInstall sciter.js SDK ${sdkVersion}...\u001B[0m`);
 
 let platform = (os.platform() === "win32") ? "win32" : "linux";
 
-//console.debug(platform);
+// promisify exec
+const execPromise = util.promisify(exec);
 
 // execute commands synchronously
 for (const command of commands[platform]) {
     console.log(command);
 
-    await new Promise((resolve, reject) => {
-        exec(command, (error, stdout, stderr) => {
-            if (error) {
-                console.error(error);
-                reject(error);
-                return;
-            }
+    const {stdout, stderr} = await execPromise(command);
 
-            if (stdout)
-                console.log(stdout);
+    if (stdout)
+        console.log(stdout);
 
-            if (stderr)
-                console.error(stderr);
-
-            resolve(stdout);
-        });
-    });
+    if (stderr)
+        console.error(stderr);
 }
 
 // cleanup not needed platforms?
