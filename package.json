@@ -1,6 +1,6 @@
 {
   "name": "sciter-sandbox",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "sciter.js development sandbox",
   "keywords": [
     "sciter.js",
@@ -18,8 +18,7 @@
     "eslint-plugin-jsdoc": "^37.4.0",
     "eslint-plugin-unicorn": "^39.0.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "scapp": "node ./scripts/start.mjs scapp",
     "scapp64": "node ./scripts/start.mjs scapp64",
