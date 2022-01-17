@@ -1,3 +1,10 @@
+import os from "node:os";
+import {basename} from "node:path";
+import fkill from "fkill";
+
+// get operating system
+const platform = os.platform();
+
 // commands for all platforms
 export const commands = {
     inspector: {
@@ -30,3 +37,24 @@ export const commands = {
         win32: "./bin/windows/x32/usciter.exe",
     },
 };
+
+async function kill(name) {
+    try {
+        await fkill(name);
+    }
+    catch {
+        //console.error(error);
+    }
+}
+
+export function killInspector() {
+    kill(basename(commands["inspector"][platform]));
+}
+
+export function killScapp() {
+    kill(basename(commands["scapp"][platform]));
+}
+
+export function killUsciter() {
+    kill(basename(commands["usciter"][platform]));
+}

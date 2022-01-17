@@ -3,27 +3,22 @@ import {spawn} from "node:child_process";
 import process from "node:process";
 import {basename} from "node:path";
 import fkill from "fkill";
-import {commands} from "./commands.mjs";
+import {commands, killInspector, killScapp, killUsciter} from "./commands.mjs";
 
 // get operating system
 const platform = os.platform();
 
 // close existing inspector
-try {
-    await fkill(basename(commands["inspector"][platform]));
-}
-catch {
-    //console.error(error);
-}
+killInspector();
 
 // scapp or usciter
 const ide = process.argv[2] ?? "scapp";
 
-console.log("arg:", ide);
+//console.log("arg:", ide);
 
 try {
     // start inspector as detached process
-    console.log("start inspector...");
+    //console.log("start inspector...");
 
     const inspector = ide.endsWith("32") ? "inspector32" : "inspector";
 
@@ -35,17 +30,12 @@ catch (error) {
     console.error(error);
 }
 
-// close existing ide
-try {
-    await fkill(basename(commands[ide][platform]));
-}
-catch {
-    //console.error(error);
-}
+killScapp();
+killUsciter();
 
 try {
     // start ide as detached process
-    console.log(`start ${ide}...`);
+    //console.log(`start ${ide}...`);
 
     const arguments_ = ide.startsWith("scapp") ? [
         "main.htm",
@@ -57,7 +47,7 @@ try {
 //        "main.htm",
     ];
 
-    console.log(arguments_);
+    //console.log(arguments_);
 
     spawn(commands[ide][platform], arguments_, {
         detached: true,
