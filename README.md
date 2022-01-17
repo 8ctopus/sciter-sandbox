@@ -2,7 +2,7 @@
 
 This is a [sciter.js](https://sciter.com/) development sandbox.
 
-![sciter sandbox screenshot](https://www.github.com/8ctopus/sciter-sandbox/screenshot.png)
+![sciter sandbox screenshot](https://github.com/8ctopus/sciter-sandbox/raw/master/screenshot.png)
 
 ## features
 
