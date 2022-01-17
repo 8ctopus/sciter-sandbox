@@ -7,20 +7,21 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 ## features
 
 - works on Windows, Mac and Linux
-- automatically install and configure sciter sdk (it's possible choose sdk version to install)
-- start scapp or usciter with inspector
+- automatically install and configure sciter sdk
+- easily switch between sdk versions
+- start either scapp or usciter with inspector
 - easily test your changes with F5 reload
-- javascript code linter
+- check your code for issues using the linter
 
 ## requirements
 
-- Node.js `node` (16 LTS) and its package manager `npm`.
+- A recent version of Node.js `node` (tested with 16 LTS) and its package manager `npm`.
     - On Windows [download](https://nodejs.dev/download/) and run the installer
     - On Linux check the [installation guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-2-%E2%80%94-installing-node-js-with-apt-using-a-nodesource-ppa)
 
 ## start sandbox
 
-- git clone the repository and checkout the latest release tag `git checkout 1.1.6`
+- git clone the repository and checkout the latest release tag `git checkout 1.1.8`
 - install packages `npm install`
 - install latest sciter sdk `npm run install-sdk`
 - start the sandbox `npm run scapp`
