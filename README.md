@@ -79,8 +79,7 @@ npx eslint (--fix) main.htm
 ## known issues
 
 - all OSes: usciter does not load file (usciter bug)
-- MacOS: inspector 4.4.8.22-bis may have bad CPU architecture
-- Linux: inspector 4.4.8.22-bis communication issue (probably on my side)
+- Linux: inspector communication issue (probably on my side)
 
 ## todo
 
