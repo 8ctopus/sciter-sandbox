@@ -88,7 +88,7 @@ const commands = {
         `C:\\Windows\\System32\\tar.exe -xf ${zipFile} -C ${tmpDir}`,
 
         // move binaries
-        `cp -r ${tmpDir}sciter-js-sdk-${sdkCommitId}\\bin .`,
+        `xcopy ${tmpDir}sciter-js-sdk-${sdkCommitId}\\bin bin\\ /E`,
 
         // delete old dir
         `rmdir /s /q ${tmpDir}sciter-js-sdk-${sdkCommitId}`,
