@@ -137,13 +137,19 @@ const execPromise = util.promisify(exec);
 for (const command of commands[platform]) {
     console.log(command);
 
-    const {stdout, stderr} = await execPromise(command);
+    try {
+        const {stdout, stderr} = await execPromise(command);
 
-    if (stdout)
-        console.log(stdout);
+        if (stdout)
+            console.log(stdout);
 
-    if (stderr)
-        console.error(stderr);
+        if (stderr)
+            console.error(`\u001B[31m${stderr}\u001B[0m`);
+    }
+    catch (error) {
+        console.error(`\u001B[31m${error}\u001B[0m`);
+        process.exit(1);
+    }
 }
 
 // cleanup not needed platforms?
