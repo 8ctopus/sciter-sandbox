@@ -45,7 +45,7 @@ const arguments_ = process.argv.slice(2, process.argv.length);
 let cleanup = false;
 let sdkVersion = "4.4.8.24";
 
-for (let argument of arguments_) {
+for (const argument of arguments_) {
     if (argument === "cleanup")
         cleanup = true;
     else
@@ -128,7 +128,7 @@ catch {
 
 console.log(`\u001B[32mInstall sciter.js SDK ${sdkVersion}...\u001B[0m`);
 
-let platform = (os.platform() === "win32") ? "win32" : "linux";
+const platform = (os.platform() === "win32") ? "win32" : "linux";
 
 // promisify exec
 const execPromise = util.promisify(exec);
@@ -154,9 +154,9 @@ for (const command of commands[platform]) {
 
 // cleanup not needed platforms?
 if (cleanup) {
-    console.log(`\u001B[32mCleanup platforms...\u001B[0m`);
+    console.log("\u001B[32mCleanup platforms...\u001B[0m");
 
-    let platforms = {
+    const platforms = {
         win32: "windows",
         linux: "linux",
         darwin: "macosx",
@@ -164,17 +164,18 @@ if (cleanup) {
     };
 
     // list directories in bin
-    const dirs = await fs.promises.readdir("bin");
+    const directories = await fs.promises.readdir("bin");
 
     //console.log(dirs);
 
     // delete all not required directories
-    for (let dir of dirs) {
-        if (dir !== platforms[os.platform()])
+    for (const dir of directories) {
+        if (dir !== platforms[os.platform()]) {
             fs.promises.rm(`bin/${dir}`, {
                 recursive: true,
             });
+        }
     }
 }
 
-console.log(`\u001B[32mInstall complete.\u001B[0m`);
+console.log("\u001B[32mInstall complete.\u001B[0m");

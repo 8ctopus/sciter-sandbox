@@ -1,8 +1,6 @@
 import os from "node:os";
 import {spawn} from "node:child_process";
 import process from "node:process";
-import {basename} from "node:path";
-import fkill from "fkill";
 import {commands, killInspector, killScapp, killUsciter} from "./commands.mjs";
 
 // get operating system
