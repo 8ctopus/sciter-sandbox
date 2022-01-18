@@ -40,21 +40,21 @@ export const commands = {
 
 async function kill(name) {
     try {
-        await fkill(name);
+        return await fkill(name);
     }
     catch {
         //console.error(error);
     }
 }
 
-export function killInspector() {
-    kill(basename(commands["inspector"][platform]));
+export async function killInspector() {
+    await kill(basename(commands["inspector"][platform]));
 }
 
-export function killScapp() {
-    kill(basename(commands["scapp"][platform]));
+export async function killScapp() {
+    await kill(basename(commands["scapp"][platform]));
 }
 
-export function killUsciter() {
-    kill(basename(commands["usciter"][platform]));
+export async function killUsciter() {
+    await kill(basename(commands["usciter"][platform]));
 }

@@ -8,8 +8,10 @@ import {commands, killInspector, killScapp, killUsciter} from "./commands.mjs";
 // get operating system
 const platform = os.platform();
 
-// close existing inspector
-killInspector();
+// close all open apps
+await killInspector();
+await killScapp();
+await killUsciter();
 
 // scapp or usciter
 const ide = process.argv[2] ?? "scapp";
@@ -29,9 +31,6 @@ try {
 catch (error) {
     console.error(error);
 }
-
-killScapp();
-killUsciter();
 
 try {
     // start ide as detached process
