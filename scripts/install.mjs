@@ -7,6 +7,8 @@ import util from "node:util";
 import download from "download";
 
 const sdkCommitIds = {
+    // Jan 19, 2022
+    "4.4.8.25": "5cdcabafbc1ff718052d5b0b2183c3806e62230a",
     // Jan 17, 2022
     "4.4.8.24": "865b2e909f014d6640241dc51afee3711896930f",
     // Jan 1, 2022
@@ -43,7 +45,7 @@ const sdkCommitIds = {
 const arguments_ = process.argv.slice(2, process.argv.length);
 
 let cleanup = false;
-let sdkVersion = "4.4.8.24";
+let sdkVersion = "4.4.8.25";
 
 for (const argument of arguments_) {
     if (argument === "cleanup")
