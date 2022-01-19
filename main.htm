@@ -15,7 +15,7 @@ import Logger from "./node_modules/sciter-logger/src/logger.js";
 import * as Utils from "./node_modules/sciter-utils/src/utils.js";
 
 // capture unhandled exceptions
-Logger.capture(unhandledExceptionHandler);
+Logger.capture();
 
 // initialize logger
 Logger.init();
@@ -45,16 +45,6 @@ document.on("ready", function() {
     // log sciter version
     console.debug(Utils.sciterInfo());
 });
-
-
-/**
- * Unhandled exception handler
- * @param {Error|string} exception
- */
-function unhandledExceptionHandler(exception) {
-    // log exception using exception if it exists, error otherwise
-    typeof console.exception === "function" ? console.exception(exception) : console.error(exception);
-}
 
 </script>
 </head>
