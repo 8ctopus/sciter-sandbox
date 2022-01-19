@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import os from "node:os";
 import {spawn} from "node:child_process";
 import process from "node:process";
@@ -16,6 +17,30 @@ const ide = process.argv[2] ?? "scapp";
 
 //console.log("arg:", ide);
 
+// look for code entry file
+const entries = [
+    "main.htm",
+    "main.html",
+    "index.htm",
+    "index.html",
+];
+
+let entry;
+
+for (const item of entries) {
+    try {
+        await fs.promises.stat(`./${item}`);
+        entry = item;
+        break;
+    }
+    catch (error) {}
+}
+
+if (entry === undefined) {
+    console.error(`\u001B[31mNo code entry file\u001B[0m. Options are:`, entries);
+    process.exit(1);
+}
+
 try {
     // start inspector as detached process
     //console.log("start inspector...");
@@ -27,7 +52,7 @@ try {
     });
 }
 catch (error) {
-    console.error(error);
+    console.error(`\u001B[31m${error}\u001B[0m`);
 }
 
 try {
@@ -35,13 +60,13 @@ try {
     //console.log(`start ${ide}...`);
 
     const arguments_ = ide.startsWith("scapp") ? [
-        "main.htm",
+        entry,
         "--debug",
     ] : [
 // usciter bug with open files
 // https://sciter.com/forums/topic/usciter-4-4-8-23-bis-command-line-load-file-bug/
 //        "-o",
-//        "main.htm",
+//        entry,
     ];
 
     //console.log(arguments_);
@@ -51,8 +76,5 @@ try {
     });
 }
 catch (error) {
-    console.error(error);
+    console.error(`\u001B[31m${error}\u001B[0m`);
 }
-
-// exit
-process.exit(0);
