@@ -3,7 +3,6 @@ import os from "node:os";
 import {spawn} from "node:child_process";
 import process from "node:process";
 import {commands, killInspector, killScapp, killUsciter} from "./commands.mjs";
-import Sleep from "sleep";
 
 // get operating system
 const platform = os.platform();
@@ -57,7 +56,7 @@ catch (error) {
 }
 
 // wait for inspector to be fully started so our app connects immediately
-Sleep.msleep(1500);
+Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1500);
 
 try {
     // start ide as detached process
