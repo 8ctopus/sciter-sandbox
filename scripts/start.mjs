@@ -37,7 +37,7 @@ for (const item of entries) {
 }
 
 if (entry === undefined) {
-    console.error(`\u001B[31mNo code entry file\u001B[0m. Options are:`, entries);
+    console.error(`\u001B[31mNo code entry file.\u001B[0m Options are:`, entries);
     process.exit(1);
 }
 
@@ -78,3 +78,6 @@ try {
 catch (error) {
     console.error(`\u001B[31m${error}\u001B[0m`);
 }
+
+// do not wait for child processes
+process.exit(0);
