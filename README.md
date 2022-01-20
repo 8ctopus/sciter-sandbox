@@ -7,11 +7,11 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 ## features
 
 - works on Windows, Mac and Linux
-- automatically install and configure sciter sdk
-- easily switch between sdk versions
+- automatically install and configure sciter SDK
+- easily switch between SDK versions
 - start either scapp or usciter with inspector
-- easily test your changes with F5 reload
-- check your code for issues using the linter
+- easily test changes with F5 reload
+- lint javascript code (check for issues and format it)
 
 ## requirements
 
