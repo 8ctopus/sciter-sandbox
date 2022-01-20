@@ -59,7 +59,7 @@ for (const argument of arguments_) {
 const sdkCommitId = sdkCommitIds[sdkVersion];
 
 if (sdkCommitId === undefined) {
-    console.error("\u001B[31mUnknown sciter.js sdk version\u001B[0m");
+    console.error(`\u001B[31mUnknown sciter.js SDK version ${sdkVersion}\u001B[0m`);
     process.exit(1);
 }
 
@@ -187,3 +187,10 @@ if (cleanup) {
 }
 
 console.log("\u001B[32mInstall complete.\u001B[0m");
+
+// write sdk version to file
+const version = {
+    "version": sdkVersion,
+};
+
+util.promisify(fs.writeFile)("bin/version.json", JSON.stringify(version));

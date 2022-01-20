@@ -21,14 +21,14 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 ## start sandbox
 
-- git clone the repository and checkout the latest release tag `git checkout 1.1.x`
+- git clone the repository and checkout the latest release tag `git checkout 1.2.3`
 - install packages `npm install`
 - install latest sciter sdk `npm run install-sdk`
 - start the sandbox `npm run scapp`
 
 ## commands
 
-### install sciter js sdk
+### install sciter.js SDK
 
 ```sh
 npm run install-sdk [version]
@@ -51,6 +51,12 @@ npm run [usciter|usciter32]
 npm run stop
 ```
 
+### check sciter.js SDK version
+
+```sh
+npm run sdk-version
+```
+
 ### lint code
 
 Javascript code linting uses [eslint](https://github.com/eslint/eslint).
@@ -69,6 +75,7 @@ You can also use the sandbox in your own projects:
 ```json
   "scripts": {
     "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs",
+    "sdk-version": "node ./node_modules/sciter-sandbox/scripts/version.mjs",
     "scapp": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp",
     "usciter": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter",
     "stop": "node ./node_modules/sciter-sandbox/scripts/stop.mjs",

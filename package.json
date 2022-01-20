@@ -22,6 +22,7 @@
   },
   "scripts": {
     "install-sdk": "node ./scripts/install.mjs cleanup",
+    "sdk-version": "node ./scripts/version.mjs",
     "scapp": "node ./scripts/start.mjs scapp",
     "usciter": "node ./scripts/start.mjs usciter",
     "stop": "node ./scripts/stop.mjs",
