@@ -5,6 +5,7 @@ import {sep as separator} from "node:path";
 import process from "node:process";
 import util from "node:util";
 import download from "download";
+import {killInspector, killScapp, killUsciter} from "./commands.mjs";
 
 const sdkCommitIds = {
     // Jan 19, 2022
@@ -61,6 +62,11 @@ if (sdkCommitId === undefined) {
     console.error("\u001B[31mUnknown sciter.js sdk version\u001B[0m");
     process.exit(1);
 }
+
+// close all open apps so they don't block installation
+await killInspector();
+await killScapp();
+await killUsciter();
 
 // get tmp dir and zip file
 const tmpDir = os.tmpdir() + separator;
