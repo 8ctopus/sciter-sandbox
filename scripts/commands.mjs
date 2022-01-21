@@ -38,23 +38,29 @@ export const commands = {
     },
 };
 
-async function kill(name) {
+const options = {
+    force: true,
+    forceAfterTimeout: 3000,
+};
+
+async function kill(name, options) {
     try {
-        return await fkill(name);
+        console.debug(options, Date.now());
+        return await fkill(name, options);
     }
-    catch {
+    catch (error) {
         //console.error(error);
     }
 }
 
 export async function killInspector() {
-    await kill(basename(commands["inspector"][platform]));
+    await kill(basename(commands["inspector"][platform]), options);
 }
 
 export async function killScapp() {
-    await kill(basename(commands["scapp"][platform]));
+    const result = await kill(basename(commands["scapp"][platform]), options);
 }
 
 export async function killUsciter() {
-    await kill(basename(commands["usciter"][platform]));
+    await kill(basename(commands["usciter"][platform]), options);
 }
