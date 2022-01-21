@@ -23,7 +23,7 @@ Logger.init();
 // attach logger to console
 Logger.attach();
 
-document.on("ready", function() {
+document.on("ready", () => {
     // redirect logger output to plaintext
     Logger.plaintext(document.$("plaintext#logger"));
 
