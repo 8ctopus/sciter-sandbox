@@ -45,7 +45,6 @@ const options = {
 
 async function kill(name, options) {
     try {
-        console.debug(options, Date.now());
         return await fkill(name, options);
     }
     catch {
