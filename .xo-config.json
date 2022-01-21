@@ -31,37 +31,21 @@
             "error",
             "stroustrup"
         ],
-        "capitalized-comments": [
-            "off"
-        ],
+        "capitalized-comments": "off",
         "curly": [
             "error",
             "multi-or-nest"
         ],
-        "no-bitwise": [
-            "warn"
-        ],
-        "no-global-assign": [
-            "warn"
-        ],
-        "no-new": [
-            "warn"
-        ],
-        "prefer-arrow-callback": [
-            "off"
-        ],
+        "no-bitwise": "warn",
+        "no-global-assign": "warn",
+        "no-new": "warn",
+        "prefer-arrow-callback": "off",
         "quotes": [
             "error",
             "double"
         ],
-        "space-before-function-paren": [
-            "off"
-        ],
-        "spaced-comment": [
-            "off"
-        ],
-        "unicorn/prevent-abbreviations": [
-            "off"
-        ]
+        "space-before-function-paren": "off",
+        "spaced-comment": "off",
+        "unicorn/prevent-abbreviations": "off"
     }
 }
