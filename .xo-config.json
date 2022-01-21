@@ -3,7 +3,15 @@
     "semicolon": true,
     "globals": [
         "document",
-        "Window"
+        "Window",
+        "__DIR__"
+    ],
+    "plugin": [
+        "html"
+    ],
+    "extension": [
+        "htm",
+        "html"
     ],
     "rules": {
         "quotes": [
