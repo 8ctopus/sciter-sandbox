@@ -10,6 +10,7 @@
   "dependencies": {
     "download": "^8.0.0",
     "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-jsdoc": "^37.6.2",
     "fkill": "^8.0.0",
     "xo": "^0.47.0"
   },
