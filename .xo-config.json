@@ -1,0 +1,34 @@
+{
+    "space": 4,
+    "semicolon": true,
+    "globals": [
+        "document",
+        "Window"
+    ],
+    "rules": {
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "capitalized-comments": [
+            "off"
+        ],
+        "spaced-comment": [
+            "off"
+        ],
+        "curly": [
+            "error",
+            "multi-or-nest"
+        ],
+        "brace-style": [
+            "error",
+            "stroustrup"
+        ],
+        "unicorn/prevent-abbreviations": [
+            "off"
+        ],
+        "space-before-function-paren": [
+            "off"
+        ]
+    }
+}
