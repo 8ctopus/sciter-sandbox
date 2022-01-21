@@ -2,9 +2,21 @@
     "space": 4,
     "semicolon": true,
     "globals": [
+        "__DIR__",
         "document",
         "Window",
-        "__DIR__"
+        "Element",
+        "Audio",
+        "Clipboard",
+        "fetch",
+        "post",
+        "printf",
+        "scanf",
+        "JSX",
+        "getComputedStyle",
+        "requestAnimationFrame",
+        "cancelAnimationFrame",
+        "devicePixelRatio"
     ],
     "plugin": [
         "html"
