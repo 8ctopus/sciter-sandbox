@@ -27,32 +27,16 @@
         "html"
     ],
     "rules": {
-        "quotes": [
+        "brace-style": [
             "error",
-            "double"
+            "stroustrup"
         ],
         "capitalized-comments": [
-            "off"
-        ],
-        "spaced-comment": [
             "off"
         ],
         "curly": [
             "error",
             "multi-or-nest"
-        ],
-        "brace-style": [
-            "error",
-            "stroustrup"
-        ],
-        "unicorn/prevent-abbreviations": [
-            "off"
-        ],
-        "space-before-function-paren": [
-            "off"
-        ],
-        "prefer-arrow-callback": [
-            "off"
         ],
         "no-bitwise": [
             "warn"
@@ -62,6 +46,22 @@
         ],
         "no-new": [
             "warn"
+        ],
+        "prefer-arrow-callback": [
+            "off"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "space-before-function-paren": [
+            "off"
+        ],
+        "spaced-comment": [
+            "off"
+        ],
+        "unicorn/prevent-abbreviations": [
+            "off"
         ]
     }
 }
