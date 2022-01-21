@@ -66,10 +66,10 @@ try {
         entry,
         "--debug",
     ] : [
-// usciter bug with open files
-// https://sciter.com/forums/topic/usciter-4-4-8-23-bis-command-line-load-file-bug/
-//        "-o",
-//        entry,
+        // usciter bug with open files
+        // https://sciter.com/forums/topic/usciter-4-4-8-23-bis-command-line-load-file-bug/
+        //"-o",
+        //entry,
     ];
 
     //console.log(arguments_);
