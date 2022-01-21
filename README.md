@@ -59,10 +59,10 @@ npm run sdk-version
 
 ### lint code
 
-Javascript code linting uses [eslint](https://github.com/eslint/eslint).
+Javascript code linting uses [xo](https://github.com/xojs/xo) which uses [eslint](https://github.com/eslint/eslint) internally.
 
 ```sh
-npx eslint (--fix) main.htm
+npx xo (--fix) [file1 file2]
 ```
 
 ## add sandbox to your project
