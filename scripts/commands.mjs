@@ -48,19 +48,19 @@ async function kill(name, options) {
         console.debug(options, Date.now());
         return await fkill(name, options);
     }
-    catch (error) {
+    catch {
         //console.error(error);
     }
 }
 
 export async function killInspector() {
-    await kill(basename(commands["inspector"][platform]), options);
+    await kill(basename(commands.inspector[platform]), options);
 }
 
 export async function killScapp() {
-    const result = await kill(basename(commands["scapp"][platform]), options);
+    await kill(basename(commands.scapp[platform]), options);
 }
 
 export async function killUsciter() {
-    await kill(basename(commands["usciter"][platform]), options);
+    await kill(basename(commands.usciter[platform]), options);
 }

@@ -73,7 +73,7 @@ const tmpDir = os.tmpdir() + separator;
 const zipFile = tmpDir + `${sdkCommitId}.zip`;
 
 const commands = {
-    "linux": [
+    linux: [
         // unzip archive
         `unzip ${zipFile} -d ${tmpDir}`,
 
@@ -91,7 +91,7 @@ const commands = {
         "cd bin/linux/x64; chmod +x scapp inspector usciter libsciter-gtk.so",
         "cd bin/linux/x32; chmod +x scapp",
     ],
-    "win32": [
+    win32: [
         // unzip archive
         `C:\\Windows\\System32\\tar.exe -xf ${zipFile} -C ${tmpDir}`,
 
@@ -118,13 +118,13 @@ catch {
     let downloaded = 0;
 
     fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`)
-        .on("response", (res) => {
+        .on("response", res => {
             //console.log(res.headers);
             // clear screen
             //console.log("\x1b[2J");
         })
-        .on("response", (res) => {
-            res.on("data", (data) => {
+        .on("response", res => {
+            res.on("data", data => {
                 downloaded += data.length;
 
                 // show download progress
@@ -190,7 +190,7 @@ console.log("\u001B[32mInstall complete.\u001B[0m");
 
 // write sdk version to file
 const version = {
-    "version": sdkVersion,
+    version: sdkVersion,
 };
 
 util.promisify(fs.writeFile)("bin/version.json", JSON.stringify(version));
