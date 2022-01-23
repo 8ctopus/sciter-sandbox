@@ -2,6 +2,7 @@ import fs from "node:fs";
 import os from "node:os";
 import {spawn} from "node:child_process";
 import process from "node:process";
+import util from "node:util";
 import {commands, killInspector, killScapp, killUsciter} from "./commands.mjs";
 
 // get operating system
@@ -18,6 +19,22 @@ const ide = process.argv[2] ?? "scapp";
 //console.log("arg:", ide);
 
 // look for code entry file
+let entry;
+
+try {
+    // read package json
+    const packageText = await util.promisify(fs.readFile)("package.json");
+
+    // convert to json
+    const packageJson = JSON.parse(packageText);
+
+    // get entry file
+    entry = packageJson.main;
+}
+catch (error) {
+    //console.error(error);
+}
+
 const entries = [
     "main.htm",
     "main.html",
@@ -25,19 +42,19 @@ const entries = [
     "index.html",
 ];
 
-let entry;
-
-for (const item of entries) {
-    try {
-        await fs.promises.stat(`./${item}`);
-        entry = item;
-        break;
+if (!entry) {
+    for (const item of entries) {
+        try {
+            await fs.promises.stat(`./${item}`);
+            entry = item;
+            break;
+        }
+        catch {}
     }
-    catch {}
 }
 
 if (entry === undefined) {
-    console.error("\u001B[31mNo code entry file.\u001B[0m Options are:", entries);
+    console.error("\u001B[31mNo code entry file neither in package json nor in standard entries.\u001B[0m Options are:", entries);
     process.exit(1);
 }
 
