@@ -121,7 +121,7 @@ catch {
     let downloaded = 0;
 
     fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`)
-        .on("response", res => {
+        .on("response", _res => {
             //console.log(res.headers);
             // clear screen
             //console.log("\x1b[2J");

@@ -28,11 +28,15 @@ try {
     // convert to json
     const packageJson = JSON.parse(packageText);
 
-    // get entry file
-    entry = packageJson.main;
+    if (packageJson.main) {
+        // test if entry file exists
+        await fs.promises.stat(`./${packageJson.main}`);
+
+        entry = packageJson.main;
+    }
 }
-catch (error) {
-    //console.error(error);
+catch {
+    console.error("\u001B[31mInvalid main file in package.json.\u001B[0m");
 }
 
 const entries = [
@@ -43,6 +47,8 @@ const entries = [
 ];
 
 if (!entry) {
+    console.log("Search for main file...");
+
     for (const item of entries) {
         try {
             await fs.promises.stat(`./${item}`);
@@ -54,7 +60,7 @@ if (!entry) {
 }
 
 if (entry === undefined) {
-    console.error("\u001B[31mNo code entry file neither in package json nor in standard entries.\u001B[0m Options are:", entries);
+    console.error("\u001B[31mNo main file neither in package json nor in standard entries.\u001B[0m Options are:", entries);
     process.exit(1);
 }
 
