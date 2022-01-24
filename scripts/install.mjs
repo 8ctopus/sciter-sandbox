@@ -8,6 +8,8 @@ import download from "download";
 import {killInspector, killScapp, killUsciter} from "./commands.mjs";
 
 const sdkCommitIds = {
+    // Jan 24, 2022
+    "4.4.8.26": "cf11889eb4c597d815aaa15175acf08790784e16",
     // Jan 19, 2022
     "4.4.8.25": "5cdcabafbc1ff718052d5b0b2183c3806e62230a",
     // Jan 17, 2022
