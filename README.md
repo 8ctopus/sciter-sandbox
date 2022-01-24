@@ -34,7 +34,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 4.4.8.24
+npm run install-sdk 4.4.8.26
 ```
 
 ### start scapp / usciter
@@ -65,6 +65,8 @@ Javascript code linting uses [xo](https://github.com/xojs/xo) which uses [eslint
 npx xo (--fix) [file1 file2]
 ```
 
+Note: without files, xo automatically finds the files to lint.
+
 ## add sandbox to your project
 
 You can also use the sandbox in your own projects:
@@ -86,11 +88,6 @@ You can also use the sandbox in your own projects:
 
 ## known issues
 
-- Well tested on Windows, Linux and Mac require more testing
-- all OSes: usciter does not load file [usciter bug](https://sciter.com/forums/topic/usciter-4-4-8-23-bis-command-line-load-file-bug/)
+- Linux and Mac require more testing
+- all OSes: usciter does not connect to the inspector
 - Linux: inspector has issues communicating (I don't know why)
-
-## todo
-
-- improve install script (check if dir exists)
-- `npm run eslint`
