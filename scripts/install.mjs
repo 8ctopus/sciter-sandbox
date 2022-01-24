@@ -7,6 +7,8 @@ import util from "node:util";
 import download from "download";
 import {killInspector, killScapp, killUsciter} from "./commands.mjs";
 
+let sdkVersion = "4.4.8.26";
+
 const sdkCommitIds = {
     // Jan 24, 2022
     "4.4.8.26": "cf11889eb4c597d815aaa15175acf08790784e16",
@@ -48,7 +50,6 @@ const sdkCommitIds = {
 const arguments_ = process.argv.slice(2, process.argv.length);
 
 let cleanup = false;
-let sdkVersion = "4.4.8.25";
 
 for (const argument of arguments_) {
     if (argument === "cleanup")
