@@ -107,6 +107,7 @@
             160
         ],
         "new-cap": "error",
+        "no-await-in-loop": "warn",
         "no-bitwise": "warn",
         "no-else-return": "error",
         "no-empty-function": "error",
@@ -217,7 +218,7 @@
         "unicorn/prefer-number-properties": "error",
         "unicorn/prefer-object-from-entries": "error",
         "unicorn/prefer-object-has-own": "off",
-        "unicorn/prefer-optional-catch-binding": "error",
+        "unicorn/prefer-optional-catch-binding": "off",
         "unicorn/prefer-prototype-methods": "error",
         "unicorn/prefer-query-selector": "error",
         "unicorn/prefer-reflect-apply": "error",
