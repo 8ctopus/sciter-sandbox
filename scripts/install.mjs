@@ -7,7 +7,7 @@ import util from "node:util";
 import download from "download";
 import {killInspector, killScapp, killUsciter} from "./commands.mjs";
 
-let sdkVersion = "4.4.8.26";
+let sdkVersion = "4.4.8.31";
 
 const sdkCommitIds = {
     // Feb 23, 2022
