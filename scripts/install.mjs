@@ -10,6 +10,18 @@ import {killInspector, killScapp, killUsciter} from "./commands.mjs";
 let sdkVersion = "4.4.8.26";
 
 const sdkCommitIds = {
+    // Feb 23, 2022
+    "4.4.8.31": "6fcd0f45410cccb907211b974b130d34d6066438",
+    // Feb 21, 2022
+    "4.4.8.30": "2be879c8e61841daebd1ab4f85d4fa2f13847ea9",
+    // Feb 14, 2022
+    "4.4.8.29": "f0b4b18422675696ece2e15bbd98f0c2b95fa88a",
+    // Feb 8, 2022
+    "4.4.8.28": "fb4ac245165790d9de4c30bd2ee58ca7bdcc432f",
+    // Feb 7, 2022
+    "4.4.8.27-bis": "360e8c0d09dc47a89ab9b550b16dfcfd783cb0ff",
+    // Feb 6, 2022
+    "4.4.8.27": "fa1a257485de6582055b01ee1a40c9660eb95d08",
     // Jan 24, 2022
     "4.4.8.26": "cf11889eb4c597d815aaa15175acf08790784e16",
     // Jan 19, 2022
