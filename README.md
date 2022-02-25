@@ -34,7 +34,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 4.4.8.26
+npm run install-sdk 4.4.8.31
 ```
 
 ### start scapp / usciter
