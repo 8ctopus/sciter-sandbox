@@ -26,7 +26,6 @@ div.hbox:first-child {
 <script type="module">
 
 import * as Sys from "@sys";
-import * as Sciter from "@sciter";
 import Logger from "./node_modules/sciter-logger/src/logger.js";
 import * as Utils from "./node_modules/sciter-utils/src/utils.js";
 
@@ -66,7 +65,7 @@ document.on("ready", () => {
     if (!argv)
         throw new Error("missing command line arguments");
 
-    entry = __DIR__ + argv[argv.length -1];
+    entry = __DIR__ + argv[argv.length - 1];
 
     console.debug(`Entry source ${entry}`);
 
@@ -80,7 +79,7 @@ document.on("ready", () => {
 let isReloading = false;
 let window;
 
-function reload(event, type) {
+function reload(_event, _type) {
     if (isReloading)
         return;
 
@@ -95,9 +94,8 @@ function reload(event, type) {
         window.close();
         window = undefined;
     }
-    else {
+    else
         console.debug("Load...");
-    }
 
     /*
     // potentially test code before showing it
@@ -128,7 +126,7 @@ document.on("click", "button#reload", reload);
 
 document.on("close", function() {
     // detach dir watch
-    console.debug(`Detach watch dir`);
+    console.debug("Detach watch dir");
 
     if (watch)
         watch.close();
@@ -136,7 +134,7 @@ document.on("close", function() {
 
 document.on("click", "toggle#autoReload", function(event, element) {
     if (element.checked) {
-        let [dir, ] = Sys.fs.splitpath(entry);
+        let [dir] = Sys.fs.splitpath(entry);
         dir = dir.replace("file://", "");
 
         console.debug(`Watch dir ${dir}`);
@@ -147,7 +145,7 @@ document.on("click", "toggle#autoReload", function(event, element) {
     else {
         if (watch) {
             // detach dir watch
-            console.debug(`Detach watch dir`);
+            console.debug("Detach watch dir");
             watch.close();
         }
 
