@@ -8,13 +8,18 @@
 
 @import url(./node_modules/sciter-logger/src/logger.css);
 
-html > * {
+body {
+    margin: 0;
 }
 
 div.hbox {
     flow: horizontal;
     vertical-align: middle;
     border-spacing: 1em;
+}
+
+div.hbox:first-child {
+    margin-left: 1em;
 }
 
 </style>
@@ -155,11 +160,8 @@ document.on("click", "toggle#autoReload", function(event, element) {
 <body>
     <div .hbox>
         <button #reload>Reload</button>
-        <p>detect changes</p>
         <toggle #autoReload checked>
-            <caption>test</caption>
-            <option>No</option>
-            <option>Yes</option>
+            <caption>watch</caption>
         </toggle>
     </div>
     <plaintext #logger readonly />
