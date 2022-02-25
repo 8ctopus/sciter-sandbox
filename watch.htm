@@ -9,6 +9,11 @@
 @import url(./node_modules/sciter-logger/src/logger.css);
 
 html > * {
+}
+
+div.hbox {
+    flow: horizontal;
+    vertical-align: middle;
     border-spacing: 1em;
 }
 
@@ -51,8 +56,6 @@ document.on("ready", () => {
     // log sciter version
     console.debug(Utils.sciterInfo());
 
-    document.$("button#reload").click();
-
     const argv = Window.this.scapp?.argv;
 
     if (!argv)
@@ -62,13 +65,11 @@ document.on("ready", () => {
 
     console.debug(`Entry source ${entry}`);
 
-    let [dir, ] = Sys.fs.splitpath(entry);
-    dir = dir.replace("file://", "");
+    // load content
+    document.$("button#reload").click();
 
-    console.debug(`Watch ${dir}`);
-
-    // watch source dir
-    watch = Sys.fs.watch(dir, reload);
+    // watch content
+    document.$("toggle#autoReload").click();
 });
 
 let isReloading = false;
@@ -128,10 +129,39 @@ document.on("close", function() {
         watch.close();
 });
 
+document.on("click", "toggle#autoReload", function(event, element) {
+    if (element.checked) {
+        let [dir, ] = Sys.fs.splitpath(entry);
+        dir = dir.replace("file://", "");
+
+        console.debug(`Watch dir ${dir}`);
+
+        // watch source dir
+        watch = Sys.fs.watch(dir, reload);
+    }
+    else {
+        if (watch) {
+            // detach dir watch
+            console.debug(`Detach watch dir`);
+            watch.close();
+        }
+
+        watch = undefined;
+    }
+});
+
 </script>
 </head>
 <body>
-    <button #reload>reload</button>
+    <div .hbox>
+        <button #reload>Reload</button>
+        <p>detect changes</p>
+        <toggle #autoReload checked>
+            <caption>test</caption>
+            <option>No</option>
+            <option>Yes</option>
+        </toggle>
+    </div>
     <plaintext #logger readonly />
 </body>
 </html>
