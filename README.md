@@ -10,7 +10,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 - automatically install and configure sciter SDK
 - easily switch between SDK versions
 - start either scapp or usciter with inspector
-- easily test changes with F5 reload
+- auto-detects changes to your code and refreshes
 - lint javascript code (check for issues and format it)
 
 ## requirements
