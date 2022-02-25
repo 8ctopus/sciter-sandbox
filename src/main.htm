@@ -9,6 +9,7 @@
 @import url(../node_modules/sciter-logger/src/logger.css);
 
 </style>
+
 <script type="module">
 
 import Logger from "../node_modules/sciter-logger/src/logger.js";
@@ -27,6 +28,7 @@ document.on("ready", () => {
     // redirect logger output to plaintext
     Logger.plaintext(document.$("plaintext#logger"));
 
+
     // close window on escape key press
     Utils.closeWindowOnEscape(Window.this);
 
@@ -41,6 +43,7 @@ document.on("ready", () => {
 
     // log sciter version
     console.debug(Utils.sciterInfo());
+
 });
 
 </script>
