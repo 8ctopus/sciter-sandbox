@@ -71,7 +71,7 @@ document.on("ready", () => {
     watch = Sys.fs.watch(dir, reload);
 });
 
-let isReloading;
+let isReloading = false;
 let window;
 
 function reload(event, type) {
@@ -112,8 +112,11 @@ function reload(event, type) {
         //screen: 0,
     });
 
-    isReloading = undefined;
     console.debug("Reload - OK");
+
+    setTimeout(() => {
+        isReloading = false;
+    }, 1000);
 }
 
 document.on("click", "button#reload", reload);
