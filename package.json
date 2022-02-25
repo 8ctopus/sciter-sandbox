@@ -7,7 +7,7 @@
     "sandbox",
     "development"
   ],
-  "main": "main.htm",
+  "main": "index.htm",
   "dependencies": {
     "download": "^8.0.0",
     "eslint-plugin-html": "^6.2.0",

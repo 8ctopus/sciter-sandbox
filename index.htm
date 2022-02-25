@@ -1,0 +1,119 @@
+<html
+    window-width="500dip"
+    window-height="200dip"
+>
+<head>
+<title>sciter.js sandbox</title>
+<style>
+
+@import url(./node_modules/sciter-logger/src/logger.css);
+
+html > * {
+    border-spacing: 1em;
+}
+
+</style>
+<script type="module">
+
+import * as sys from "@sys";
+import * as sciter from "@sciter";
+import Logger from "./node_modules/sciter-logger/src/logger.js";
+import * as Utils from "./node_modules/sciter-utils/src/utils.js";
+
+// capture unhandled exceptions
+Logger.capture();
+
+// initialize logger
+Logger.init();
+
+// attach logger to console
+Logger.attach();
+
+let window;
+let watch;
+
+document.on("ready", () => {
+    // redirect logger output to plaintext
+    Logger.plaintext(document.$("plaintext#logger"));
+
+    // add support for F5 reload
+    Utils.addReloadWindow();
+
+    // close window on escape key press
+    Utils.closeWindowOnEscape(Window.this);
+
+    // center window on screen
+    //Utils.centerWindow(Window.this, "screen");
+
+    // bring window to front and set input focus
+    if (!Window.this.activate(true))
+        console.error("Activate window - FAILED");
+
+    console.log("Sandbox started, Enjoy!");
+
+    // log sciter version
+    console.debug(Utils.sciterInfo());
+
+    document.$("button#reload").click();
+
+    // watch source dir
+    let dir = __DIR__ + "src/";
+    dir = dir.replace("file://", "");
+
+    watch = sys.fs.watch(dir, reload);
+});
+
+let isReloading;
+
+async function reload(event, type) {
+    if (isReloading)
+        return;
+
+    isReloading = true;
+
+    //console.debug(event, type);
+
+    if (window) {
+        console.debug("Changes detected, reload...");
+
+        // close open window
+        await window.close();
+    }
+    else {
+        //console.debug("Load...");
+    }
+
+    /*
+    const file = __DIR__ + "src/main.htm";
+
+    let module = sciter.import(file);
+
+    console.debug("module", typeof module);
+    return;
+    */
+
+    window = new Window({
+        //type: Window.FRAME_WINDOW,
+        parent: Window.this,
+        url: __DIR__ + "src/main.htm",
+        alignment: -5,
+        //screen: 0,
+    });
+
+    isReloading = undefined;
+}
+
+document.on("click", "button#reload", reload);
+
+document.on("close", function() {
+    if (watch)
+        watch.close();
+});
+
+</script>
+</head>
+<body>
+    <button #reload>reload</button>
+    <plaintext #logger readonly />
+</body>
+</html>

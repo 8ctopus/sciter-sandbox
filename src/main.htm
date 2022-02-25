@@ -6,13 +6,13 @@
 <title>sciter.js sandbox</title>
 <style>
 
-@import url(./node_modules/sciter-logger/src/logger.css);
+@import url(../node_modules/sciter-logger/src/logger.css);
 
 </style>
 <script type="module">
 
-import Logger from "./node_modules/sciter-logger/src/logger.js";
-import * as Utils from "./node_modules/sciter-utils/src/utils.js";
+import Logger from "../node_modules/sciter-logger/src/logger.js";
+import * as Utils from "../node_modules/sciter-utils/src/utils.js";
 
 // capture unhandled exceptions
 Logger.capture();
@@ -26,9 +26,6 @@ Logger.attach();
 document.on("ready", () => {
     // redirect logger output to plaintext
     Logger.plaintext(document.$("plaintext#logger"));
-
-    // add support for F5 reload
-    Utils.addReloadWindow();
 
     // close window on escape key press
     Utils.closeWindowOnEscape(Window.this);
@@ -44,6 +41,10 @@ document.on("ready", () => {
 
     // log sciter version
     console.debug(Utils.sciterInfo());
+
+    console.debug("how are you today?");
+
+
 });
 
 </script>
