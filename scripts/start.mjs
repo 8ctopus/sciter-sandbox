@@ -86,12 +86,14 @@ try {
     //console.log(`start ${ide}...`);
 
     const arguments_ = ide.startsWith("scapp") ? [
-        entry,
+        "watch.htm",
         "--debug",
+        entry,
     ] : [
         // usciter bug with open files
         // https://sciter.com/forums/topic/usciter-4-4-8-23-bis-command-line-load-file-bug/
         "-o",
+        "watch.htm",
         entry,
     ];
 

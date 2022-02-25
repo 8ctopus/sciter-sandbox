@@ -15,8 +15,8 @@ html > * {
 </style>
 <script type="module">
 
-import * as sys from "@sys";
-import * as sciter from "@sciter";
+import * as Sys from "@sys";
+import * as Sciter from "@sciter";
 import Logger from "./node_modules/sciter-logger/src/logger.js";
 import * as Utils from "./node_modules/sciter-utils/src/utils.js";
 
@@ -29,7 +29,7 @@ Logger.init();
 // attach logger to console
 Logger.attach();
 
-let window;
+let entry;
 let watch;
 
 document.on("ready", () => {
@@ -42,9 +42,6 @@ document.on("ready", () => {
     // close window on escape key press
     Utils.closeWindowOnEscape(Window.this);
 
-    // center window on screen
-    //Utils.centerWindow(Window.this, "screen");
-
     // bring window to front and set input focus
     if (!Window.this.activate(true))
         console.error("Activate window - FAILED");
@@ -56,46 +53,61 @@ document.on("ready", () => {
 
     document.$("button#reload").click();
 
-    // watch source dir
-    let dir = __DIR__ + "src/";
+    const argv = Window.this.scapp?.argv;
+
+    if (!argv)
+        throw new Error("missing command line arguments");
+
+    entry = __DIR__ + argv[argv.length -1];
+
+    console.debug(`Entry source ${entry}`);
+
+    let [dir, ] = Sys.fs.splitpath(entry);
     dir = dir.replace("file://", "");
 
-    watch = sys.fs.watch(dir, reload);
+    console.debug(`Watch ${dir}`);
+
+    // watch source dir
+    watch = Sys.fs.watch(dir, reload);
 });
 
 let isReloading;
+let window;
 
 async function reload(event, type) {
     if (isReloading)
         return;
 
-    isReloading = true;
-
     //console.debug(event, type);
+
+    isReloading = true;
 
     if (window) {
         console.debug("Changes detected, reload...");
 
         // close open window
-        await window.close();
+        window.close();
+        window = undefined;
     }
     else {
-        //console.debug("Load...");
+        console.debug("Load...");
     }
 
     /*
+    // potentially test code before showing it
     const file = __DIR__ + "src/main.htm";
 
-    let module = sciter.import(file);
+    let module = Sciter.import(file);
 
     console.debug("module", typeof module);
     return;
     */
 
+    // show window
     window = new Window({
         //type: Window.FRAME_WINDOW,
         parent: Window.this,
-        url: __DIR__ + "src/main.htm",
+        url: entry,
         alignment: -5,
         //screen: 0,
     });
@@ -106,6 +118,9 @@ async function reload(event, type) {
 document.on("click", "button#reload", reload);
 
 document.on("close", function() {
+    // detach dir watch
+    console.debug(`Detach watch dir`);
+
     if (watch)
         watch.close();
 });
