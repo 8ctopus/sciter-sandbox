@@ -95,9 +95,7 @@ function reload(event, type) {
 
     /*
     // potentially test code before showing it
-    const file = __DIR__ + "src/main.htm";
-
-    let module = Sciter.import(file);
+    let module = Sciter.import(entry);
 
     console.debug("module", typeof module);
     return;
@@ -114,6 +112,7 @@ function reload(event, type) {
 
     console.debug("Reload - OK");
 
+    // prevent too fast reload
     setTimeout(() => {
         isReloading = false;
     }, 1000);
