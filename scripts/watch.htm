@@ -10,7 +10,7 @@
 
 body {
     margin: 0;
-    border-spacing: 1em;
+    border-spacing: 0.5em;
 }
 
 div.hbox {
@@ -21,6 +21,14 @@ div.hbox {
 
 div.hbox:first-child {
     margin-left: 1em;
+}
+
+plaintext#logger:expanded {
+    display: block;
+}
+
+plaintext#logger:collapsed {
+    display: none;
 }
 
 </style>
@@ -122,6 +130,17 @@ function reload(_event, _type) {
 
 document.on("click", "button#reload", reload);
 
+document.on("click", "toggle#logger", function() {
+    const logger = document.$("plaintext#logger");
+    if (logger.state.collapsed) {
+        logger.state.collapsed = false;
+        logger.state.expanded = true;
+    } else {
+        logger.state.collapsed = true;
+        logger.state.expanded = false;
+    }
+});
+
 document.on("close", function() {
     // detach dir watch
     console.debug("Detach watch dir");
@@ -158,6 +177,9 @@ document.on("click", "toggle#autoReload", function(event, element) {
         <button #reload>Reload</button>
         <toggle #autoReload checked>
             <caption>watch</caption>
+        </toggle>
+        <toggle #logger checked>
+            <caption>log</caption>
         </toggle>
     </div>
     <plaintext #logger readonly />
