@@ -6,7 +6,7 @@
 <title>sciter.js sandbox</title>
 <style>
 
-@import url(./node_modules/sciter-logger/src/logger.css);
+@import url(../node_modules/sciter-logger/src/logger.css);
 
 body {
     margin: 0;
@@ -26,8 +26,8 @@ div.hbox:first-child {
 <script type="module">
 
 import * as Sys from "@sys";
-import Logger from "./node_modules/sciter-logger/src/logger.js";
-import * as Utils from "./node_modules/sciter-utils/src/utils.js";
+import Logger from "../node_modules/sciter-logger/src/logger.js";
+import * as Utils from "../node_modules/sciter-utils/src/utils.js";
 
 // capture unhandled exceptions
 Logger.capture();
@@ -65,7 +65,7 @@ document.on("ready", () => {
     if (!argv)
         throw new Error("missing command line arguments");
 
-    entry = __DIR__ + argv[argv.length - 1];
+    entry = Sys.cwd + argv[argv.length - 1];
 
     console.debug(`Entry source ${entry}`);
 
@@ -136,6 +136,8 @@ document.on("click", "toggle#autoReload", function(event, element) {
     if (element.checked) {
         let [dir] = Sys.fs.splitpath(entry);
         dir = dir.replace("file://", "");
+
+        console.debug(Sys.cwd());
 
         console.debug(`Watch dir ${dir}`);
 
