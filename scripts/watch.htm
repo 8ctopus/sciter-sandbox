@@ -63,9 +63,9 @@ document.on("ready", () => {
     if (!argv)
         throw new Error("missing command line arguments");
 
-    entry = Sys.cwd() + Utils.getSeparator() + argv[argv.length - 1];
+    entry = Sys.cwd() + Utils.getSeparator() + argv[argv.length - 1].replace(/\//g, Utils.getSeparator());
 
-    console.debug(`Entry source ${entry}`);
+    console.debug(`Entry ${entry}`);
 
     // load content
     document.$("button#reload").click();
@@ -92,8 +92,8 @@ function reload(_event, _type) {
         window.close();
         window = undefined;
     }
-    else
-        console.debug("Load...");
+    //else
+    //    console.debug("Load...");
 
     /*
     // potentially test code before showing it
@@ -112,7 +112,7 @@ function reload(_event, _type) {
         //screen: 0,
     });
 
-    console.debug("Reload - OK");
+    //console.debug("Reload - OK");
 
     // prevent too fast reload
     setTimeout(() => {
@@ -133,9 +133,7 @@ document.on("close", function() {
 document.on("click", "toggle#autoReload", function(event, element) {
     if (element.checked) {
         let [dir] = Sys.fs.splitpath(entry);
-        dir = dir.replace("file://", "");
-
-        console.debug(Sys.cwd());
+        //dir = dir.replace("file://", "");
 
         console.debug(`Watch dir ${dir}`);
 
