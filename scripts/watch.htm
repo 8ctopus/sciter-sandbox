@@ -10,6 +10,7 @@
 
 body {
     margin: 0;
+    border-spacing: 1em;
 }
 
 div.hbox {
@@ -27,7 +28,7 @@ div.hbox:first-child {
 
 import * as Sys from "@sys";
 import Logger from "../node_modules/sciter-logger/src/logger.js";
-import * as Utils from "../node_modules/sciter-utils/src/utils.js";
+import Utils from "../node_modules/sciter-utils/src/utils.js";
 
 // capture unhandled exceptions
 Logger.capture();
@@ -45,9 +46,6 @@ document.on("ready", () => {
     // redirect logger output to plaintext
     Logger.plaintext(document.$("plaintext#logger"));
 
-    // add support for F5 reload
-    Utils.addReloadWindow();
-
     // close window on escape key press
     Utils.closeWindowOnEscape(Window.this);
 
@@ -58,14 +56,14 @@ document.on("ready", () => {
     console.log("Sandbox started, Enjoy!");
 
     // log sciter version
-    console.debug(Utils.sciterInfo());
+    console.log(Utils.sciterInfo());
 
     const argv = Window.this.scapp?.argv;
 
     if (!argv)
         throw new Error("missing command line arguments");
 
-    entry = Sys.cwd + argv[argv.length - 1];
+    entry = Sys.cwd() + Utils.getSeparator() + argv[argv.length - 1];
 
     console.debug(`Entry source ${entry}`);
 
