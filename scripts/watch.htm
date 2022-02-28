@@ -125,7 +125,12 @@ function reload(_event, _type) {
     // prevent too fast reload
     setTimeout(() => {
         isReloading = false;
-    }, 1000);
+
+        const [left, top] = Utils.windowRect(window, true);
+        const [, height] = Utils.windowDimensions(Window.this, true);
+
+        Window.this.move(left, top - height);
+    }, 300);
 }
 
 document.on("click", "button#reload", reload);
