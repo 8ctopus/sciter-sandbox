@@ -32,10 +32,6 @@ document.on("ready", () => {
     // close window on escape key press
     Utils.closeWindowOnEscape(Window.this);
 
-    // bring window to front and set input focus
-    if (!Window.this.activate(true))
-        console.error("Activate window - FAILED");
-
     console.log("Sandbox started, Enjoy!");
     console.log("Update the source code of this file and the result will be automatically refreshed.");
 });
