@@ -91,10 +91,9 @@ function reload(_event, _type) {
 
     isReloading = true;
 
-    let x = undefined;
-    let y = undefined;
+    let x, y;
 
-    const restart = !!window;
+    const restart = Boolean(window);
 
     if (restart) {
         // get window origin
@@ -104,13 +103,10 @@ function reload(_event, _type) {
     if (window) {
         console.log("Detected changes, reloading...");
 
-
         // close open window
         window.close();
         window = undefined;
     }
-    //else
-    //    console.debug("Load...");
 
     /*
     // potentially test code before showing it
@@ -127,12 +123,10 @@ function reload(_event, _type) {
         url: entry,
         // only center window on first start
         alignment: restart ? undefined : 5,
+        x,
+        y,
         //screen: 0,
-        x: x,
-        y: y,
     });
-
-    //console.debug("Reload - OK");
 
     // prevent too fast reload
     setTimeout(() => {
@@ -152,7 +146,8 @@ document.on("click", "toggle#logger", function() {
     if (logger.state.collapsed) {
         logger.state.collapsed = false;
         logger.state.expanded = true;
-    } else {
+    }
+    else {
         logger.state.collapsed = true;
         logger.state.expanded = false;
     }
@@ -168,8 +163,7 @@ document.on("close", function() {
 
 document.on("click", "toggle#autoReload", function(event, element) {
     if (element.checked) {
-        let [dir] = Sys.fs.splitpath(entry);
-        //dir = dir.replace("file://", "");
+        const [dir] = Sys.fs.splitpath(entry);
 
         console.debug(`Watch dir ${dir}`);
 
