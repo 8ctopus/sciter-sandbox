@@ -147,7 +147,7 @@ function reload(_event, _type) {
         const [, height] = Utils.windowDimensions(Window.this, true);
 
         Window.this.move(left, top - height);
-    }, 300);
+    }, 100);
 }
 
 document.on("click", "button#reload", reload);
