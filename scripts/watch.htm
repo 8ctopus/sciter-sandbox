@@ -46,8 +46,10 @@ document.on("ready", function() {
     const path = __DIR__.includes("node_modules") ? "../../" : "../node_modules/";
 
     // dynamic import logger css
-    const url = path + "sciter-logger/src/logger.css";
-    document.head.insertAdjacentHTML("beforeend", `<style src="${url}" />`);
+    document.head.insertAdjacentHTML("beforeend", `<style src="${ path + "sciter-logger/src/logger.css" }" />`);
+
+    // dynamic import fontawesome css
+    document.head.insertAdjacentHTML("beforeend", `<style src="${ path + "sciter-fontawesome/src/fontawesome.css" }" />`);
 
     // dynamic and synchronous import logger and utils (hack to solve static import path issues)
     let module = Sciter.import(path + "sciter-logger/src/logger.js");
@@ -203,13 +205,14 @@ document.on("click", "toggle#autoReload", function(event, element) {
 </head>
 <body>
     <div .hbox>
-        <button #reload>Reload</button>
+        <button #reload><i class="fa-solid fa-arrow-rotate-right fa-2x" /></button>
         <toggle #autoReload checked>
-            <caption>watch</caption>
+            <caption><i class="fa-brands fa-watchman-monitoring fa-2x" /></caption>
         </toggle>
         <toggle #logger checked hidden>
-            <caption>log</caption>
+            <caption><i class="fa-solid fa-file-lines fa-2x" /></caption>
         </toggle>
+        <button #inspector hidden><i class="fa-solid fa-bug fa-2x" /></button>
     </div>
     <plaintext #logger readonly />
 </body>
