@@ -13,9 +13,7 @@
     "eslint-plugin-html": "^6.2.0",
     "eslint-plugin-jsdoc": "^37.6.2",
     "fkill": "^8.0.0",
-    "xo": "^0.47.0"
-  },
-  "devDependencies": {
+    "xo": "^0.47.0",
     "sciter-logger": "^1.1.3",
     "sciter-utils": "^0.9.0"
   },
