@@ -9,13 +9,10 @@
 @import url(../node_modules/sciter-logger/src/logger.css);
 
 @set std-toggle < std-toggle {
-  :root::marker {
-    background: color(button-face);
-  }
-
-  :root:checked::marker {
-    background: blue;
-  }
+    :root:checked::marker {
+        border: 1dip solid blue;
+        background: blue;
+    }
 }
 
 body {
