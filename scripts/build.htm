@@ -16,17 +16,17 @@ plaintext#logger {
 </style>
 <script type="module">
 
-import * as env from "@env";
-import * as sciter from "@sciter";
-import * as sys from "@sys";
+import * as Env from "@env";
+import * as Sciter from "@sciter";
+import * as Sys from "@sys";
 import Logger from "node_modules/sciter-logger/src/logger.js";
-import * as Utils from "node_modules/sciter-utils/src/utils.js";
+import Utils from "node_modules/sciter-utils/src/utils.js";
 
 const resources = "resources.dat";
 const icon = "app.ico";
 
 // current working directory
-const cwd = URL.fromPath(sys.cwd());
+const cwd = URL.fromPath(Sys.cwd());
 
 // initialize logger
 Logger.init({
@@ -61,7 +61,7 @@ document.on("ready", async() => {
     console.log(`current working dir - ${cwd}`);
 
     // get platform
-    const platform = env.PLATFORM.toLowerCase();
+    const platform = Env.PLATFORM.toLowerCase();
 
     console.log(`platform - ${platform}`);
 
@@ -120,11 +120,11 @@ document.on("ready", async() => {
     // check if temporary directory exists
     const temp = URL.toPath(cwd + "/" + manifest.tmp);
 
-    const stat = sys.fs.$stat(temp);
+    const stat = Sys.fs.$stat(temp);
 
     if (!(stat && stat.isDirectory)) {
         // create temporary dir
-        if (!sys.fs.$mkdir(temp))
+        if (!Sys.fs.$mkdir(temp))
             throw new Error(`Create temporary directory - FAILED - ${temp}`);
         else
             console.log(`Create temporary directory - OK - ${temp}`);
@@ -156,7 +156,7 @@ document.on("ready", async() => {
         console.debug("magick arguments", args);
 
         try {
-            process = sys.spawn(args, {
+            process = Sys.spawn(args, {
                 stdout: "pipe",
                 stderr: "pipe",
             });
@@ -190,7 +190,7 @@ document.on("ready", async() => {
     console.line();
 
     try {
-        process = sys.spawn(args, {
+        process = Sys.spawn(args, {
             stdout: "pipe",
             stderr: "pipe",
         });
@@ -264,8 +264,8 @@ async function buildBinary(cwd, platform, manifest) {
 
     /*
     // delete binary if it exists
-    if (sys.fs.$stat(binary)) {
-        let result = await sys.fs.unlink(binary);
+    if (Sys.fs.$stat(binary)) {
+        let result = await Sys.fs.unlink(binary);
 
         if (!result)
             throw new Error(`Delete binary - FAILED - ${binary}`);
@@ -315,7 +315,7 @@ async function buildBinary(cwd, platform, manifest) {
     }
 
     // set linux and mac binaries as executable
-    if (!platform.startsWith("win-") && env.PLATFORM.toLowerCase() !== "windows") {
+    if (!platform.startsWith("win-") && Env.PLATFORM.toLowerCase() !== "windows") {
         if (setExecuteFlag(binary))
             console.log("Set execute flag - OK");
         else
@@ -330,7 +330,7 @@ async function buildBinary(cwd, platform, manifest) {
 async function readPipe(pipe) {
     try {
         while (pipe) {
-            const text = sciter.decode(await pipe.read());
+            const text = Sciter.decode(await pipe.read());
 
             if (text.length > 0)
                 console.log(text);
@@ -364,7 +364,7 @@ function setExecuteFlag(binary) {
     let process;
 
     try {
-        process = sys.spawn(args, {
+        process = Sys.spawn(args, {
             stdout: "pipe",
             stderr: "pipe",
         });
