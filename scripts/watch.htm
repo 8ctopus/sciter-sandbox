@@ -45,20 +45,14 @@ import * as Sys from "@sys";
 import * as Sciter from "@sciter";
 
 document.on("ready", function() {
-    if (__DIR__.indexOf("node_modules") >= 0) {
-        let module = Sciter.import("../../sciter-logger/src/logger.js");
-        globalThis.Logger = module.Logger;
+    // import logger and utils synchronously (hack to solve static import path issues)
+    const path = __DIR__.indexOf("node_modules") >= 0 ? "../../" : "../node_modules/";
 
-        module = Sciter.import("../../sciter-utils/src/utils.js");
-        globalThis.Utils = module.Utils;
-    }
-    else {
-        let module = Sciter.import("../node_modules/sciter-logger/src/logger.js");
-        globalThis.Logger = module.Logger;
+    let module = Sciter.import(path + "sciter-logger/src/logger.js");
+    globalThis.Logger = module.default;
 
-        module = Sciter.import("../node_modules/sciter-utils/src/utils.js");
-        globalThis.Utils = module.Utils;
-    }
+    module = Sciter.import(path + "sciter-utils/src/utils.js");
+    globalThis.Utils = module.default;
 
     // capture unhandled exceptions
     Logger.capture();
