@@ -40,6 +40,10 @@ button {
     appearance: none;
 }
 
+.hidden {
+    display: none;
+}
+
 </style>
 <script type="module">
 
@@ -61,6 +65,9 @@ document.on("ready", function() {
 
     module = Sciter.import(path + "sciter-utils/src/utils.js");
     globalThis.Utils = module.default;
+
+    // force show toggle icon
+    document.$("div.hbox").classList.toggle("hidden");
 
     // capture unhandled exceptions
     Logger.capture();
@@ -208,7 +215,7 @@ document.on("click", "toggle#autoReload", function(event, element) {
 </script>
 </head>
 <body>
-    <div .hbox>
+    <div .hbox .hidden>
         <button #reload accesskey="!F5"><i class="fa-solid fa-arrow-rotate-right fa-2x" /></button>
         <toggle #autoReload checked>
             <caption><i class="fa-brands fa-watchman-monitoring fa-2x" /></caption>
