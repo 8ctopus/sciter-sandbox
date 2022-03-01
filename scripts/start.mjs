@@ -3,6 +3,8 @@ import os from "node:os";
 import {spawn} from "node:child_process";
 import process from "node:process";
 import util from "node:util";
+import {fileURLToPath} from "node:url";
+import {dirname, sep as separator} from "node:path";
 import {commands, killInspector, killScapp, killUsciter} from "./commands.mjs";
 
 // get operating system
@@ -85,15 +87,20 @@ try {
     // start ide as detached process
     //console.log(`start ${ide}...`);
 
+    // get current script path
+    const dir = dirname(fileURLToPath(import.meta.url)) + separator;
+
+    //console.debug("dir", dir);
+
     const arguments_ = ide.startsWith("scapp") ? [
-        "scripts/watch.htm",
+        dir + "watch.htm",
         "--debug",
         entry,
     ] : [
         // usciter bug with open files
         // https://sciter.com/forums/topic/usciter-4-4-8-23-bis-command-line-load-file-bug/
         "-o",
-        "scripts/watch.htm",
+        dir + "watch.htm",
         entry,
     ];
 
