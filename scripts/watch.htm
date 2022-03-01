@@ -6,8 +6,6 @@
 <title>Sandbox watch</title>
 <style>
 
-@import url(../node_modules/sciter-logger/src/logger.css);
-
 @set std-toggle < std-toggle {
     :root:checked::marker {
         border: 1dip solid blue;
@@ -45,9 +43,13 @@ import * as Sys from "@sys";
 import * as Sciter from "@sciter";
 
 document.on("ready", function() {
-    // import logger and utils synchronously (hack to solve static import path issues)
-    const path = __DIR__.indexOf("node_modules") >= 0 ? "../../" : "../node_modules/";
+    const path = __DIR__.includes("node_modules") ? "../../" : "../node_modules/";
 
+    // dynamic import logger css
+    const url = path + "sciter-logger/src/logger.css";
+    document.head.insertAdjacentHTML("beforeend", `<style src="${url}" />`);
+
+    // dynamic and synchronous import logger and utils (hack to solve static import path issues)
     let module = Sciter.import(path + "sciter-logger/src/logger.js");
     globalThis.Logger = module.default;
 
