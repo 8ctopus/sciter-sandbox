@@ -3,7 +3,7 @@
     window-height="200dip"
 >
 <head>
-<title>sciter.js sandbox</title>
+<title>Sandbox watch</title>
 <style>
 
 @import url(../node_modules/sciter-logger/src/logger.css);
@@ -54,17 +54,15 @@ document.on("ready", () => {
     // redirect logger output to plaintext
     Logger.plaintext(document.$("plaintext#logger"));
 
+    // log sciter version
+    console.log(Utils.sciterInfo());
+
     // close window on escape key press
     Utils.closeWindowOnEscape(Window.this);
 
     // bring window to front and set input focus
     if (!Window.this.activate(true))
         console.error("Activate window - FAILED");
-
-    console.log("Sandbox started, Enjoy!");
-
-    // log sciter version
-    console.log(Utils.sciterInfo());
 
     const argv = Window.this.scapp?.argv;
 
@@ -94,7 +92,7 @@ function reload(_event, _type) {
     isReloading = true;
 
     if (window) {
-        console.debug("Changes detected, reload...");
+        console.log("Detected changes, reloading...");
 
         // close open window
         window.close();

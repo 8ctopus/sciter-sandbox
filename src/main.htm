@@ -1,9 +1,10 @@
 <html
     window-width="800dip"
     window-height="400dip"
+    window-frame="standard"
 >
 <head>
-<title>sciter.js sandbox</title>
+<title>Sandbox</title>
 <style>
 
 @import url(../node_modules/sciter-logger/src/logger.css);
@@ -38,10 +39,10 @@ document.on("ready", () => {
     if (!Window.this.activate(true))
         console.error("Activate window - FAILED");
 
-    console.log("Sandbox started, Enjoy!");
-
     // log sciter version
     console.debug(Utils.sciterInfo());
+
+    console.log("Sandbox started, Enjoy!");
 });
 
 </script>
