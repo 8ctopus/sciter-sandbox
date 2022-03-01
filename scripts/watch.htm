@@ -8,6 +8,16 @@
 
 @import url(../node_modules/sciter-logger/src/logger.css);
 
+@set std-toggle < std-toggle {
+  :root::marker {
+    background: color(button-face);
+  }
+
+  :root:checked::marker {
+    background: blue;
+  }
+}
+
 body {
     margin: 0;
     border-spacing: 0.5em;
@@ -132,6 +142,7 @@ function reload(_event, _type) {
     setTimeout(() => {
         isReloading = false;
 
+        // move watch window next to main window
         const [left, top] = Utils.windowRect(window, true);
         const [, height] = Utils.windowDimensions(Window.this, true);
 
@@ -154,8 +165,8 @@ document.on("click", "toggle#logger", function() {
 });
 
 document.on("close", function() {
-    // detach dir watch
-    console.debug("Detach watch dir");
+    // stop to watch dir
+    console.debug("Stop watch");
 
     if (watch)
         watch.close();
@@ -172,8 +183,8 @@ document.on("click", "toggle#autoReload", function(event, element) {
     }
     else {
         if (watch) {
-            // detach dir watch
-            console.debug("Detach watch dir");
+            // stop to watch dir
+            console.debug("Stop watch");
             watch.close();
         }
 
