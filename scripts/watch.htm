@@ -91,8 +91,19 @@ function reload(_event, _type) {
 
     isReloading = true;
 
+    let x = undefined;
+    let y = undefined;
+
+    const restart = !!window;
+
+    if (restart) {
+        // get window origin
+        [x, y] = Utils.windowRect(window, true);
+    }
+
     if (window) {
         console.log("Detected changes, reloading...");
+
 
         // close open window
         window.close();
@@ -114,8 +125,11 @@ function reload(_event, _type) {
         //type: Window.FRAME_WINDOW,
         parent: Window.this,
         url: entry,
-        alignment: -5,
+        // only center window on first start
+        alignment: restart ? undefined : 5,
         //screen: 0,
+        x: x,
+        y: y,
     });
 
     //console.debug("Reload - OK");
