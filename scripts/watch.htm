@@ -42,22 +42,33 @@ plaintext#logger:collapsed {
 <script type="module">
 
 import * as Sys from "@sys";
-import Logger from "../node_modules/sciter-logger/src/logger.js";
-import Utils from "../node_modules/sciter-utils/src/utils.js";
+import * as Sciter from "@sciter";
 
-// capture unhandled exceptions
-Logger.capture();
+document.on("ready", function() {
+    if (__DIR__.indexOf("node_modules") >= 0) {
+        let module = Sciter.import("../../sciter-logger/src/logger.js");
+        globalThis.Logger = module.Logger;
 
-// initialize logger
-Logger.init();
+        module = Sciter.import("../../sciter-utils/src/utils.js");
+        globalThis.Utils = module.Utils;
+    }
+    else {
+        let module = Sciter.import("../node_modules/sciter-logger/src/logger.js");
+        globalThis.Logger = module.Logger;
 
-// attach logger to console
-Logger.attach();
+        module = Sciter.import("../node_modules/sciter-utils/src/utils.js");
+        globalThis.Utils = module.Utils;
+    }
 
-let entry;
-let watch;
+    // capture unhandled exceptions
+    Logger.capture();
 
-document.on("ready", () => {
+    // initialize logger
+    Logger.init();
+
+    // attach logger to console
+    Logger.attach();
+
     // redirect logger output to plaintext
     Logger.plaintext(document.$("plaintext#logger"));
 
@@ -86,6 +97,9 @@ document.on("ready", () => {
     // watch content
     document.$("toggle#autoReload").click();
 });
+
+let entry;
+let watch;
 
 let isReloading = false;
 let window;
