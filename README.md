@@ -7,11 +7,11 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 ## features
 
 - works on Windows, Mac and Linux
-- automatically install and configure sciter SDK
+- automatically install the sciter SDK
 - easily switch between SDK versions
-- start either scapp or usciter with inspector
+- start scapp with inspector
 - auto-detects changes to your code and refreshes
-- lint javascript code (check for issues and format it)
+- lint javascript code (check for issues and format code)
 
 ## requirements
 
@@ -23,12 +23,12 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 - git clone the repository and checkout the latest release tag `git checkout 1.2.x`
 - install packages `npm install`
-- install latest sciter sdk `npm run install-sdk`
+- install latest sciter SDK `npm run install-sdk`
 - start the sandbox `npm run scapp`
 
 ## commands
 
-### install sciter.js SDK
+### install sciter SDK
 
 ```sh
 npm run install-sdk [version]
@@ -51,7 +51,7 @@ npm run [usciter|usciter32]
 npm run stop
 ```
 
-### check sciter.js SDK version
+### check SDK version
 
 ```sh
 npm run sdk-version
@@ -65,7 +65,7 @@ Javascript code linting uses [xo](https://github.com/xojs/xo) which uses [eslint
 npx xo (--fix) [file1 file2]
 ```
 
-Note: without files, xo automatically finds the files to lint.
+_Note_: without files, xo automatically finds the files to lint.
 
 ## add sandbox to your project
 
