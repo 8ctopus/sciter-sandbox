@@ -8,18 +8,35 @@ import download from "download";
 import {killInspector, killScapp, killUsciter} from "./commands.mjs";
 import sdks from "./sciter-sdk.mjs";
 
-let sdkVersion = "4.4.8.31";
+let cleanup = false;
+let sdkVersion;
+const sdkDefaultVersion = "4.4.8.31";
 
 // get command line arguments
 const args = process.argv.slice(2, process.argv.length);
-
-let cleanup = false;
 
 for (const argument of args) {
     if (argument === "cleanup")
         cleanup = true;
     else
         sdkVersion = argument;
+}
+
+if (sdkVersion === undefined) {
+    // check for sdk version in package.json
+    try {
+        // read package json
+        const packageText = await util.promisify(fs.readFile)("package.json");
+
+        // convert to json
+        const packageJson = JSON.parse(packageText);
+
+        sdkVersion = packageJson.sciterVersion ?? sdkDefaultVersion;
+    }
+    catch {
+        console.error("\u001B[31mInvalid main file in package.json.\u001B[0m");
+    }
+
 }
 
 // get sdk commit id
