@@ -34,7 +34,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 4.4.8.31
+npm run install-sdk 4.4.8.33
 ```
 
 ### start scapp / usciter
@@ -88,6 +88,7 @@ You can also use the sandbox in your own projects:
 
 ## known issues
 
+- Main window drifts left and up, there's an issue in the positioning code somewhere
 - Linux and Mac require more testing
 - all OSes: usciter does not connect to the inspector
 - Linux: inspector has issues communicating (I don't know why)
