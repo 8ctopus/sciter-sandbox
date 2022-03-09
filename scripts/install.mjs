@@ -36,7 +36,6 @@ if (sdkVersion === undefined) {
     catch {
         console.error("\u001B[31mInvalid main file in package.json.\u001B[0m");
     }
-
 }
 
 // get sdk commit id

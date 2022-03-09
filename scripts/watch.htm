@@ -54,10 +54,10 @@ document.on("ready", function() {
     const path = __DIR__.includes("node_modules") ? "../../" : "../node_modules/";
 
     // dynamic import logger css
-    document.head.insertAdjacentHTML("beforeend", `<style src="${ path + "sciter-logger/src/logger.css" }" />`);
+    document.head.insertAdjacentHTML("beforeend", `<style src="${path + "sciter-logger/src/logger.css"}" />`);
 
     // dynamic import fontawesome css
-    document.head.insertAdjacentHTML("beforeend", `<style src="${ path + "sciter-fontawesome/src/fontawesome.css" }" />`);
+    document.head.insertAdjacentHTML("beforeend", `<style src="${path + "sciter-fontawesome/src/fontawesome.css"}" />`);
 
     // dynamic and synchronous import logger and utils (hack to solve static import path issues)
     let module = Sciter.import(path + "sciter-logger/src/logger.js");
@@ -121,7 +121,8 @@ function reload(_event, _type) {
 
     isReloading = true;
 
-    let x, y;
+    let x;
+    let y;
 
     const restart = Boolean(window);
 
@@ -163,8 +164,10 @@ function reload(_event, _type) {
         isReloading = false;
 
         // move watch window above to main window
-        const [mLeft, mTop,, mHeight] = Utils.windowRect(window, true);
+        const [mLeft, mTop, mWidth, mHeight] = Utils.windowRect(window, true);
         const [, wHeight] = Utils.windowDimensions(Window.this, true);
+
+        //console.debug(mLeft, mTop, mWidth, mHeight);
 
         let wTop = (mTop - wHeight);
 
