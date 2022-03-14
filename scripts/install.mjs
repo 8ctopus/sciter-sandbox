@@ -10,7 +10,7 @@ import sdks from "./sciter-sdk.mjs";
 
 let cleanup = false;
 let sdkVersion;
-const sdkDefaultVersion = "4.4.8.32";
+const sdkDefaultVersion = "4.4.8.33";
 
 // get command line arguments
 const args = process.argv.slice(2, process.argv.length);
