@@ -2,8 +2,6 @@
 
 This is a [sciter.js](https://sciter.com/) development sandbox.
 
-![sciter sandbox gif](https://github.com/8ctopus/sciter-sandbox/raw/master/sandbox.gif)
-
 ## features
 
 - works on Windows, Mac and Linux
@@ -12,6 +10,8 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 - start scapp with inspector
 - auto-detects changes to your code and refreshes
 - lint javascript code (check for issues and format code)
+
+![sciter sandbox gif](https://github.com/8ctopus/sciter-sandbox/raw/master/sandbox.gif)
 
 ## requirements
 
