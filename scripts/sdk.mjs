@@ -1,5 +1,86 @@
 class Sdk {
+    /**
+     * Get sdk version commit
+     * @param  {string} sdkVersion
+     * @return {string|undefined}
+     */
+    static getCommit(sdkVersion) {
+        if (this.#gitlab.hasOwnProperty(sdkVersion)) {
+            return this.#gitlab[sdkVersion];
+        } else if (this.#github.hasOwnProperty(sdkVersion)) {
+            return this.#github[sdkVersion];
+        } else {
+            return undefined;
+        }
+    }
+
+    /**
+     * Get download url for sdk version
+     * @param  {string} sdkVersion
+     * @return {string|undefined}
+     */
+    static getUrl(sdkVersion) {
+        if (this.#gitlab.hasOwnProperty(sdkVersion)) {
+            const sdkCommitId = this.#gitlab[sdkVersion];
+            return `https://gitlab.com/sciter-engine/sciter-js-sdk/-/archive/${sdkCommitId}/sciter-js-sdk-${sdkCommitId}.zip`;;
+        } else if (this.#github.hasOwnProperty(sdkVersion)) {
+            const sdkCommitId = this.#github[sdkVersion];
+            return `https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`;
+        } else {
+            return undefined;
+        }
+    }
+
     static #gitlab = {
+        // Dec 11, 2022
+        "5.0.1.8": "e99066b1fcf56e4cd2bd64d47656c7375ff50607",
+        // Nov 16, 2022
+        "5.0.1.7": "3095475492fab47df7d08584dfa8e4fdf0753ae7",
+        // Nov 12, 2022
+        "5.0.1.6": "ec71d77c3fec79e7223bc10493dd8e6aafb5f7c8",
+        // Nov 10, 2022
+        "5.0.1.5": "341578dd5a967574e34084b19de95e7355e66d27",
+        // Nov 6, 2022
+        "5.0.1.4": "3660934f607d00fe15aa5995ef0e5eb0aeb591a5",
+        // Nov 2, 2022
+        "5.0.1.3": "9bec3f55f9a7470bff112322990aa07669fb7c40",
+        // Oct 30, 2022
+        "5.0.1.2": "a4fcb660f1b6cbfc1358f49814ec4ecf6ca735dd",
+        // Oct 28, 2022
+        "5.0.1.1": "9e683ee3320e84bae865702767d0bd95cd59b120",
+        // Oct 26, 2022
+        "5.0.1.0": "a5f3daab5c6f4f7f8de9c199043f2e42294bfb45",
+        // Oct 4, 2022
+        "5.0.0.9": "7e79b6b70f32a278123b9ca5c22717d22b8fa3d8",
+        // Oct 3, 2022
+        "5.0.0.8": "04411180c1b445ad22b1015693e26c3c2e4ce2c8",
+        // Oct 1, 2022
+        "5.0.0.7": "256a5c38cddff29f1d810630c3642afa742734fd",
+        // Sep 22, 2022
+        "5.0.0.6": "f15b35687776bf91ee03579ac86e11ba4b396f04",
+        // Aug 27, 2022
+        "5.0.0.5": "aecac7103af62c577cfbac28d7e1b90060a62983",
+        // Aug 8, 2022
+        "5.0.0.4": "a2fda48fadb8a29c966e3bccb99a3162719a8efe",
+        // Aug 7, 2022
+        "5.0.0.3": "caafaa9a1c63a9846042fc5d1ebdeb4b8cf55ff5",
+        // Jul 17, 2022
+        "5.0.0.2": "daa15780b95fbf6bea59adad3a0199af0b9c4a07",
+        // Jul 10, 2022
+        "5.0.0.1": "088f9b761a386a29a30b47649c95673e1cfad496",
+        // Jun 19, 2022
+        "4.4.9.3": "5caf429a1578d541f6dadc787f8014d1c2ebe71a",
+        // Jun 10, 2022
+        "4.4.9.2": "032958a27026d1be68c297ba534bbe1d1fe47f4c",
+        // Jun 9, 2022
+        "4.4.9.1": "d14609ca3698fb0f772a867fd0178bbca5eb37cc",
+        // Jun 6, 2022
+        "4.4.9.0": "52f178b09cfec745c11d1f209572df682dd3f2e4",
+        // May 8, 2022
+        "4.4.8.37": "fba5281131d7bbac2b15bfd2112f6ef20f32f46e",
+        // Apr 30, 2022
+        "4.4.8.36": "b8ce2b3ec9cd97b38f04336ff0dc1996d608f730",
+        // Apr 19, 2022
         "4.4.8.35": "2b43f97dbbaeb19bc0bc27e3f6457a3cf8dcad38",
     };
 
@@ -57,39 +138,6 @@ class Sdk {
         // Sep 4, 2021
         "4.4.8.9": "a973aafdf6ebe1704d7a9322184d6c9116423861",
     };
-
-    /**
-     * Get sdk version commit
-     * @param  {string} sdkVersion
-     * @return {string|undefined}
-     */
-    static getCommit(sdkVersion) {
-        if (this.#gitlab.hasOwnProperty(sdkVersion)) {
-            return this.#gitlab[sdkVersion];
-        } else if (this.#github.hasOwnProperty(sdkVersion)) {
-            return this.#github[sdkVersion];
-        } else {
-            return undefined;
-        }
-    }
-
-    /**
-     * Get download url for sdk version
-     * @param  {string} sdkVersion
-     * @return {string|undefined}
-     */
-    static getUrl(sdkVersion) {
-        if (this.#gitlab.hasOwnProperty(sdkVersion)) {
-            const sdkCommitId = this.#gitlab[sdkVersion];
-            return `https://gitlab.com/sciter-engine/sciter-js-sdk/-/archive/${sdkCommitId}/sciter-js-sdk-${sdkCommitId}.zip`;;
-        } else if (this.#github.hasOwnProperty(sdkVersion)) {
-            const sdkCommitId = this.#github[sdkVersion];
-            return `https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`;
-        } else {
-            return undefined;
-        }
-    }
-
 }
 
 export default Sdk;
