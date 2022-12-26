@@ -1,34 +1,32 @@
 class Sdk {
     /**
      * Get sdk version commit
-     * @param  {string} sdkVersion
-     * @return {string|undefined}
+     * @param {string} sdkVersion
+     * @returns {string|undefined}
      */
     static getCommit(sdkVersion) {
-        if (this.#gitlab.hasOwnProperty(sdkVersion)) {
+        if (this.#gitlab.hasOwnProperty(sdkVersion))
             return this.#gitlab[sdkVersion];
-        } else if (this.#github.hasOwnProperty(sdkVersion)) {
+        else if (this.#github.hasOwnProperty(sdkVersion))
             return this.#github[sdkVersion];
-        } else {
-            return undefined;
-        }
+        else
+            return;
     }
 
     /**
      * Get download url for sdk version
-     * @param  {string} sdkVersion
-     * @return {string|undefined}
+     * @param {string} sdkVersion
+     * @returns {string|undefined}
      */
     static getUrl(sdkVersion) {
         if (this.#gitlab.hasOwnProperty(sdkVersion)) {
             const sdkCommitId = this.#gitlab[sdkVersion];
-            return `https://gitlab.com/sciter-engine/sciter-js-sdk/-/archive/${sdkCommitId}/sciter-js-sdk-${sdkCommitId}.zip`;;
+            return `https://gitlab.com/sciter-engine/sciter-js-sdk/-/archive/${sdkCommitId}/sciter-js-sdk-${sdkCommitId}.zip`;
         } else if (this.#github.hasOwnProperty(sdkVersion)) {
             const sdkCommitId = this.#github[sdkVersion];
             return `https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`;
-        } else {
-            return undefined;
-        }
+        } else
+            return;
     }
 
     static #gitlab = {
