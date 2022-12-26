@@ -113,11 +113,17 @@ let watch;
 let isReloading = false;
 let window;
 
-function reload(_event, _type) {
+/**
+ * Reload
+ * @param {Event} _event
+ * @param {Element} _element
+ * @returns {void}
+ */
+function reload(_event, _element) {
     if (isReloading)
         return;
 
-    //console.debug(event, type);
+    //console.debug(_event, _element);
 
     isReloading = true;
 
@@ -132,7 +138,7 @@ function reload(_event, _type) {
     }
 
     if (window) {
-        console.log("Detected changes, reloading...");
+        //console.log("Detected changes, reload...");
 
         // close open window
         window.close();
@@ -207,7 +213,7 @@ document.on("click", "toggle#autoReload", function(event, element) {
         console.debug(`Watch dir ${dir}`);
 
         // watch source dir
-        watch = Sys.fs.watch(dir, reload);
+        watch = Sys.fs.watch(dir, watchCallback);
     } else {
         if (watch) {
             // stop to watch dir
@@ -218,6 +224,36 @@ document.on("click", "toggle#autoReload", function(event, element) {
         watch = undefined;
     }
 });
+
+/**
+ * Watch callback
+ * @param {string} file
+ * @param {number} _type
+ * @returns {void}
+ */
+function watchCallback(file, _type) {
+    if (isReloading)
+        return;
+
+    //console.debug(file, _type);
+
+    const extension = file.split(".").pop();
+
+    const extensions = [
+        "css",
+        "htm",
+        "html",
+        "js",
+    ];
+
+    if (!extensions.includes(extension)) {
+        //console.debug(`ignore extension ${extension}`);
+        return;
+    }
+
+    console.debug(`${file} updated, reload...`);
+    reload();
+}
 
 </script>
 </head>
