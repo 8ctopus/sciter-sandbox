@@ -1,4 +1,4 @@
-const sdks = {
+const github = {
     // Mar 28, 2022
     "4.4.8.34": "72712b5d79d16a64c19c0370134208966a3621d8",
     // Mar 14, 2022
@@ -53,4 +53,4 @@ const sdks = {
     "4.4.8.9": "a973aafdf6ebe1704d7a9322184d6c9116423861",
 };
 
-export default sdks;
+export default github;

@@ -6,7 +6,7 @@ import process from "node:process";
 import util from "node:util";
 import download from "download";
 import {killInspector, killScapp, killUsciter} from "./commands.mjs";
-import sdks from "./sciter-sdk.mjs";
+import github from "./sciter-sdk.mjs";
 
 let cleanup = false;
 let sdkVersion;
@@ -38,10 +38,10 @@ if (sdkVersion === undefined) {
 }
 
 // get sdk commit id
-const sdkCommitId = sdks[sdkVersion];
+const sdkCommitId = github[sdkVersion];
 
 if (sdkCommitId === undefined) {
-    console.error(`\u001B[31mUnknown sciter.js SDK version ${sdkVersion}\u001B[0m`);
+    console.error(`\u001B[31mUnknown sciter.js SDK version ${sdkVersion}.\u001B[0m`);
     process.exit(1);
 }
 
