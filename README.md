@@ -34,7 +34,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 4.4.8.33
+npm run install-sdk 5.0.1.8
 ```
 
 ### start scapp / usciter
@@ -88,7 +88,7 @@ You can also use the sandbox in your own projects:
 
 ### define project to SDK version
 
-You can set your project to use a specific SDK version by adding the object key `sciterVersion: 4.4.8.22` inside `package.json`.
+You can set your project to use a specific SDK version by adding the object key `sciterVersion: 5.0.1.2` inside `package.json`.
 
 ## known issues
 
