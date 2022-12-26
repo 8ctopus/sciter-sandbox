@@ -239,6 +239,7 @@
         "unicorn/require-number-to-fixed-digits-argument": "error",
         "unicorn/require-post-message-target-origin": "off",
         "unicorn/string-content": "off",
+        "unicorn/switch-case-braces": "off",
         "unicorn/template-indent": "warn",
         "unicorn/throw-new-error": "error",
         "valid-jsdoc": "off"
