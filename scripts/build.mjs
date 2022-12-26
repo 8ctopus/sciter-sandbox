@@ -19,8 +19,7 @@ try {
     spawn(scapp[platform], arguments_, {
         detached: true,
     });
-}
-catch (error) {
+} catch (error) {
     console.error(`\u001B[31m${error}\u001B[0m`);
 }
 

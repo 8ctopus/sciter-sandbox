@@ -100,8 +100,7 @@ document.on("ready", async() => {
     // convert to json
     try {
         manifest = manifest.json();
-    }
-    catch (error) {
+    } catch (error) {
         console.exception("Convert manifest to json - FAILED", error);
         return;
     }
@@ -126,9 +125,8 @@ document.on("ready", async() => {
         // create temporary dir
         if (!Sys.fs.$mkdir(temp))
             throw new Error(`Create temporary directory - FAILED - ${temp}`);
-        else
-            console.log(`Create temporary directory - OK - ${temp}`);
 
+        console.log(`Create temporary directory - OK - ${temp}`);
         console.line();
     }
 
@@ -160,8 +158,7 @@ document.on("ready", async() => {
                 stdout: "pipe",
                 stderr: "pipe",
             });
-        }
-        catch (error) {
+        } catch (error) {
             console.exception(error);
             return;
         }
@@ -194,8 +191,7 @@ document.on("ready", async() => {
             stdout: "pipe",
             stderr: "pipe",
         });
-    }
-    catch (error) {
+    } catch (error) {
         console.exception(error);
         return;
     }
@@ -290,8 +286,9 @@ async function buildBinary(cwd, platform, manifest) {
             if (platform.startsWith("windows")) {
                 // meta data update only applies to windows
                 console.warn(`Build binary ${platform} - WARNING - no metadata update`);
-                break;
             }
+
+            break;
 
         case 0:
             console.note(`Build binary ${platform} - OK`);
@@ -335,8 +332,7 @@ async function readPipe(pipe) {
             if (text.length > 0)
                 console.log(text);
         }
-    }
-    catch (error) {
+    } catch (error) {
         if (error.message === "socket is not connected")
             return;
 
@@ -361,15 +357,12 @@ function setExecuteFlag(binary) {
 
     console.line();
 
-    let process;
-
     try {
-        process = Sys.spawn(args, {
+        Sys.spawn(args, {
             stdout: "pipe",
             stderr: "pipe",
         });
-    }
-    catch (error) {
+    } catch (error) {
         console.exception(error);
         return false;
     }

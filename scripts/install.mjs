@@ -32,8 +32,7 @@ if (sdkVersion === undefined) {
         const packageJson = JSON.parse(packageText);
 
         sdkVersion = packageJson.sciterVersion ?? sdkDefaultVersion;
-    }
-    catch {
+    } catch {
         console.error("\u001B[31mInvalid main file in package.json.\u001B[0m");
     }
 }
@@ -94,8 +93,7 @@ try {
     await fs.promises.stat(zipFile);
 
     console.log(`\u001B[32mUse sciter.js SDK from cache ${sdkVersion}...\u001B[0m\n`);
-}
-catch {
+} catch {
     console.log(`\u001B[32mDownload sciter.js SDK ${sdkVersion}...\u001B[0m\n`);
 
     let downloaded = 0;
@@ -136,8 +134,7 @@ for (const command of commands[platform]) {
 
         if (stderr)
             console.error(`\u001B[31m${stderr}\u001B[0m`);
-    }
-    catch (error) {
+    } catch (error) {
         console.error(`\u001B[31m${error}\u001B[0m`);
         process.exit(1);
     }

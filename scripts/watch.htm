@@ -164,7 +164,7 @@ function reload(_event, _type) {
         isReloading = false;
 
         // move watch window above to main window
-        const [mLeft, mTop, mWidth, mHeight] = Utils.windowRect(window, true);
+        const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
         const [, wHeight] = Utils.windowDimensions(Window.this, true);
 
         //console.debug(mLeft, mTop, mWidth, mHeight);
@@ -186,8 +186,7 @@ document.on("click", "toggle#logger", function() {
     if (logger.state.collapsed) {
         logger.state.collapsed = false;
         logger.state.expanded = true;
-    }
-    else {
+    } else {
         logger.state.collapsed = true;
         logger.state.expanded = false;
     }
@@ -209,8 +208,7 @@ document.on("click", "toggle#autoReload", function(event, element) {
 
         // watch source dir
         watch = Sys.fs.watch(dir, reload);
-    }
-    else {
+    } else {
         if (watch) {
             // stop to watch dir
             console.debug("Stop watch");

@@ -36,8 +36,7 @@ try {
 
         entry = packageJson.main;
     }
-}
-catch {
+} catch {
     console.error("\u001B[31mInvalid main file in package.json.\u001B[0m");
 }
 
@@ -56,8 +55,7 @@ if (!entry) {
             await fs.promises.stat(`./${item}`);
             entry = item;
             break;
-        }
-        catch {}
+        } catch {}
     }
 }
 
@@ -75,8 +73,7 @@ try {
     spawn(commands[inspector][platform], [], {
         detached: true,
     });
-}
-catch (error) {
+} catch (error) {
     console.error(`\u001B[31m${error}\u001B[0m`);
 }
 
@@ -109,8 +106,7 @@ try {
     spawn(commands[ide][platform], arguments_, {
         detached: true,
     });
-}
-catch (error) {
+} catch (error) {
     console.error(`\u001B[31m${error}\u001B[0m`);
 }
 

@@ -46,8 +46,7 @@ const options = {
 async function kill(name, options) {
     try {
         return await fkill(name, options);
-    }
-    catch {
+    } catch {
         //console.error(error);
     }
 }
