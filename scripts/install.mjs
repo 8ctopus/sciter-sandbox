@@ -6,11 +6,11 @@ import process from "node:process";
 import util from "node:util";
 import download from "download";
 import {killInspector, killScapp, killUsciter} from "./commands.mjs";
-import github from "./sciter-sdk.mjs";
+import Sdk from "./sdk.mjs";
 
 let cleanup = false;
 let sdkVersion;
-const sdkDefaultVersion = "4.4.8.34";
+const sdkDefaultVersion = "4.4.8.35";
 
 // get command line arguments
 const args = process.argv.slice(2, process.argv.length);
@@ -38,7 +38,7 @@ if (sdkVersion === undefined) {
 }
 
 // get sdk commit id
-const sdkCommitId = github[sdkVersion];
+const sdkCommitId = Sdk.getCommit(sdkVersion);
 
 if (sdkCommitId === undefined) {
     console.error(`\u001B[31mUnknown sciter.js SDK version ${sdkVersion}.\u001B[0m`);
@@ -98,7 +98,7 @@ try {
 
     let downloaded = 0;
 
-    fs.writeFileSync(zipFile, await download(`https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`)
+    fs.writeFileSync(zipFile, await download(Sdk.getUrl(sdkVersion))
         .on("response", _res => {
             //console.log(res.headers);
             // clear screen
