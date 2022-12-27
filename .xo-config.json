@@ -241,6 +241,7 @@
         "unicorn/string-content": "off",
         "unicorn/switch-case-braces": "off",
         "unicorn/template-indent": "warn",
+        "unicorn/text-encoding-identifier-case": "off",
         "unicorn/throw-new-error": "error",
         "valid-jsdoc": "off"
     }
