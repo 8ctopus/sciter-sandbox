@@ -168,7 +168,7 @@ function reload(_event, _element) {
         const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
         const [, wHeight] = Utils.windowDimensions(Window.this, true);
 
-        //console.debug(mLeft, mTop, mWidth, mHeight);
+        //console.debug("window dimensions", mLeft, mTop, mWidth, mHeight);
 
         let wTop = (mTop - wHeight);
 
@@ -229,8 +229,6 @@ document.on("click", "toggle#autoReload", function(event, element) {
 function watchCallback(file, _type) {
     if (isReloading)
         return;
-
-    //console.debug(file, _type);
 
     const extension = file.split(".").pop();
 

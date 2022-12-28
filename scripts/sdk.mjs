@@ -10,7 +10,7 @@ class Sdk {
         else if (this.#github.hasOwnProperty(sdkVersion))
             return this.#github[sdkVersion];
         else
-            return;
+            return undefined;
     }
 
     /**
@@ -26,7 +26,7 @@ class Sdk {
             const sdkCommitId = this.#github[sdkVersion];
             return `https://github.com/c-smile/sciter-js-sdk/archive/${sdkCommitId}.zip`;
         } else
-            return;
+            return undefined;
     }
 
     static #gitlab = {
