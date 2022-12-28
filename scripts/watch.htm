@@ -50,6 +50,12 @@ button {
 import * as Sys from "@sys";
 import * as Sciter from "@sciter";
 
+let entry;
+let watch;
+
+let isReloading = false;
+let window;
+
 document.on("ready", function() {
     const path = __DIR__.includes("node_modules") ? "../../" : "../node_modules/";
 
@@ -107,14 +113,8 @@ document.on("ready", function() {
     document.$("toggle#autoReload").click();
 });
 
-let entry;
-let watch;
-
-let isReloading = false;
-let window;
-
 /**
- * Reload
+ * Reload application
  * @param {Event} _event
  * @param {Element} _element
  * @returns {void}
@@ -123,24 +123,19 @@ function reload(_event, _element) {
     if (isReloading)
         return;
 
-    //console.debug(_event, _element);
-
     isReloading = true;
 
-    let x;
-    let y;
+    const windowExists = Boolean(window);
+    let x = 0;
+    let y = 0;
 
-    const restart = Boolean(window);
-
-    if (restart) {
+    if (windowExists) {
         // get window origin
         [x, y] = Utils.windowRect(window, true);
     }
 
     if (window) {
-        //console.log("Detected changes, reload...");
-
-        // close open window
+        // close application
         window.close();
         window = undefined;
     }
@@ -153,13 +148,13 @@ function reload(_event, _element) {
     return;
     */
 
-    // show window
+    // restart application
     window = new Window({
         //type: Window.FRAME_WINDOW,
         parent: Window.this,
         url: entry,
         // only center window on first start, next times use left top corner
-        alignment: restart ? undefined : 5,
+        alignment: windowExists ? undefined : 5,
         x,
         y,
         //screen: 0,
@@ -169,7 +164,7 @@ function reload(_event, _element) {
     setTimeout(() => {
         isReloading = false;
 
-        // move watch window above to main window
+        // move watch window above main window
         const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
         const [, wHeight] = Utils.windowDimensions(Window.this, true);
 
@@ -182,7 +177,7 @@ function reload(_event, _element) {
             wTop = mTop + mHeight;
 
         Window.this.move(mLeft, wTop);
-    }, 100);
+    }, 1000);
 }
 
 document.on("click", "button#reload", reload);
