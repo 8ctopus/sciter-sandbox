@@ -33,6 +33,9 @@
     "email": "hello@octopuslabs.io"
   },
   "license": "MIT",
+  "files": [
+    "scripts"
+  ],
   "bugs": {
     "url": "https://github.com/8ctopus/sciter-sandbox/issues"
   },
