@@ -126,12 +126,12 @@ function reload(_event, _element) {
     isReloading = true;
 
     const windowExists = Boolean(window);
-    let x = 0;
-    let y = 0;
+    let x, y, w, h;
 
     if (windowExists) {
+        //console.debug("window dimensions", Utils.windowRect(window, true));
         // get window origin
-        [x, y] = Utils.windowRect(window, true);
+        [x, y, w, h] = Utils.windowRect(window, true);
     }
 
     if (window) {
@@ -155,8 +155,8 @@ function reload(_event, _element) {
         url: entry,
         // only center window on first start, next times use left top corner
         alignment: windowExists ? undefined : 5,
-        x,
-        y,
+        x: x ? (x + w / 2) : undefined,
+        y: y ? (y + h / 2) : undefined,
         //screen: 0,
     });
 
