@@ -34,7 +34,8 @@
   },
   "license": "MIT",
   "files": [
-    "scripts"
+    "scripts",
+    ".xo-config.json"
   ],
   "bugs": {
     "url": "https://github.com/8ctopus/sciter-sandbox/issues"
