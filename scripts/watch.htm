@@ -117,6 +117,8 @@ document.on("ready", function() {
 });
 
 document.on("click", "button#reload", function() {
+    console.debug("Reload queued for in 2 seconds...");
+
     // debounce reload
     this.timer(2000, reload);
 });
@@ -212,6 +214,7 @@ function reload(_event, _element) {
         return;
     }
 
+    console.debug("Reload app...");
     isReloading = true;
 
     const windowExists = Boolean(window);
