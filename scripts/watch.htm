@@ -113,73 +113,6 @@ document.on("ready", function() {
     document.$("toggle#autoReload").click();
 });
 
-/**
- * Reload application
- * @param {Event} _event
- * @param {Element} _element
- * @returns {void}
- */
-function reload(_event, _element) {
-    if (isReloading)
-        return;
-
-    isReloading = true;
-
-    const windowExists = Boolean(window);
-    let x, y, w, h;
-
-    if (windowExists) {
-        //console.debug("window dimensions", Utils.windowRect(window, true));
-        // get window origin
-        [x, y, w, h] = Utils.windowRect(window, true);
-    }
-
-    if (window) {
-        // close application
-        window.close();
-        window = undefined;
-    }
-
-    /*
-    // potentially test code before showing it
-    let module = Sciter.import(entry);
-
-    console.debug("module", typeof module);
-    return;
-    */
-
-    // restart application
-    window = new Window({
-        //type: Window.FRAME_WINDOW,
-        parent: Window.this,
-        url: entry,
-        // only center window on first start, next times use left top corner
-        alignment: windowExists ? undefined : 5,
-        x: x ? (x + w / 2) : undefined,
-        y: y ? (y + h / 2) : undefined,
-        //screen: 0,
-    });
-
-    // prevent too fast reload
-    setTimeout(() => {
-        isReloading = false;
-
-        // move watch window above main window
-        const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
-        const [, wHeight] = Utils.windowDimensions(Window.this, true);
-
-        //console.debug("window dimensions", mLeft, mTop, mWidth, mHeight);
-
-        let wTop = (mTop - wHeight);
-
-        // if not possible to move it above, move it below
-        if (wTop < 0)
-            wTop = mTop + mHeight;
-
-        Window.this.move(mLeft, wTop);
-    }, 1000);
-}
-
 document.on("click", "button#reload", reload);
 
 document.on("click", "toggle#logger", function() {
@@ -246,6 +179,73 @@ function watchCallback(file, _type) {
 
     console.debug(`${file} updated, reload...`);
     reload();
+}
+
+/**
+ * Reload application
+ * @param {Event} _event
+ * @param {Element} _element
+ * @returns {void}
+ */
+function reload(_event, _element) {
+    if (isReloading)
+        return;
+
+    isReloading = true;
+
+    const windowExists = Boolean(window);
+    let x, y, w, h;
+
+    if (windowExists) {
+        //console.debug("window dimensions", Utils.windowRect(window, true));
+        // get window origin
+        [x, y, w, h] = Utils.windowRect(window, true);
+    }
+
+    if (window) {
+        // close application
+        window.close();
+        window = undefined;
+    }
+
+    /*
+    // potentially test code before showing it
+    let module = Sciter.import(entry);
+
+    console.debug("module", typeof module);
+    return;
+    */
+
+    // restart application
+    window = new Window({
+        //type: Window.FRAME_WINDOW,
+        parent: Window.this,
+        url: entry,
+        // only center window on first start, next times use left top corner
+        alignment: windowExists ? undefined : 5,
+        x: x ? (x + w / 2) : undefined,
+        y: y ? (y + h / 2) : undefined,
+        //screen: 0,
+    });
+
+    // prevent too fast reload
+    setTimeout(() => {
+        isReloading = false;
+
+        // move watch window above main window
+        const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
+        const [, wHeight] = Utils.windowDimensions(Window.this, true);
+
+        //console.debug("window dimensions", mLeft, mTop, mWidth, mHeight);
+
+        let wTop = (mTop - wHeight);
+
+        // if not possible to move it above, move it below
+        if (wTop < 0)
+            wTop = mTop + mHeight;
+
+        Window.this.move(mLeft, wTop);
+    }, 1000);
 }
 
 </script>
