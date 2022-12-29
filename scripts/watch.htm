@@ -50,6 +50,9 @@ button {
 import * as Sys from "@sys";
 import * as Sciter from "@sciter";
 
+let Logger;
+let Utils;
+
 let entry;
 let watch;
 
@@ -67,10 +70,10 @@ document.on("ready", function() {
 
     // dynamic and synchronous import logger and utils (hack to solve static import path issues)
     let module = Sciter.import(path + "sciter-logger/src/logger.js");
-    globalThis.Logger = module.default;
+    Logger = module.default;
 
     module = Sciter.import(path + "sciter-utils/src/utils.js");
-    globalThis.Utils = module.default;
+    Utils = module.default;
 
     // force show toggle icon
     document.$("div.hbox").classList.toggle("hidden");
@@ -248,16 +251,16 @@ function reload(_event, _element) {
         // move watch window above main window
         const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
         const [, wHeight] = Utils.windowDimensions(Window.this, true);
-
+    
         //console.debug("window dimensions", mLeft, mTop, mWidth, mHeight);
-
+    
         let wTop = (mTop - wHeight);
-
+    
         // if not possible to move it above, move it below
         if (wTop < 0)
             wTop = mTop + mHeight;
-
-        Window.this.move(mLeft, wTop);
+    
+    Window.this.move(mLeft, wTop);
     }, 1000);
 }
 
