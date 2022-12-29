@@ -166,7 +166,7 @@ function watchCallback(file, _type) {
     //console.debug(`Watch callback - ${file} - ${_type}`);
 
     if (isReloading) {
-        console.debug(`Watch - reload in progress..`);
+        console.debug("Watch - reload in progress..");
         return;
     }
 
@@ -175,7 +175,7 @@ function watchCallback(file, _type) {
     //console.debug(`watch - split path`, path);
 
     if (path.basedir.includes("node_modules")) {
-        console.debug(`Watch - ignore node modules`);
+        console.debug("Watch - ignore node modules");
         return;
     }
 
@@ -187,11 +187,11 @@ function watchCallback(file, _type) {
     ];
 
     if (!extensions.includes(path.extension)) {
-        console.debug(`Watch - ignore extension - ${extension}`);
+        console.debug(`Watch - ignore extension - ${path.extension}`);
         return;
     }
 
-    console.debug(`Watch - file updated - reload app...`, file);
+    console.debug("Watch - file updated - reload app...", file);
     reload();
 }
 
@@ -203,7 +203,7 @@ function watchCallback(file, _type) {
  */
 function reload(_event, _element) {
     if (isReloading) {
-        console.debug(`Reload app already in progress...`);
+        console.debug("Reload app already in progress...");
         return;
     }
 
@@ -251,16 +251,16 @@ function reload(_event, _element) {
         // move watch window above main window
         const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
         const [, wHeight] = Utils.windowDimensions(Window.this, true);
-    
+
         //console.debug("window dimensions", mLeft, mTop, mWidth, mHeight);
-    
+
         let wTop = (mTop - wHeight);
-    
+
         // if not possible to move it above, move it below
         if (wTop < 0)
             wTop = mTop + mHeight;
-    
-    Window.this.move(mLeft, wTop);
+
+        Window.this.move(mLeft, wTop);
     }, 1000);
 }
 
