@@ -106,14 +106,14 @@ document.on("ready", function() {
 
     console.debug(`Entry ${entry}`);
 
+    document.on("click", "button#reload", reload);
+
     // load content
-    document.$("button#reload").click();
+    reload();
 
     // watch content
     document.$("toggle#autoReload").click();
 });
-
-document.on("click", "button#reload", reload);
 
 document.on("click", "toggle#logger", function() {
     const logger = document.$("plaintext#logger");
@@ -136,12 +136,12 @@ document.on("close", function() {
 
 document.on("click", "toggle#autoReload", function(event, element) {
     if (element.checked) {
-        const [dir] = Sys.fs.splitpath(entry);
-
-        console.debug(`Watch dir ${dir}`);
+        const path = Utils.splitPath(entry);
 
         // watch source dir
-        watch = Sys.fs.watch(dir, watchCallback);
+        watch = Sys.fs.watch(path.dirname, watchCallback);
+
+        console.debug(`Watch dir ${path.dirname}`);
     } else {
         if (watch) {
             // stop to watch dir
@@ -160,24 +160,35 @@ document.on("click", "toggle#autoReload", function(event, element) {
  * @returns {void}
  */
 function watchCallback(file, _type) {
-    if (isReloading)
-        return;
+    //console.debug(`Watch callback - ${file} - ${_type}`);
 
-    const extension = file.split(".").pop();
-
-    const extensions = [
-        "css",
-        "htm",
-        "html",
-        "js",
-    ];
-
-    if (!extensions.includes(extension)) {
-        //console.debug(`ignore extension ${extension}`);
+    if (isReloading) {
+        console.debug(`Watch - reload in progress..`);
         return;
     }
 
-    console.debug(`${file} updated, reload...`);
+    const path = Utils.splitPath(file);
+
+    //console.debug(`watch - split path`, path);
+
+    if (path.basedir.includes("node_modules")) {
+        console.debug(`Watch - ignore node modules`);
+        return;
+    }
+
+    const extensions = [
+        ".css",
+        ".htm",
+        ".html",
+        ".js",
+    ];
+
+    if (!extensions.includes(path.extension)) {
+        console.debug(`Watch - ignore extension - ${extension}`);
+        return;
+    }
+
+    console.debug(`Watch - file updated - reload app...`, file);
     reload();
 }
 
@@ -188,8 +199,10 @@ function watchCallback(file, _type) {
  * @returns {void}
  */
 function reload(_event, _element) {
-    if (isReloading)
+    if (isReloading) {
+        console.debug(`Reload app already in progress...`);
         return;
+    }
 
     isReloading = true;
 
