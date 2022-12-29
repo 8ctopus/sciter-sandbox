@@ -168,38 +168,44 @@ document.on("click", "toggle#autoReload", function(event, element) {
  * @returns {void}
  */
 function watchCallback(file, _type) {
-    //console.debug(`Watch callback - ${file} - ${_type}`);
+    try {
+        //console.debug(`Watch callback - ${file} - ${_type}`);
 
-    if (isReloading) {
-        console.debug("Watch - reload in progress..");
-        return;
+        if (isReloading) {
+            console.debug("Watch - reload already in progress..");
+            return;
+        }
+
+        const path = Utils.splitPath(file);
+
+        //console.debug(`watch - split path`, path);
+
+        // ignore node modules changes
+        if (path.basename.indexOf("node_modules") !== -1) {
+            console.debug("Watch - ignore node modules");
+            return;
+        }
+
+        // ignore file with extensions not in the list
+        const extensions = [
+            "css",
+            "htm",
+            "html",
+            "js",
+        ];
+
+        if (!extensions.includes(path.extension)) {
+            console.debug(`Watch - ignore extension - ${path.extension}`);
+            return;
+        }
+
+        console.debug(`Watch - file updated - ${file}`);
+
+        // debounce reload
+        document.timer(2000, reload());
+    } catch (e) {
+        console.exception(`Watch exception -`, e);
     }
-
-    const path = Utils.splitPath(file);
-
-    //console.debug(`watch - split path`, path);
-
-    if (path.basedir.includes("node_modules")) {
-        console.debug("Watch - ignore node modules");
-        return;
-    }
-
-    const extensions = [
-        ".css",
-        ".htm",
-        ".html",
-        ".js",
-    ];
-
-    if (!extensions.includes(path.extension)) {
-        console.debug(`Watch - ignore extension - ${path.extension}`);
-        return;
-    }
-
-    console.debug("Watch - file updated - reload app...", file);
-
-    // debounce reload
-    this.timer(2000, reload());
 }
 
 /**
