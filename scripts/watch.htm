@@ -109,13 +109,16 @@ document.on("ready", function() {
 
     console.debug(`Entry ${entry}`);
 
-    document.on("click", "button#reload", reload);
-
     // load content
     reload();
 
     // watch content
     document.$("toggle#autoReload").click();
+});
+
+document.on("click", "button#reload", function() {
+    // debounce reload
+    this.timer(2000, reload);
 });
 
 document.on("click", "toggle#logger", function() {
@@ -192,7 +195,9 @@ function watchCallback(file, _type) {
     }
 
     console.debug("Watch - file updated - reload app...", file);
-    reload();
+
+    // debounce reload
+    this.timer(2000, reload());
 }
 
 /**
@@ -244,24 +249,21 @@ function reload(_event, _element) {
         //screen: 0,
     });
 
-    // prevent too fast reload
-    setTimeout(() => {
-        isReloading = false;
+    // move watch window above main window
+    const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
+    const [, wHeight] = Utils.windowDimensions(Window.this, true);
 
-        // move watch window above main window
-        const [mLeft, mTop, , mHeight] = Utils.windowRect(window, true);
-        const [, wHeight] = Utils.windowDimensions(Window.this, true);
+    //console.debug("window dimensions", mLeft, mTop, mWidth, mHeight);
 
-        //console.debug("window dimensions", mLeft, mTop, mWidth, mHeight);
+    let wTop = (mTop - wHeight);
 
-        let wTop = (mTop - wHeight);
+    // if not possible to move it above, move it below
+    if (wTop < 0)
+        wTop = mTop + mHeight;
 
-        // if not possible to move it above, move it below
-        if (wTop < 0)
-            wTop = mTop + mHeight;
+    Window.this.move(mLeft, wTop);
 
-        Window.this.move(mLeft, wTop);
-    }, 1000);
+    isReloading = false;
 }
 
 </script>
