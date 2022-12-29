@@ -92,7 +92,6 @@ You can set your project to use a specific SDK version by adding the object key 
 
 ## known issues
 
-- Main window drifts left and up, there's an issue in the positioning code somewhere
 - Linux and Mac require more testing
 - all OSes: usciter does not connect to the inspector
 - Linux: inspector has issues communicating (I don't know why)
