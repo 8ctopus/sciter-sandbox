@@ -106,6 +106,7 @@
             "warn",
             160
         ],
+        "max-statements-per-line": "warn",
         "new-cap": "error",
         "no-await-in-loop": "warn",
         "no-bitwise": "warn",
@@ -116,7 +117,7 @@
         "no-inline-comments": "warn",
         "no-invalid-this": "off",
         "no-lone-blocks": "error",
-        "no-mixed-operators": "error",
+        "no-mixed-operators": "warn",
         "no-multi-spaces": "warn",
         "no-multiple-empty-lines": "error",
         "no-negated-condition": "off",
