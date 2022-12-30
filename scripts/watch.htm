@@ -202,7 +202,7 @@ function watchCallback(file, _type) {
         console.debug(`Watch - file updated - ${file}`);
 
         // debounce reload
-        document.timer(2000, reload());
+        document.timer(2000, reload);
     } catch (e) {
         console.exception(`Watch exception -`, e);
     }
