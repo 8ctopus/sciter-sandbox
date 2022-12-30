@@ -52,7 +52,7 @@ let Utils;
 let entry;
 let watch;
 
-let isReloading = false;
+let isReloading;
 let window;
 
 document.on("ready", function() {
@@ -209,7 +209,10 @@ function reload(_event, _element) {
     }
 
     try {
-        console.log("Reload app...");
+        if (isReloading === false) {
+            console.log("Reload app...");
+        }
+
         isReloading = true;
 
         const windowExists = Boolean(window);
@@ -260,8 +263,6 @@ function reload(_event, _element) {
             wTop = mTop + mHeight;
 
         Window.this.move(mLeft, wTop);
-
-        isReloading = false;
     } catch (error) {
         console.exception(`Reload exception -`, error);
     } finally {
