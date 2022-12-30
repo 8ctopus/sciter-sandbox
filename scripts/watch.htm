@@ -125,7 +125,7 @@ document.on("click", "toggle#debug", function(_event, element) {
 
     // show/hide debug messages
     document.style.variables({
-        "displayDebug": element.checked ? "inline" : "none",
+        displayDebug: element.checked ? "inline" : "none",
     });
 
     // scroll to last item
@@ -177,7 +177,7 @@ function watchCallback(file, _type) {
         const path = Utils.splitPath(file);
 
         // ignore node modules changes
-        if (path.basename.indexOf("node_modules") !== -1) {
+        if (path.basename.includes("node_modules")) {
             console.debug("Watch - ignore node modules");
             return;
         }
@@ -199,8 +199,8 @@ function watchCallback(file, _type) {
 
         // debounce reload
         Utils.debounce(reload, 2000);
-    } catch (e) {
-        console.exception(`Watch exception -`, e);
+    } catch (error) {
+        console.exception("Watch exception -", error);
     }
 }
 
@@ -217,9 +217,8 @@ function reload(_event, _element) {
     }
 
     try {
-        if (isReloading === false) {
+        if (isReloading === false)
             console.log("Reload app...");
-        }
 
         isReloading = true;
 
@@ -232,12 +231,9 @@ function reload(_event, _element) {
             [x, y, w, h] = Utils.windowRect(window, true);
         }
 
-        if (window) {
-            // close application
-            if (!window.close()) {
-                throw Error("Close window - FAILED");
-            }
-        }
+        // close application
+        if (window && !window.close())
+            throw new Error("Close window - FAILED");
 
         /*
         // potentially test code before showing it
@@ -272,7 +268,7 @@ function reload(_event, _element) {
 
         Window.this.move(mLeft, wTop);
     } catch (error) {
-        console.exception(`Reload exception -`, error);
+        console.exception("Reload exception -", error);
     } finally {
         isReloading = false;
     }
