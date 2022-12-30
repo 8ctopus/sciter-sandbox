@@ -61,9 +61,6 @@ document.on("ready", function() {
     // dynamic import logger css
     document.head.insertAdjacentHTML("beforeend", `<style src="${path + "sciter-logger/src/logger.css"}" />`);
 
-    // dynamic import fontawesome css
-    document.head.insertAdjacentHTML("beforeend", `<style src="${path + "sciter-fontawesome/src/fontawesome.css"}" />`);
-
     // dynamic and synchronous import logger and utils (hack to solve static import path issues)
     let module = Sciter.import(path + "sciter-logger/src/logger.js");
     Logger = module.default;
