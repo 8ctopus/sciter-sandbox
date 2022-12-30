@@ -120,7 +120,7 @@ document.on("click", "button#reload", function() {
     console.debug("Reload queued for in 2 seconds...");
 
     // debounce reload
-    this.timer(2000, reload);
+    Utils.debounce(reload, 2000);
 });
 
 document.on("click", "toggle#logger", function() {
@@ -202,7 +202,7 @@ function watchCallback(file, _type) {
         console.debug(`Watch - file updated - ${file}`);
 
         // debounce reload
-        document.timer(2000, reload);
+        Utils.debounce(reload, 2000);
     } catch (e) {
         console.exception(`Watch exception -`, e);
     }
