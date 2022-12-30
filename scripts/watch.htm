@@ -36,8 +36,12 @@ div.hbox:first-child {
     display: inline;
 }
 
+html {
+    var(displayDebug): none;
+}
+
 debug {
-    display: none;
+    display: var(displayDebug);
 }
 
 </style>
@@ -116,12 +120,16 @@ document.on("click", "button#reload", function() {
     Utils.debounce(reload, 2000);
 });
 
-document.on("click", "toggle#debug", function() {
-    const elements = document.$$("debug");
+document.on("click", "toggle#debug", function(_event, element) {
+    //console.log("Toggle debug", element.checked);
 
-    for (const element of elements) {
-        element.classList.toggle("show");
-    }
+    // show/hide debug messages
+    document.style.variables({
+        "displayDebug": element.checked ? "inline" : "none",
+    });
+
+    // scroll to last item
+    document.$("plaintext#logger").lastElementChild.scrollIntoView({behavior: "smooth"});
 });
 
 document.on("close", function() {
