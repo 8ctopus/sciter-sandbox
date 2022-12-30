@@ -139,11 +139,11 @@ document.on("click", "toggle#autoReload", function(event, element) {
         // watch source dir
         watch = Sys.fs.watch(path.dirname, watchCallback);
 
-        console.debug(`Watch dir ${path.dirname}`);
+        console.log(`Watch dir ${path.dirname}`);
     } else {
         if (watch) {
             // stop to watch dir
-            console.debug("Stop watch");
+            console.log("Stop watch");
             watch.close();
         }
 
@@ -159,16 +159,14 @@ document.on("click", "toggle#autoReload", function(event, element) {
  */
 function watchCallback(file, _type) {
     try {
-        //console.debug(`Watch callback - ${file} - ${_type}`);
+        //console.debug(`Watch - ${file} - ${_type}`);
 
         if (isReloading) {
-            console.debug("Watch - reload already in progress..");
+            console.warn("Watch - reload already in progress..");
             return;
         }
 
         const path = Utils.splitPath(file);
-
-        //console.debug(`watch - split path`, path);
 
         // ignore node modules changes
         if (path.basename.indexOf("node_modules") !== -1) {
@@ -211,7 +209,7 @@ function reload(_event, _element) {
     }
 
     try {
-        console.debug("Reload app...");
+        console.log("Reload app...");
         isReloading = true;
 
         const windowExists = Boolean(window);
