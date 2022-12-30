@@ -32,6 +32,14 @@ div.hbox:first-child {
     display: none;
 }
 
+.show {
+    display: inline;
+}
+
+debug {
+    display: none;
+}
+
 </style>
 <script type="module">
 
@@ -112,7 +120,7 @@ document.on("click", "toggle#debug", function() {
     const elements = document.$$("debug");
 
     for (const element of elements) {
-        element.classList.toggle("hidden");
+        element.classList.toggle("show");
     }
 });
 
@@ -271,7 +279,7 @@ function reload(_event, _element) {
         <toggle #autoReload checked>
             <caption>Auto-reload</caption>
         </toggle>
-        <toggle #debug checked>
+        <toggle #debug>
             <caption>Debug</caption>
         </toggle>
         <button #inspector hidden></button>
