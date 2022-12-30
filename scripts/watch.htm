@@ -1,9 +1,9 @@
 <html
-    window-width="500dip"
+    window-width="600dip"
     window-height="200dip"
 >
 <head>
-<title>Sandbox watch</title>
+<title>Sandbox</title>
 <style>
 
 @set std-toggle < std-toggle {
@@ -34,10 +34,6 @@ plaintext#logger:expanded {
 
 plaintext#logger:collapsed {
     display: none;
-}
-
-button {
-    appearance: none;
 }
 
 .hidden {
@@ -285,14 +281,14 @@ function reload(_event, _element) {
 </head>
 <body>
     <div .hbox .hidden>
-        <button #reload accesskey="!F5"><i class="fa-solid fa-arrow-rotate-right fa-2x" /></button>
+        <button #reload accesskey="!F5">Reload</button>
         <toggle #autoReload checked>
-            <caption><i class="fa-brands fa-watchman-monitoring fa-2x" /></caption>
+            <caption>Auto-reload</caption>
         </toggle>
-        <toggle #logger checked hidden>
-            <caption><i class="fa-solid fa-file-lines fa-2x" /></caption>
+        <toggle #logger checked>
+            <caption>Logger</caption>
         </toggle>
-        <button #inspector hidden><i class="fa-solid fa-bug fa-2x" /></button>
+        <button #inspector hidden></button>
     </div>
     <plaintext #logger readonly />
 </body>
