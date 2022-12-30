@@ -28,14 +28,6 @@ div.hbox:first-child {
     margin-left: 0.5em;
 }
 
-plaintext#logger:expanded {
-    display: block;
-}
-
-plaintext#logger:collapsed {
-    display: none;
-}
-
 .hidden {
     display: none;
 }
@@ -116,14 +108,11 @@ document.on("click", "button#reload", function() {
     Utils.debounce(reload, 2000);
 });
 
-document.on("click", "toggle#logger", function() {
-    const logger = document.$("plaintext#logger");
-    if (logger.state.collapsed) {
-        logger.state.collapsed = false;
-        logger.state.expanded = true;
-    } else {
-        logger.state.collapsed = true;
-        logger.state.expanded = false;
+document.on("click", "toggle#debug", function() {
+    const elements = document.$$("debug");
+
+    for (const element of elements) {
+        element.classList.toggle("hidden");
     }
 });
 
@@ -282,8 +271,8 @@ function reload(_event, _element) {
         <toggle #autoReload checked>
             <caption>Auto-reload</caption>
         </toggle>
-        <toggle #logger checked>
-            <caption>Logger</caption>
+        <toggle #debug checked>
+            <caption>Debug</caption>
         </toggle>
         <button #inspector hidden></button>
     </div>
