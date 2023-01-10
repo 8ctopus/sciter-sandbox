@@ -47,6 +47,7 @@ debug {
 </style>
 <script type="module">
 
+import * as Env from "@env";
 import * as Sys from "@sys";
 import * as Sciter from "@sciter";
 
@@ -267,6 +268,21 @@ function reload(_event, _element) {
             wTop = mTop + mHeight;
 
         Window.this.move(mLeft, wTop);
+
+        switch (Env.PLATFORM.toLowerCase()) {
+            case "windows":
+                console.log(URL.toPath(__DIR__ + "focus.js"));
+                const proc = Sys.spawn(["cscript.exe", URL.toPath(__DIR__ + "focus.js")], {
+                    stdout: "pipe",
+                    stderr: "pipe",
+                });
+
+                if (!proc) {
+                    console.error("spawn - FAILED");
+                }
+
+                break;
+        }
     } catch (error) {
         console.exception("Reload exception -", error);
     } finally {
