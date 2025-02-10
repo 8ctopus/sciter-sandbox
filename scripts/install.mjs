@@ -10,7 +10,7 @@ import Sdk from "./sdk.mjs";
 
 let cleanup = false;
 let sdkVersion;
-const sdkDefaultVersion = "5.0.1.8";
+const sdkDefaultVersion = "5.0.2.26";
 
 // get command line arguments
 const args = process.argv.slice(2, process.argv.length);

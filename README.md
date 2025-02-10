@@ -23,7 +23,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 
 - git clone the repository and checkout the latest release tag `git checkout 1.3.x`
 - install packages `npm install`
-- install latest sciter SDK `npm run install-sdk`
+- install default sciter SDK `npm run install-sdk`
 - start the sandbox `npm run scapp`
 
 ## commands
@@ -34,7 +34,7 @@ This is a [sciter.js](https://sciter.com/) development sandbox.
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 5.0.1.8
+npm run install-sdk 5.0.2.26
 ```
 
 ### start scapp / usciter
