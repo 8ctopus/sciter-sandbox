@@ -1,6 +1,7 @@
 # sciter sandbox
 
-This is a [sciter.js](https://sciter.com/) development sandbox.
+This is a [sciter.js](https://sciter.com/) cross-platform development environment, making it easy to build and test Sciter applications.
+The environment automatically installs the Sciter SDK and provides various tools to streamline development.
 
 ## features
 
