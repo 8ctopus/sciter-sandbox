@@ -4,7 +4,7 @@ import os from "node:os";
 import {sep as separator} from "node:path";
 import process from "node:process";
 import util from "node:util";
-import download from "download";
+import fetch from 'node-fetch';
 import {killInspector, killScapp, killUsciter} from "./commands.mjs";
 import Sdk from "./sdk.mjs";
 
@@ -96,23 +96,19 @@ try {
 } catch {
     console.log(`\u001B[32mDownload sciter.js SDK ${sdkVersion}...\u001B[0m\n`);
 
+    const response = await fetch(Sdk.getUrl(sdkVersion));
+    const fileStream = fs.createWriteStream(zipFile);
     let downloaded = 0;
 
-    fs.writeFileSync(zipFile, await download(Sdk.getUrl(sdkVersion))
-        .on("response", _res => {
-            //console.log(res.headers);
-            // clear screen
-            //console.log("\x1b[2J");
-        })
-        .on("response", res => {
-            res.on("data", data => {
-                downloaded += data.length;
-
-                // show download progress
-                console.log(`\u001B[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              \u001B[0m`);
-            });
-        }),
-    );
+    await new Promise((resolve, reject) => {
+        response.body.pipe(fileStream);
+        response.body.on('data', (chunk) => {
+            downloaded += chunk.length;
+            console.log(`\u001B[ADownloaded ${(downloaded / (1024 * 1024)).toFixed(1)} Mb...                                              \u001B[0m`);
+        });
+        fileStream.on('finish', resolve);
+        fileStream.on('error', reject);
+    });
 }
 
 console.log(`\u001B[32mInstall sciter.js SDK ${sdkVersion}...\u001B[0m`);
