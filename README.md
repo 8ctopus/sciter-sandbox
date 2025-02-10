@@ -86,7 +86,7 @@ You can also use the sandbox in your own projects:
   },
 ```
 
-### define project to SDK version
+### define project SDK version
 
 You can set your project to use a specific SDK version by adding the object key `sciterVersion: 5.0.1.2` inside `package.json`.
 
@@ -95,3 +95,14 @@ You can set your project to use a specific SDK version by adding the object key 
 - Linux and Mac require more testing
 - all OSes: usciter does not connect to the inspector
 - Linux: inspector has issues communicating (I don't know why)
+
+## how to release
+
+    # bump version
+    npm version 1.4.6
+
+    # create package locally
+    npm pack
+
+    # publish package (send to npmjs.com)
+    npm publish
