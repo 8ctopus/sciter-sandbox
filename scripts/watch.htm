@@ -97,12 +97,13 @@ document.on("ready", function() {
     if (!Window.this.activate(true))
         console.error("Activate window - FAILED");
 
-    const argv = Window.this.scapp?.argv;
+    const argv = Window.this.scapp.argv;
 
-    if (!argv)
-        throw new Error("missing command line arguments");
+    if (argv?.length < 1)
+        throw new Error("missing command line argument entry");
 
-    entry = Sys.cwd() + Utils.getSeparator() + argv[argv.length - 1].replace(/\//g, Utils.getSeparator());
+    entry = argv[argv.length - 1];
+    entry = Sys.cwd() + Utils.getSeparator() + entry.replace(/\//g, Utils.getSeparator());
 
     console.debug(`Entry ${entry}`);
 
