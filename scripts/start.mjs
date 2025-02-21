@@ -101,7 +101,7 @@ try {
         entry,
     ];
 
-    //console.log(arguments_);
+    //console.log(commands[ide][platform], arguments_);
 
     spawn(commands[ide][platform], arguments_, {
         detached: true,
