@@ -25,7 +25,7 @@ The environment automatically installs the Sciter SDK and provides various tools
 
 ## start sandbox
 
-- git clone the repository and checkout the latest release tag `git checkout 1.3.x`
+- git clone the repository
 - install packages `npm install`
 - install default sciter SDK `npm run install-sdk`
 - start the sandbox `npm run scapp`
@@ -38,7 +38,7 @@ The environment automatically installs the Sciter SDK and provides various tools
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 5.0.2.26
+npm run install-sdk 5.0.3.21
 ```
 
 ### start scapp / usciter
