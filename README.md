@@ -47,11 +47,9 @@ npm run install-sdk 5.0.3.21
 
 ```sh
 npm run [scapp|scapp32]
-
-npm run [usciter|usciter32]
 ```
 
-### close scapp, usciter and inspector
+### close scapp and inspector
 
 ```sh
 npm run stop
