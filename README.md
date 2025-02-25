@@ -30,7 +30,7 @@ The environment automatically installs the Sciter SDK and provides various tools
 - install default sciter SDK `npm run install-sdk`
 - start the sandbox `npm run scapp`
 
-_NOTE_: `scapp` command is [broken in 6.0.0.4 and 6.0.0.5](https://sciter.com/forums/topic/scapp-command-line-arguments-breaks-in-6-0-0-4/)
+_NOTE_: `scapp` command is [broken in 6.0.0.4, 6.0.0.5, 6.0.0.6](https://sciter.com/forums/topic/scapp-command-line-arguments-breaks-in-6-0-0-4/)
 
 ## commands
 
