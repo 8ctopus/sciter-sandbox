@@ -105,8 +105,5 @@ You can set your project to use a specific SDK version by adding the object key 
     # bump version
     npm version 1.4.6
 
-    # create package locally
-    npm pack
-
     # publish package (send to npmjs.com)
     npm publish
