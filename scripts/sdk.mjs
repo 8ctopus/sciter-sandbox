@@ -91,6 +91,27 @@ class Sdk {
         // Oct 13, 2023
         "5.0.2.26": "ea573f13174328a662d0c4189b0e3e5d59834540",
         // missing versions
+        // Sep 21, 2023
+        "5.0.2.22": "1b8e3db8d893afed926b6c589eda8c1ab29c6af4",
+        // missing versions
+        // Aug 27, 2023
+        "5.0.2.19": "c8c688afbc65e3d2a118151ef495c5f1b56f55a1",
+        // missing versions
+        // May 28, 2023
+        "5.0.2.16": "46070027ea2c0abe85981b2b00c6d6ea258e0bc9",
+        // missing versions
+        // Apr 9, 2023
+        "5.0.2.13": "385656156fa56b6edf66dd984594acfd459526c0",
+        // missing versions
+        // Mar 22, 2023
+        "5.0.2.9": "07efa4b251f61c39f913da8a8af5433577d3c78c",
+        // missing versions
+        // Feb 26, 2023
+        "5.0.2.6": "029520f20ee6c256789cfee45bed21f5251bc6a3",
+        // missing versions
+        // Feb 3, 2023
+        "5.0.2.3": "d5e102ff3d0a886141cb1deb3b7c6c160533911c",
+        // missing versions
         // Jan 16, 2023
         "5.0.2.0": "7a67f257a89a11ea95318d2c4f4791c3c66820f6",
         // Jan 6, 2023
