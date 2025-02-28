@@ -51,6 +51,7 @@ debug {
 </style>
 <script type="module">
 
+import * as Env from "@env";
 import * as Sys from "@sys";
 import * as Sciter from "@sciter";
 
@@ -101,7 +102,7 @@ document.on("ready", function() {
     if (!Window.this.activate(true))
         console.error("Activate window - FAILED");
 
-    const argv = Window.this.scapp.argv;
+    const argv = Env.arguments();
 
     if (argv?.length < 1)
         throw new Error("missing command line argument entry");
