@@ -155,18 +155,18 @@ if (cleanup) {
     // delete all not required directories
     for (const dir of directories) {
         if (dir !== platforms[os.platform()]) {
-            fs.promises.rm(`bin/${dir}`, {
+            await fs.promises.rm(`bin/${dir}`, {
                 recursive: true,
             });
         }
     }
 }
 
-console.log("\u001B[32mInstall complete.\u001B[0m");
-
 // write sdk version to file
 const version = {
     version: sdkVersion,
 };
 
-fs.promises.writeFile("bin/version.json", JSON.stringify(version));
+await fs.promises.writeFile("bin/version.json", JSON.stringify(version));
+
+console.log("\u001B[32mInstall complete.\u001B[0m");
