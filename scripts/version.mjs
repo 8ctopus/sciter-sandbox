@@ -1,7 +1,6 @@
 import fs from "node:fs";
-import util from "node:util";
 
-const text = await util.promisify(fs.readFile)("bin/version.json");
+const text = await fs.promises.readFile("bin/version.json");
 
 const data = JSON.parse(text);
 

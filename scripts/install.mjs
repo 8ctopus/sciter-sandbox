@@ -169,4 +169,4 @@ const version = {
     version: sdkVersion,
 };
 
-util.promisify(fs.writeFile)("bin/version.json", JSON.stringify(version));
+fs.promises.writeFile("bin/version.json", JSON.stringify(version));

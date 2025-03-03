@@ -25,7 +25,7 @@ let entry;
 
 try {
     // read package json
-    const packageText = await util.promisify(fs.readFile)("package.json");
+    const packageText = await fs.promises.readFile("package.json");
 
     // convert to json
     const packageJson = JSON.parse(packageText);
