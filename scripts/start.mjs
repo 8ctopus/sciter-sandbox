@@ -94,7 +94,6 @@ try {
         "--debug",
         entry,
     ] : [
-        // usciter doesn't work as it doesn't pass argv
         "-o",
         dir + "watch.htm",
         entry,
