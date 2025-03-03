@@ -92,7 +92,7 @@ You can also use the sandbox in your own projects:
 
 ### define project SDK version
 
-You can set your project to use a specific SDK version by adding the object key `sciterVersion: 5.0.1.2` inside `package.json`.
+You can set your project to use a specific SDK version by adding the object key `sciterVersion: 6.0.0.7` inside `package.json`.
 
 ## known issues
 
