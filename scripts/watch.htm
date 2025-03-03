@@ -102,9 +102,9 @@ document.on("ready", function() {
     if (!Window.this.activate(true))
         console.error("Activate window - FAILED");
 
-    const argv = Env.arguments();
+    const argv = Env.arguments ? Env.arguments() : Window.this?.scapp?.argv;
 
-    if (argv?.length < 1)
+    if (!argv || argv.length < 1)
         throw new Error("missing command line argument entry");
 
     entry = argv[argv.length - 1];
