@@ -30,7 +30,9 @@ class Sdk {
     }
 
     static #gitlab = {
-        // Feb 24, 2024
+        // Mar 2, 2025
+        "6.0.0.7": "6e4d3c051cda244f54492cedd967ca802a4ebffc",
+        // Feb 24, 2025
         "6.0.0.6": "98b4b861d814d4e2580ab0809d9a55bd0ee1f034",
         // Feb 15, 2025
         "6.0.0.5": "17d61aad76ebd2a5b156852ac0abfb204cfbe3f4",

@@ -38,7 +38,7 @@ The environment automatically installs the Sciter SDK and provides various tools
 npm run install-sdk [version]
 
 # example
-npm run install-sdk 5.0.3.21
+npm run install-sdk 6.0.0.7
 ```
 
 ### start scapp / usciter
