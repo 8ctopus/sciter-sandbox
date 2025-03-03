@@ -43,7 +43,7 @@ npm run install-sdk [version]
 npm run install-sdk 5.0.3.21
 ```
 
-### start scapp
+### start scapp / usciter
 
 ```sh
 npm run [scapp|scapp32]
