@@ -127,8 +127,6 @@ document.on("click", "button#reload", function() {
 });
 
 document.on("click", "toggle#debug", function(_event, element) {
-    //console.log("Toggle debug", element.checked);
-
     // show/hide debug messages
     document.style.variables({
         displayDebug: element.checked ? "inline" : "none",
