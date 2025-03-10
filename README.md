@@ -41,6 +41,8 @@ npm run install-sdk [version]
 npm run install-sdk 6.0.0.7
 ```
 
+_NOTE_: if you don't select a version, the default version will be installed.
+
 ### start scapp / usciter
 
 ```sh
@@ -92,7 +94,7 @@ You can also use the sandbox in your own projects:
 
 ### define project SDK version
 
-You can set your project to use a specific SDK version by adding the object key `sciterVersion: 6.0.0.7` inside `package.json`.
+You can set your project to use a specific SDK version by adding the key `sciterVersion: 6.0.0.7` inside `package.json`.
 
 ## known issues
 
