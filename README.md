@@ -82,7 +82,7 @@ You can also use the sandbox in your own projects:
 
 ```json
   "scripts": {
-    "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs",
+    "install-sdk": "node ./node_modules/sciter-sandbox/scripts/install.mjs cleanup",
     "sdk-version": "node ./node_modules/sciter-sandbox/scripts/version.mjs",
     "scapp": "node ./node_modules/sciter-sandbox/scripts/start.mjs scapp",
     "usciter": "node ./node_modules/sciter-sandbox/scripts/start.mjs usciter",
