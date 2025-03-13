@@ -24,8 +24,7 @@
     "usciter": "node ./scripts/start.mjs usciter",
     "stop": "node ./scripts/stop.mjs",
     "scapp32": "node ./scripts/start.mjs scapp32",
-    "usciter32": "node ./scripts/start.mjs usciter32",
-    "test": "xo"
+    "usciter32": "node ./scripts/start.mjs usciter32"
   },
   "author": {
     "name": "8ctopus",
